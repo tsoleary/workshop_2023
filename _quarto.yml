@@ -5,7 +5,7 @@ project:
 book:
   title: "Data Science Workshop"
   author: "Thomas O'Leary"
-  date: "8/2/2023"
+  date: "Fall 2023"
   chapters:
     - index.qmd
     - repro.qmd
