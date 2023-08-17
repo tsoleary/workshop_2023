@@ -22,8 +22,6 @@ format:
     theme: 
     - cosmo
     - color.scss
-  pdf:
-    documentclass: scrreprt
 
 
 
