@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>repro</title>
+<title>Data Science Workshop - 1&nbsp; Reproducibility</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,11 +77,14 @@ div.csl-indent {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./tidyverse.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -114,28 +117,126 @@ div.csl-indent {
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./repro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Science Workshop</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./repro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#practical-reproducibility" id="toc-practical-reproducibility" class="nav-link active" data-scroll-target="#practical-reproducibility"><span class="header-section-number">1.1</span> Practical reproducibility</a></li>
+  <li><a href="#ten-simple-rules" id="toc-ten-simple-rules" class="nav-link" data-scroll-target="#ten-simple-rules"><span class="header-section-number">1.2</span> Ten simple rules</a></li>
+  <li><a href="#opening-in-rstudio" id="toc-opening-in-rstudio" class="nav-link" data-scroll-target="#opening-in-rstudio"><span class="header-section-number">1.3</span> Opening in RStudio</a></li>
+  <li><a href="#projects-in-rstudio" id="toc-projects-in-rstudio" class="nav-link" data-scroll-target="#projects-in-rstudio"><span class="header-section-number">1.4</span> Projects in RStudio</a>
+  <ul class="collapse">
+  <li><a href="#here-package" id="toc-here-package" class="nav-link" data-scroll-target="#here-package"><code>here</code> package</a></li>
+  </ul></li>
+  <li><a href="#directory-structure" id="toc-directory-structure" class="nav-link" data-scroll-target="#directory-structure"><span class="header-section-number">1.5</span> Directory structure</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">1.6</span> Scripts</a>
+  <ul class="collapse">
+  <li><a href="#driver-scripts" id="toc-driver-scripts" class="nav-link" data-scroll-target="#driver-scripts"><span class="header-section-number">1.6.1</span> Driver scripts</a></li>
+  <li><a href="#snippets" id="toc-snippets" class="nav-link" data-scroll-target="#snippets"><span class="header-section-number">1.6.2</span> Snippets</a></li>
+  <li><a href="#quick-tools" id="toc-quick-tools" class="nav-link" data-scroll-target="#quick-tools"><span class="header-section-number">1.6.3</span> Quick tools</a></li>
+  <li><a href="#scratch-code" id="toc-scratch-code" class="nav-link" data-scroll-target="#scratch-code"><span class="header-section-number">1.6.4</span> Scratch code</a></li>
+  </ul></li>
+  <li><a href="#sec-vc" id="toc-sec-vc" class="nav-link" data-scroll-target="#sec-vc"><span class="header-section-number">1.7</span> Version control</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></h1>
+</div>
 
 
-<section id="reproducibility" class="level1">
-<h1>Reproducibility</h1>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
 <p>Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> terms, before moving on some practical principles of computational reproducibility.</p>
 <ul>
 <li><strong>Results reproducibility</strong> – if you do the same thing, you should get the same results. This is essence of the scientific method. If you are unable to reproduce the results, you may not have a full understanding of the underlying causes.</li>
 <li><strong>Inferential reproducibility</strong> – reliably draw the same types of conclusions from different sets of experiments<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
 <li><strong>Methods reproducibility</strong> – description of the methods are sufficiently detailed, complete, and accurate enough so that the experiment may be replicated in full.</li>
 </ul>
-<p>This workshop is focused on a narrow set of methods reproducibility, <strong>computational reproducibility</strong>, for which, I am adopting the formal definition: <em>“obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis”</em> <span class="citation" data-cites="National_Academies_of_Sciences_Engineering2019-vr">(<a href="#ref-National_Academies_of_Sciences_Engineering2019-vr" role="doc-biblioref">National Academies of Sciences, Engineering et al. 2019</a>)</span>. That seems self-evident, so for a practical, working definition, consider asking yourself the following questions.</p>
+<p>This workshop is focused on a narrow set of methods reproducibility, <strong>computational reproducibility</strong>, for which, I am adopting the formal definition: <em>“obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis”</em> <span class="citation" data-cites="National_Academies_of_Sciences_Engineering2019-vr">(<a href="references.html#ref-National_Academies_of_Sciences_Engineering2019-vr" role="doc-biblioref">National Academies of Sciences, Engineering et al. 2019</a>)</span>. That seems self-evident, so for a practical, working definition, consider asking yourself the following questions.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -170,8 +271,8 @@ A quick note on why you should care about computational reproducibility<a href="
 </div>
 </div>
 </div>
-<section id="practical-reproducibility" class="level2">
-<h2 class="anchored" data-anchor-id="practical-reproducibility">Practical reproducibility</h2>
+<section id="practical-reproducibility" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="practical-reproducibility"><span class="header-section-number">1.1</span> Practical reproducibility</h2>
 <p>Much of the advice on computational reproducibility is somewhat abstract<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. That is, in part, the nature of the beast. Each project represents its own unique challenges. But it is also because the advice is often made for a broad range of projects in all sorts of different programming languages on everything from model simulations to genome assembly, all the way to creating programmatic tools for others. In contrast, this workshop will focus on a narrower set of tasks related to <strong>statistical programming in R</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. In other words, the type of programming where you have some raw data generated elsewhere (<em>e.g.</em>, enzyme activity or species abundance data) that you are going to preform some sort of analysis on it (<em>e.g.</em>, normalization and a significance test), and then make figures.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -245,9 +346,9 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="f
 </div>
 </div>
 </section>
-<section id="ten-simple-rules" class="level2">
-<h2 class="anchored" data-anchor-id="ten-simple-rules">Ten simple rules</h2>
-<p>The tips outlined above are a useful and specific starting point<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. But rather than rely solely on my eccentricities, let’s instead adopt these simple rules from <span class="citation" data-cites="Sandve2013-cq">Sandve et al. (<a href="#ref-Sandve2013-cq" role="doc-biblioref">2013</a>)</span>. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adpoting these rules is that they are easy enough to apply to other types of projects. It is worth <a href="https://doi.org/10.1371/journal.pcbi.1003285" target="_blank">reading in full</a>.</p>
+<section id="ten-simple-rules" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="ten-simple-rules"><span class="header-section-number">1.2</span> Ten simple rules</h2>
+<p>The tips outlined above are a useful and specific starting point<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. But rather than rely solely on my eccentricities, let’s instead adopt these simple rules from <span class="citation" data-cites="Sandve2013-cq">Sandve et al. (<a href="references.html#ref-Sandve2013-cq" role="doc-biblioref">2013</a>)</span>. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adpoting these rules is that they are easy enough to apply to other types of projects. It is worth <a href="https://doi.org/10.1371/journal.pcbi.1003285" target="_blank">reading in full</a>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -273,8 +374,8 @@ Ten simple rules for reproducible computational research
 </div>
 </div>
 </section>
-<section id="opening-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="opening-in-rstudio">Opening in RStudio</h2>
+<section id="opening-in-rstudio" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="opening-in-rstudio"><span class="header-section-number">1.3</span> Opening in RStudio</h2>
 <p>Okay, let’s begin by opening up RStudio<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?</p>
 <p>I know people that do great work in R and live their lives like this – but it kinda makes me sweat. <em>How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></em> It stresses me out, in part because you are violating <strong>Rule 1</strong> – you don’t necessarily have a good track record of how that object was produced. It could me something that you ran into the console long ago and you have since changed your script. You want your <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth" target="_blank">source of truth</a><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> to be the script. In other words, the list of specfic commands that take you from raw data to your results. <strong>Zombie objects in the Global Environment are not your friend.</strong></p>
 <p>It is best practice to start with a blank slate every time you open RStudio. This will force you to rely solely on the code infront of you. Rather than something that may or may not be what you remember it to be. It also mimics the environment of someone else, sitting down at their own machine, trying to replicate your results – getting closer to ensuring reproducibility.</p>
@@ -292,8 +393,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="projects-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="projects-in-rstudio">Projects in RStudio</h2>
+<section id="projects-in-rstudio" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="projects-in-rstudio"><span class="header-section-number">1.4</span> Projects in RStudio</h2>
 <p>Projects are your friend. Jenny Bryan, a developer at RStudio, has an <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/" target="_blank">impassioned blog post</a> on why you should embrace a project-oriented workflow. You should probably read her post in full, because if you don’t listen, she is threatening to <em>set your computer on fire</em> <span class="emoji" data-emoji="fire">🔥</span>. But seriously, you should read it.</p>
 <p>As a way of quickly summarizing one of her points: you should make sure that your final product (<em>i.e.</em>, your script) is completely free of things that are specific to your own personal habits. For example, do you have something similar to <code>setwd("/Users/tsoleary/R/quest_workshop_2023")</code> at the start of your script? Or in some other way, are you using absolute paths? If you do, then for a certainty if someone else wants to run your code, they will have to edit it to make sure they don’t immediately run into an error. This means that right off the bat, your code is not reproducibility-friendly. As a remedy, she suggests using projects and the here package discussed below.</p>
 <section id="here-package" class="level3 unnumbered">
@@ -328,13 +429,13 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Projects in RStudio allows for easy integration with Version Control! Check out the short <a href="#sec-vc">Section&nbsp;1.7</a> on Version Control.</p>
+<p>Projects in RStudio allows for easy integration with Version Control! Check out the short <a href="#sec-vc"><span>Section&nbsp;1.7</span></a> on Version Control.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="directory-structure" class="level2">
-<h2 class="anchored" data-anchor-id="directory-structure">Directory structure</h2>
+<section id="directory-structure" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="directory-structure"><span class="header-section-number">1.5</span> Directory structure</h2>
 <p>There are thousands of ways you could structure your files in a project – but there are really only two ways of going about it. The first is <em>ad hoc</em>. You group up files in sub-directores as you go along, tailoring the directory structure into something that makes sense to you, or at least something that is workable. And the other way, is to use a backbone template directory struture and build off that.</p>
 <p>For most of the time I have worked in R, I have used the <em>ad hoc</em> approach. And it the best I can say for it is that it works. In my eyes, each project is its own snowflake. But if you ask someone else to look at it, they may think a dungeon maze or London Below<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> is more apt a metaphor. But I have come to embrace a consistent directory structure.</p>
 <p>https://www.r-bloggers.com/2018/08/structuring-r-projects/</p>
@@ -437,8 +538,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="scripts" class="level2">
-<h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
+<section id="scripts" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="scripts"><span class="header-section-number">1.6</span> Scripts</h2>
 <p>I believe in short scripts that do <em>one</em> thing, rather then a huge unruly script that does everything. This helps adhere to <strong>Rule 5</strong>: Record all intermediate results, when possible in standardized formats &amp; <strong>Rule 8</strong>: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you in the future or a reviewer can easily jump into the analysis mid-way and explore the data.</p>
 <p>If you read Jenny Bryan’s blog post on a project-oriented workflow referenced earlier, you likely ran across this advice:</p>
 <blockquote class="blockquote">
@@ -459,8 +560,8 @@ Tip
 
 </div>
 </div>
-<section id="driver-scripts" class="level3">
-<h3 class="anchored" data-anchor-id="driver-scripts">Driver scripts</h3>
+<section id="driver-scripts" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="driver-scripts"><span class="header-section-number">1.6.1</span> Driver scripts</h3>
 <p>If you now have a bunch of small scripts that do small tasks, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -481,8 +582,8 @@ Tip
 </div>
 <p>One thing that I have been experimenting with is using</p>
 </section>
-<section id="snippets" class="level3">
-<h3 class="anchored" data-anchor-id="snippets">Snippets</h3>
+<section id="snippets" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="snippets"><span class="header-section-number">1.6.2</span> Snippets</h3>
 <p>You should use the available tools as much as you can to aid your workflow.</p>
 <p>I use snippets to create my script templates.</p>
 <div class="cell">
@@ -513,11 +614,11 @@ Tip
 <li>Reminds me to save the output at the end of the script.</li>
 </ol>
 </section>
-<section id="quick-tools" class="level3">
-<h3 class="anchored" data-anchor-id="quick-tools">Quick tools</h3>
+<section id="quick-tools" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="quick-tools"><span class="header-section-number">1.6.3</span> Quick tools</h3>
 </section>
-<section id="scratch-code" class="level3">
-<h3 class="anchored" data-anchor-id="scratch-code">Scratch code</h3>
+<section id="scratch-code" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="scratch-code"><span class="header-section-number">1.6.4</span> Scratch code</h3>
 <p>I often find that I write code that is not used in the final analysis. You may find yourself doing the same. It is sometimes a random exploratory figure that doesn’t end up telling you much, or maybe you normalized some data in the wrong way, or used an inappropriate type of statistical model. But in each case, you have spent some valuable amount of time writing that code, and so you are reluctant to remove it from you script. So you just comment it out – or worse, just leave it <em>hanging there</em> in the script. After all, it might be useful down the line, somehow, somewhere. I sympathize with that, but I think it is worth removing all unnecessary code. It will help you in the future when you don’t remember what you did, and don’t know if that bit of code is important.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -534,13 +635,13 @@ A tip for removing all unecessary or redundant code
 </div>
 </section>
 </section>
-<section id="sec-vc" class="level2">
-<h2 class="anchored" data-anchor-id="sec-vc">Version control</h2>
+<section id="sec-vc" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="sec-vc"><span class="header-section-number">1.7</span> Version control</h2>
 <p>The details of the software are beyond the scope of this workshop, but one important way people ensure the reproducibility of their projects is to utilize <a href="https://en.wikipedia.org/wiki/Version_control" target="_blank">Version Control</a>. In short, Version Control is a useful way to make sure that as you edit and add to large projects over time you don’t lose or change any of the bits that make it work. For example, if you were to accidentally break a script, you could restore to a previous working version of that file, and then begin again. There are several software designed to do this, but the most popular in the data science world is <a href="https://en.wikipedia.org/wiki/GitHub" target="_blank">Git and GitHub</a>.</p>
 <p>These tools can seem intimidating at first – especially because they typically are interfaced with in the command line. But if it makes you more comfortable, you can use the point-and-click approach to git within RStudio itself or a desktop clients (<em>e.g.</em>, <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a>). <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/" target="_blank">Here</a> is a very useful tutorial on how to use Git and GitHub within RStudio.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Goodman2016-ex" class="csl-entry" role="listitem">
 Goodman, Steven N, Daniele Fanelli, and John P A Ioannidis. 2016. <span>“What Does Research Reproducibility Mean?”</span> <em>Sci. Transl. Med.</em> 8 (341): 341ps12.
 </div>
@@ -552,11 +653,10 @@ Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <sp
 </div>
 </div>
 </section>
-</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Please see <span class="citation" data-cites="Goodman2016-ex">Goodman, Fanelli, and Ioannidis (<a href="#ref-Goodman2016-ex" role="doc-biblioref">2016</a>)</span> for a more rigorous discussion of terms.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Please see <span class="citation" data-cites="Goodman2016-ex">Goodman, Fanelli, and Ioannidis (<a href="references.html#ref-Goodman2016-ex" role="doc-biblioref">2016</a>)</span> for a more rigorous discussion of terms.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>One example of this sort of reproducibility, was the independent sets of experiments that showed that DNA as the hereditary molecule.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>I hope the workshop helps <span class="emoji" data-emoji="grin">😁</span>!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>I definitely don’t have a perfect workflow, but it has gotten better slowly over the years.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -806,6 +906,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tidyverse.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>data_viz</title>
+<title>Data Science Workshop - 3&nbsp; Data visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,11 +58,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./tidyverse.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -95,21 +98,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_viz.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Science Workshop</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./repro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_viz.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-note-on-structure" id="toc-a-note-on-structure" class="nav-link active" data-scroll-target="#a-note-on-structure">A note on structure</a></li>
+  <li><a href="#gallery-of-visualizations" id="toc-gallery-of-visualizations" class="nav-link" data-scroll-target="#gallery-of-visualizations"><span class="header-section-number">3.1</span> Gallery of visualizations</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data"><span class="header-section-number">3.2</span> Explore the data</a>
+  <ul class="collapse">
+  <li><a href="#meet-the-palmer-penguins" id="toc-meet-the-palmer-penguins" class="nav-link" data-scroll-target="#meet-the-palmer-penguins">Meet the Palmer penguins</a></li>
+  </ul></li>
+  <li><a href="#choosing-a-type-of-visualization" id="toc-choosing-a-type-of-visualization" class="nav-link" data-scroll-target="#choosing-a-type-of-visualization"><span class="header-section-number">3.3</span> Choosing a type of visualization</a></li>
+  <li><a href="#limits" id="toc-limits" class="nav-link" data-scroll-target="#limits"><span class="header-section-number">3.4</span> Limits</a></li>
+  <li><a href="#creating-the-axes" id="toc-creating-the-axes" class="nav-link" data-scroll-target="#creating-the-axes"><span class="header-section-number">3.5</span> Creating the axes</a></li>
+  <li><a href="#choosing-a-theme" id="toc-choosing-a-theme" class="nav-link" data-scroll-target="#choosing-a-theme"><span class="header-section-number">3.6</span> Choosing a theme</a></li>
+  <li><a href="#the-small-details" id="toc-the-small-details" class="nav-link" data-scroll-target="#the-small-details"><span class="header-section-number">3.7</span> The small details</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></h1>
+</div>
 
 
-<section id="data-visualization" class="level1">
-<h1>Data visualization</h1>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
 <p>There are several great resources out there on the world wide web for learning how to create figures in R. They do a thorough job of introducing the basics. The simple (but sometimes not so simple) mechanics of moving from data to a figure. In particular, I recommend, the <a href="https://r4ds.had.co.nz/data-visualisation.html" target="_blank">Data Visualization Chapter</a> of R for Data Science. It is a great place to get started with a narrative introduction to ggplot. As you make more ambitious figures, <a href="https://ggplot2-book.org/" target="_blank">ggplot2: Elegant Graphics for Data Analysis</a> will provide you with even more detail. Similarly, the <a href="https://r-graphics.org/">R Graphics Cookbook</a> provides useful solutions to common problems (<em>e.g.</em>, <a href="https://r-graphics.org/recipe-axis-order">changing the order of items on a categorical axis</a>).</p>
 <p>However, this workshop is not intended to replace that kind of book. Instead, it is designed to focus on the soft skills of data visualization. What are a few small changes that I can make to take this figure from workable to shareable, or even better, from something that I have to squint at to something that speaks for itself.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -157,11 +253,11 @@ TL;DR - Tips for data visualization
 </div>
 </div>
 </section>
-<section id="gallery-of-visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="gallery-of-visualizations">Gallery of visualizations</h2>
+<section id="gallery-of-visualizations" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="gallery-of-visualizations"><span class="header-section-number">3.1</span> Gallery of visualizations</h2>
 </section>
-<section id="explore-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="explore-the-data">Explore the data</h2>
+<section id="explore-the-data" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="explore-the-data"><span class="header-section-number">3.2</span> Explore the data</h2>
 <section id="meet-the-palmer-penguins" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="meet-the-palmer-penguins">Meet the Palmer penguins</h3>
 <div class="quarto-figure quarto-figure-center">
@@ -218,8 +314,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </section>
 </section>
-<section id="choosing-a-type-of-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-a-type-of-visualization">Choosing a type of visualization</h2>
+<section id="choosing-a-type-of-visualization" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="choosing-a-type-of-visualization"><span class="header-section-number">3.3</span> Choosing a type of visualization</h2>
 <p>Okay this is a little bit of a warm up</p>
 <p>Choosing a type of visualization depends entirely on the sorts of questions you are trying to ask. So for now, let’s pick a few different questions. I don’t know anything about these penguins. So here are some simple questions that I have brainstormed:</p>
 <ol type="1">
@@ -333,8 +429,8 @@ Notice the advantages and disadvantages of the different styles.
 </div>
 <p>Fortunately we don’t have to pick.</p>
 </section>
-<section id="limits" class="level2">
-<h2 class="anchored" data-anchor-id="limits">Limits</h2>
+<section id="limits" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="limits"><span class="header-section-number">3.4</span> Limits</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
@@ -372,8 +468,8 @@ Notice the advantages and disadvantages of the different styles.
 </div>
 </div>
 </section>
-<section id="creating-the-axes" class="level2">
-<h2 class="anchored" data-anchor-id="creating-the-axes">Creating the axes</h2>
+<section id="creating-the-axes" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="creating-the-axes"><span class="header-section-number">3.5</span> Creating the axes</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
@@ -400,8 +496,8 @@ Notice the advantages and disadvantages of the different styles.
 </div>
 </div>
 </section>
-<section id="choosing-a-theme" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-a-theme">Choosing a theme</h2>
+<section id="choosing-a-theme" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="choosing-a-theme"><span class="header-section-number">3.6</span> Choosing a theme</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
@@ -457,8 +553,8 @@ Notice the advantages and disadvantages of the different styles.
 </div>
 </div>
 </section>
-<section id="the-small-details" class="level2">
-<h2 class="anchored" data-anchor-id="the-small-details">The small details</h2>
+<section id="the-small-details" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="the-small-details"><span class="header-section-number">3.7</span> The small details</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span>  </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
@@ -484,7 +580,6 @@ Notice the advantages and disadvantages of the different styles.
 </div>
 
 
-</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
@@ -727,6 +822,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./tidyverse.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
