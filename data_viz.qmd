@@ -1,0 +1,306 @@
+# Data visualization
+
+There are several great resources out there on the world wide web for learning how to create figures in R. They do a thorough job of introducing the basics. The simple (but sometimes not so simple) mechanics of moving from data to a figure. In particular, I recommend, the [Data Visualization Chapter](https://r4ds.had.co.nz/data-visualisation.html){target="_blank"} of R for Data Science. It is a great place to get started with a narrative introduction to ggplot. As you make more ambitious figures, [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/){target="_blank"} will provide you with even more detail. Similarly, the [R Graphics Cookbook](https://r-graphics.org/) provides useful solutions to common problems (_e.g._, [changing the order of items on a categorical axis](https://r-graphics.org/recipe-axis-order)).
+
+However, this workshop is not intended to replace that kind of book. Instead, it is designed to focus on the soft skills of data visualization. What are a few small changes that I can make to take this figure from workable to shareable, or even better, from something that I have to squint at to something that speaks for itself.
+
+:::{.callout-tip}
+
+## [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+
+Much of the content of this workshop is inspired by the approach in **Fundamentals of Data Visualization** by Claus O. Wilke. You may recognize these initials if you have tried to arrange a multi-panel figure in R with `cowplot::plot_grid()`. I can't recommend this book highly enough. I will consider this workshop a success even if the only thing you get out of it is reading this book. 
+
+The mechanics of plotting are important. They are how you create the figure after all. But at the end of the day 99% of readers won't see how you created the plots^[Shhh! Don't tell that to Chapter 1 of this workshop.], they will only see the final image you produce. That image is your chance to capture their attention with your data. Make it count.
+:::
+
+### A note on structure {.unnumbered}
+
+The structure of this workshop will be to take some data. Explore it and slowly refine our way to a good figure. Therefore the first figures that we make will be a little ugly and will violate some 
+
+:::{.callout-note collapse="true"}
+
+## TL;DR - Tips for data visualization
+
+1. Include as much detail of your data as possible -- but no more. 
+1. 
+1. Favor including **zero** in the plot axis limits when it seems appropriate. This is particularly true for things where zero actually means something (_e.g._, amounts).
+1. Use color as a tool to highlight. But don't go overboard.
+1. Use consistent a color scheme.
+1. Do not use abbreviations in figures. Unless the abbreviation is ubiquitous or more useful than the full terms (_e.g._, a specific mutation in a gene). If you have coded your underlying data to have certain abbreviations for the sake of brevity, re-code them for the figure.
+1. Use sentence case for axis titles.
+1. Use gridlines that emphasize the variable of interest.  
+1. Include units in axis titles.
+:::
+
+
+## Gallery of visualizations
+
+
+## Explore the data
+
+### Meet the Palmer penguins {.unnumbered}
+
+![Artwork by \@allison_horst](penguins.png)
+
+:::{.callout-tip icon="palmerpenquins.png"}
+## Test
+
+:::
+
+```{r}
+# Load libraries
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+```{r}
+# Take a peak at the data
+glimpse(penguins)
+```
+
+
+## Choosing a type of visualization
+
+Okay this is a little bit of a warm up
+
+Choosing a type of visualization depends entirely on the sorts of questions you are trying to ask. So for now, let's pick a few different questions. I don't know anything about these penguins. So here are some simple questions that I have brainstormed:
+
+1. Are different species of penguins different weights?
+2. Are penguins from different islands different weights?
+3. 
+
+We will stick with the first question for now. But it is worth trying the others. 
+
+I really hate the default theme for ggplot. So rather than look at it. Let's just set something that is a little easier on the eyes at the beginning. This command below will set `cowplot::theme_minimal_grid()` as the default theme for all plots going forward.
+
+```{r}
+# Set a nicer looking theme as a place holder
+theme_set(cowplot::theme_minimal_grid())
+```
+
+
+:::{.panel-tabset}
+
+## Box plot
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot() +
+  geom_boxplot(
+    aes(x = species,
+        y = body_mass_g))
+```
+
+## Violin plot
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot() +
+  geom_violin(
+    aes(x = species,
+        y = body_mass_g))
+```
+
+## Strip plot
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot() +
+  geom_jitter(
+    aes(x = species,
+        y = body_mass_g),
+    width = 0.1)
+```
+
+## Beeswarm
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot() +
+  ggbeeswarm::geom_beeswarm(
+    corral.width = 2.0,
+    aes(x = species,
+        y = body_mass_g)) 
+```
+
+## Histogram
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot() +
+  geom_histogram(
+    aes(x = body_mass_g),
+    color = "grey20",
+    fill = "grey80",
+    bins = 30) +
+  facet_wrap(~species,
+             nrow = 3)
+```
+
+## Density plot
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot() +
+  geom_density(
+    aes(x = body_mass_g,
+        color = species,
+        fill = species),
+    alpha = 0.5)
+```
+
+:::
+
+:::{.callout-warning}
+
+## Notice the advantages and disadvantages of the different styles.
+
+Some have more information than others. If you had to pick one? Which would you pick?
+:::
+
+Fortunately we don't have to pick. 
+
+## Limits
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_violin(width = 0.8) + 
+  geom_boxplot(width = 0.2) +
+  scale_y_continuous(
+    limits = c(0, 7000)
+  )
+```
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_boxplot(
+    width = 0.6,
+    outlier.shape = NA
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    width = 0.2
+    ) +
+  scale_y_continuous(
+    limits = c(0, 7000)
+  )
+```
+
+## Creating the axes
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_boxplot(
+    width = 0.6,
+    outlier.shape = NA
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    width = 0.2
+    ) +
+  scale_y_continuous(
+    name = "Body mass (g)",
+    limits = c(0, 7000)
+    ) +
+  scale_x_discrete(
+   name = element_blank()
+  )
+```
+
+
+## Choosing a theme
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_boxplot(
+    width = 0.6,
+    outlier.shape = NA
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    width = 0.2
+    ) +
+  scale_y_continuous(
+    name = "Body mass (g)",
+    limits = c(0, 7000)
+    ) +
+  scale_x_discrete(
+   name = element_blank()
+   ) +
+  cowplot::theme_minimal_hgrid()
+```
+
+Oh no! Look at that brual 
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_boxplot(
+    width = 0.6,
+    outlier.shape = NA
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    width = 0.2
+    ) +
+  scale_y_continuous(
+    name = "Body mass (g)",
+    limits = c(0, 7000),
+    expand = c(0, 0.5)
+    ) +
+  scale_x_discrete(
+   name = element_blank()
+   ) +
+  cowplot::theme_minimal_hgrid()
+```
+
+## The small details
+
+
+
+```{r}
+penguins |>  
+  ggplot(
+    aes(x = body_mass_g)
+    ) +
+  geom_histogram(
+    color = "grey20",
+    fill = "grey80"
+    ) +
+  facet_grid(rows = vars(island),
+             cols = vars(species)) +
+  cowplot::theme_minimal_hgrid() +
+  theme(strip.background = element_rect(fill = "grey90"))
+```
+
