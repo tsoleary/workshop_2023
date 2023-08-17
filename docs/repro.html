@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>repro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="repro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="reproducibility" class="level1">
+<h1>Reproducibility</h1>
+<p>Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> terms, before moving on some practical principles of computational reproducibility.</p>
+<ul>
+<li><strong>Results reproducibility</strong> – if you do the same thing, you should get the same results. This is essence of the scientific method. If you are unable to reproduce the results, you may not have a full understanding of the underlying causes.</li>
+<li><strong>Inferential reproducibility</strong> – reliably draw the same types of conclusions from different sets of experiments<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
+<li><strong>Methods reproducibility</strong> – description of the methods are sufficiently detailed, complete, and accurate enough so that the experiment may be replicated in full.</li>
+</ul>
+<p>This workshop is focused on a narrow set of methods reproducibility, <strong>computational reproducibility</strong>, for which, I am adopting the formal definition: <em>“obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis”</em> <span class="citation" data-cites="National_Academies_of_Sciences_Engineering2019-vr">(<a href="#ref-National_Academies_of_Sciences_Engineering2019-vr" role="doc-biblioref">National Academies of Sciences, Engineering et al. 2019</a>)</span>. That seems self-evident, so for a practical, working definition, consider asking yourself the following questions.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to ask yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Will I be able to re-run this code, on a new computer, without alteration, and obtain identical results?</li>
+<li>One year from now, will I be able to understand what I did? How about 3 years from now?</li>
+<li>Will my collaborators (or potential unknown reviewers) be able to clone the project directory and run the code on their local machines without issue and without asking for any clarifications?</li>
+</ol>
+</div>
+</div>
+<p>If the answer to any of those questions above is not <i>yes</i>, then you probably have some room for improvement in your computational reproducibility. That is totally fine – this is why you are taking this workshop<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>! <strong>Reproducibility is a process</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> – but there are small and meaningful ways that you can make your projects a little better. So let’s dive in.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A quick note on why you should care about computational reproducibility<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Coding can feel like a personal exercise. It is an intimate bond between you and your computer. Every once in a while, you share the fruits of your labor — a result or a figure, but no one really looks under the hood. This fosters a whatever-gets-the-job-done approach. It doesn’t have to be pretty. It just needs to work. And I think that is appropriate, sometimes. But the reality is: if you plan on publishing, then, like it or not, you plan on sharing your code and others will relying on the accuracy of your results. If you keep that fact in mind from the beginning, you will likely save yourself, your collaborators, and the scientific world a lot of time.</p>
+</div>
+</div>
+</div>
+<section id="practical-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="practical-reproducibility">Practical reproducibility</h2>
+<p>Much of the advice on computational reproducibility is somewhat abstract<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. That is, in part, the nature of the beast. Each project represents its own unique challenges. But it is also because the advice is often made for a broad range of projects in all sorts of different programming languages on everything from model simulations to genome assembly, all the way to creating programmatic tools for others. In contrast, this workshop will focus on a narrower set of tasks related to <strong>statistical programming in R</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. In other words, the type of programming where you have some raw data generated elsewhere (<em>e.g.</em>, enzyme activity or species abundance data) that you are going to preform some sort of analysis on it (<em>e.g.</em>, normalization and a significance test), and then make figures.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="r-rstudio-specific-tips" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="r-rstudio-specific-tips">R &amp; RStudio specific tips</h3>
+<ol type="1">
+<li>Use the “Projects” feature in R.</li>
+<li>Do not save <code>.RData</code> on exit, and do not restore <code>.RData</code> on open. You can change this default behavior in RStudio in the Global Options.</li>
+<li>Use the built in version control tools. There are easy ways to interact with Git and GitHub with the RStudio IDE.</li>
+<li>Use the tidyverse packages! See the tidyverse chapter of this workshop.</li>
+</ol>
+</section>
+<section id="repository-tips" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="repository-tips">Repository tips</h3>
+<ol type="1">
+<li>Use a consistent directory structure. You can save this structure as a template and begin from there, rather than build each project from scratch.</li>
+<li>Use sub-directories. Favor a highly nested directory structure, over a directory with dozens of files with long and repetative names. If you find yourself making a bunch of files with the same prefix, that probably means that they should all be in their own directory.</li>
+<li>Add a number prefix to your scripts (and possible directories), so it is clear which order they must be run <code>01_normalize_data.R</code>.</li>
+<li>You can have directory structures that mirror each other – this makes it easier to know where the relevant info is saved. For example, the data from <code>data/raw/pheno/2023-07-04_data.csv</code> could be analyzed in a script in <code>src/pheno/01_anova.R</code>, and the output could be saved in <code>output/pheno/anova_results.rds</code> and the corresponding figure saved in <code>output/figs/pheno/boxplot.pdf</code>.</li>
+</ol>
+</section>
+<section id="script-writing" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="script-writing">Script writing</h3>
+<ol type="1">
+<li>Every script should be able to run without errors from top to bottom (<em>i.e.</em>, in R, <code>source(file_name.R)</code> or clicking the source button in RStudio should always work when you save a file).</li>
+<li>When you are using multiple packages with overlapping function names, the order that you load the libraries can matter. If you have this make sure you can</li>
+<li>The order of each script should make sense and be consistent (<em>e.g.</em>, description, load packages, load data, manipulate data, save data). If you find yourself violating this rule. Loading packages later in a script or multiple saves of data intermediates within a file, it may make sense to split up the script. See next tip.</li>
+<li>Favor small scripts that are focused on a single task, over big scripts that do many things.</li>
+<li>You should be able to run every script with a completely clean global environment.</li>
+<li>Develop a consistent coding style (<em>e.g.</em>, snake_case, indents, comments)</li>
+<li>You should be able to clone the parent directory of the project and run the scripts – without any alteration, on any machine.</li>
+</ol>
+</section>
+<section id="data-handling" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="data-handling">Data handling</h3>
+<ol type="1">
+<li>Avoid any manual manipulation of data (<em>i.e.</em>, don’t mess around copy-and-pasting or editing raw data, change it reproducibly with code).</li>
+<li>Save output automatically by writing it into the code (<em>e.g.</em>, <code>saveRDS()</code>, <code>readr::write_csv()</code>, <code>ggsave()</code>).</li>
+<li>Save intermediate data. If you are starting with a big data set, it is nice save that intermediate so a collaborator (or you in the future, or some random researcher on the internet), can re-do an intermediate step rather than begin from raw data. If they want to know how different you results would look normalized your data in a different way</li>
+</ol>
+</section>
+<section id="random-pet-peeves" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="random-pet-peeves">Random pet-peeves</h3>
+<ol type="1">
+<li>Don’t copy and paste output into R scripts. If you need to save an output table, then write it to a csv or save it as an .rds file. If you need quick access to some intermediary info then use RMarkdown or Quarto to create .html reports.</li>
+<li>Don’t include anything that isn’t necessary in your code.</li>
+<li>Opt for long and explicit variable or function names over short and implicit names.</li>
+<li>Use a driver script that automates the entire workflow in a single script call.</li>
+<li>Do not save <code>install.packages("some_package")</code> in your script – even if it is commented out. If in the future, you happen to have a new machine that doesn’t have <code>some_package</code> installed, you will remember how to install it. This is something that can just be run directly in the console, when necessary, and does not need to be saved in the script.</li>
+</ol>
+</section>
+<section id="version-control" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="version-control">Version control</h3>
+<ol type="1">
+<li>Commit and push relatively often. This makes your commit history a useful record the changes you have made. It also makes it less likely that you will run into issues pushing and pulling. Or at least less traumatic if you do run into issues.</li>
+<li>Always <code>pull</code> first – just in case your local state is a little behind.</li>
+<li>Don’t commit large files (<em>e.g.</em>, raw data or large pdf figures) to version control. The software usually has limits.</li>
+</ol>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="ten-simple-rules" class="level2">
+<h2 class="anchored" data-anchor-id="ten-simple-rules">Ten simple rules</h2>
+<p>The tips outlined above are a useful and specific starting point<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. But rather than rely solely on my eccentricities, let’s instead adopt these simple rules from <span class="citation" data-cites="Sandve2013-cq">Sandve et al. (<a href="#ref-Sandve2013-cq" role="doc-biblioref">2013</a>)</span>. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adpoting these rules is that they are easy enough to apply to other types of projects. It is worth <a href="https://doi.org/10.1371/journal.pcbi.1003285" target="_blank">reading in full</a>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ten simple rules for reproducible computational research
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>For every result, keep track of how it was produced</li>
+<li>Avoid manual data manipulation steps</li>
+<li>Archive the exact versions of all external programs used</li>
+<li>Version control all custom scripts</li>
+<li>Record all intermediate results, when possible in standardized formats</li>
+<li>For analyses that include randomness, note underlying random seeds</li>
+<li>Always store raw data behind plots</li>
+<li>Generate hierarchical analysis output, allowing layers of increasing detail to be inspected</li>
+<li>Connect textual statements to underlying results</li>
+<li>Provide public access to scripts, runs, and results</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="opening-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="opening-in-rstudio">Opening in RStudio</h2>
+<p>Okay, let’s begin by opening up RStudio<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?</p>
+<p>I know people that do great work in R and live their lives like this – but it kinda makes me sweat. <em>How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></em> It stresses me out, in part because you are violating <strong>Rule 1</strong> – you don’t necessarily have a good track record of how that object was produced. It could me something that you ran into the console long ago and you have since changed your script. You want your <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth" target="_blank">source of truth</a><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> to be the script. In other words, the list of specfic commands that take you from raw data to your results. <strong>Zombie objects in the Global Environment are not your friend.</strong></p>
+<p>It is best practice to start with a blank slate every time you open RStudio. This will force you to rely solely on the code infront of you. Rather than something that may or may not be what you remember it to be. It also mimics the environment of someone else, sitting down at their own machine, trying to replicate your results – getting closer to ensuring reproducibility.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There is actually an easy way to set up a <strong>blank slate</strong> as RStudio’s default behavior. Just execute <code>usethis::use_blank_slate()</code> in the console and it will ensure that the Global Options of RStudio are configured in such a way that you have a blank slate each time you open R. Alternatively, you can manually adjust the Global Options as explained <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth:~:text=Figure%C2%A07.2%3A%20Copy%20these%20options%20in%20your%20RStudio%20options%20to%20always%20start%20your%20RStudio%20session%20with%20a%20clean%20slate." target="_blank">here</a>.</p>
+</div>
+</div>
+</section>
+<section id="projects-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="projects-in-rstudio">Projects in RStudio</h2>
+<p>Projects are your friend. Jenny Bryan, a developer at RStudio, has an <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/" target="_blank">impassioned blog post</a> on why you should embrace a project-oriented workflow. You should probably read her post in full, because if you don’t listen, she is threatening to <em>set your computer on fire</em> <span class="emoji" data-emoji="fire">🔥</span>. But seriously, you should read it.</p>
+<p>As a way of quickly summarizing one of her points: you should make sure that your final product (<em>i.e.</em>, your script) is completely free of things that are specific to your own personal habits. For example, do you have something similar to <code>setwd("/Users/tsoleary/R/quest_workshop_2023")</code> at the start of your script? Or in some other way, are you using absolute paths? If you do, then for a certainty if someone else wants to run your code, they will have to edit it to make sure they don’t immediately run into an error. This means that right off the bat, your code is not reproducibility-friendly. As a remedy, she suggests using projects and the here package discussed below.</p>
+<section id="here-package" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="here-package"><code>here</code> package</h3>
+<p>The <a href="https://cran.r-project.org/package=here" target="_blank">here package</a> is a great way to make sure that your code can be run easily on someone else’s machine. Jenny Bryan has another post dedicated specifically to the here package: read it <a href="https://github.com/jennybc/here_here#readme" target="_blank">here</a>.</p>
+<p>What I like about it is that it allows you to easily separate out the file and the directory that you want to place it in – see below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/counts.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>here::here</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As you’ll notice above rather than load the here package with <code>library(here)</code> and then use the <code>here()</code> function, I use the <code>package::function_name</code> notation to call the here function without attaching the whole here package. The added bonus is that it is kinda fun to say <strong>Here, Here!</strong> <span class="emoji" data-emoji="beer">🍺</span></p>
+</div>
+</div>
+<p>I find the here package very useful for <a href="https://here.r-lib.org/articles/rmarkdown.html" target="_blank">working with RMarkdown documents</a>. By default, RMarkdown documents often use what ever directory that document is in as its root directory, so then all relative paths are in relation to where ever that RMarkdown document happens to be. But the here package allows you to continue to use the <em>project root</em> for your relative paths!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Projects in RStudio allows for easy integration with Version Control! Check out the short <a href="#sec-vc">Section&nbsp;1.7</a> on Version Control.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="directory-structure" class="level2">
+<h2 class="anchored" data-anchor-id="directory-structure">Directory structure</h2>
+<p>There are thousands of ways you could structure your files in a project – but there are really only two ways of going about it. The first is <em>ad hoc</em>. You group up files in sub-directores as you go along, tailoring the directory structure into something that makes sense to you, or at least something that is workable. And the other way, is to use a backbone template directory struture and build off that.</p>
+<p>For most of the time I have worked in R, I have used the <em>ad hoc</em> approach. And it the best I can say for it is that it works. In my eyes, each project is its own snowflake. But if you ask someone else to look at it, they may think a dungeon maze or London Below<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> is more apt a metaphor. But I have come to embrace a consistent directory structure.</p>
+<p>https://www.r-bloggers.com/2018/08/structuring-r-projects/</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Template</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Example</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<pre><code>├── src/
+│   ├── 01_analysis/
+│   ├── 02_analysis/
+│   ├── 03_figures/
+├── data/
+│   ├── raw/
+│   ├── processed/
+├── docs/
+│   ├── index.qmd
+├── output/
+│   ├── figs/
+│   ├── tables/
+├── scratch/
+├── README.md
+└── .gitignore</code></pre>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<pre><code>├── src/
+│   ├── 00_pheno/
+│   │   ├── 00_pheno.R
+│   ├── 01_nuclei/
+│   │   ├── 00_count_nuclei.ijm
+│   ├── 02_cellranger-arc/
+│   │   ├── 00_mkref.sh
+│   │   ├── 01_count.sh
+│   │   ├── 02_aggr.sh
+│   ├── 03_seurat/
+│   │   ├── 00_create_seurat_object.R
+│   │   ├── 01_quality_control_filtering.R
+│   │   ├── 02_initial_cluster.R
+│   ├── 04_plots/
+│   │   ├── annot.R
+│   │   ├── cluster.R
+│   │   ├── final.R
+├── data/
+│   ├── raw/
+│   │   ├── annot/
+|   |   │   ├── calderon_markers.csv
+|   |   │   ├── dmel_cell-cycle_genes.csv
+|   |   │   ├── insitu_annot.csv
+│   │   ├── nuclei/
+│   │   ├── pheno/
+│   │   ├── seq/
+│   ├── processed/
+|   |   │   ├── annot.rds
+|   |   │   ├── cluster_all.rds
+|   |   │   ├── cluster_manual.rds
+│   │   ├── annot/
+│   │   ├── genes/
+│   │   ├── seq/
+│   │   ├── seurat_object/
+|   |   │   ├── 00_dat_raw.rds
+|   |   │   ├── 01_dat_qc.rds
+|   |   │   ├── 02_dat_clust.rds
+├── docs/
+│   ├── index.qmd
+├── output/
+│   ├── figs/
+|   │   ├── annot/
+|   |   │   ├── umap.pdf
+|   |   │   ├── tsne.pdf
+|   │   ├── cluster/
+|   |   │   ├── umap.pdf
+|   |   │   ├── tsne.pdf
+|   │   ├── final/
+|   |   │   ├── fig_1.pdf
+|   |   │   ├── fig_2.pdf
+|   |   │   ├── fig_3.pdf
+│   ├── tables/
+│   ├── dars/
+|   │   ├── cell_type.rds
+|   │   ├── cluster.rds
+│   ├── degs/
+|   │   ├── cell_type.rds
+|   │   ├── cluster.rds
+├── scratch/
+├── README.md
+└── .gitignore</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you use Version Control this sort of directory structure is also helpful because you can easily mark entire directories to be ignored (<em>e.g.</em>, including <code>data/*</code> our <code>output/figs/*</code> in the <code>.gitignore</code> file). Most version control software will have a file size limit. Anyway, the thing you are most concerned with version controlling is the code (<em>i.e.</em>, the <code>src/</code> directory). The data and output can and should be backed up somewhere else.</p>
+</div>
+</div>
+</section>
+<section id="scripts" class="level2">
+<h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
+<p>I believe in short scripts that do <em>one</em> thing, rather then a huge unruly script that does everything. This helps adhere to <strong>Rule 5</strong>: Record all intermediate results, when possible in standardized formats &amp; <strong>Rule 8</strong>: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you in the future or a reviewer can easily jump into the analysis mid-way and explore the data.</p>
+<p>If you read Jenny Bryan’s blog post on a project-oriented workflow referenced earlier, you likely ran across this advice:</p>
+<blockquote class="blockquote">
+<p>What about objects that take a long time to create? Isolate that bit in its own script and write the precious object to file with <code>saveRDS(my_precious, here("results", "my_precious.rds"))</code>. Now you can develop scripts to do downstream work that reload the precious object via <code>my_precious &lt;- readRDS(here("results", "my_precious.rds"))</code>. It is a good idea to break data analysis into logical, isolated pieces anyway.</p>
+</blockquote>
+<p>This is my favorite way to code.</p>
+<p>Imagine you have an RNA-sequencing project. The journal will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file, as well as a <code>.rds</code> file that contains the full DESeq2 object. This allows them to easily explore the data for themselves, rather than start from step zero. Then they could easily begin again at the model analysis step, without having to repeat the mapping steps.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<section id="driver-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="driver-scripts">Driver scripts</h3>
+<p>If you now have a bunch of small scripts that do small tasks, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>src/driver.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple example driver script to execute all scripts</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># TS O'Leary</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Source all files</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/00_normalize.R"</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/01_analyze.R"</span>))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/02_model.R"</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/03_integrate.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>One thing that I have been experimenting with is using</p>
+</section>
+<section id="snippets" class="level3">
+<h3 class="anchored" data-anchor-id="snippets">Snippets</h3>
+<p>You should use the available tools as much as you can to aid your workflow.</p>
+<p>I use snippets to create my script templates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>snippet mhead_snip</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ${1:script_description}</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># TS O'Leary</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load libraries</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load data</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/starwars.csv"</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Analyze data</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">count</span>()</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save data</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">saveRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/processed/count.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This template ensures that I do several things:</p>
+<ol type="1">
+<li>Add a top level description to each file. I usually try to keep it to one sentance that says what the script is doing. If you have split up your scripts into bite sized chunks, this should be easy.</li>
+<li>Gives a place to load libraries and data at the top of the script.</li>
+<li>Reminds me to save the output at the end of the script.</li>
+</ol>
+</section>
+<section id="quick-tools" class="level3">
+<h3 class="anchored" data-anchor-id="quick-tools">Quick tools</h3>
+</section>
+<section id="scratch-code" class="level3">
+<h3 class="anchored" data-anchor-id="scratch-code">Scratch code</h3>
+<p>I often find that I write code that is not used in the final analysis. You may find yourself doing the same. It is sometimes a random exploratory figure that doesn’t end up telling you much, or maybe you normalized some data in the wrong way, or used an inappropriate type of statistical model. But in each case, you have spent some valuable amount of time writing that code, and so you are reluctant to remove it from you script. So you just comment it out – or worse, just leave it <em>hanging there</em> in the script. After all, it might be useful down the line, somehow, somewhere. I sympathize with that, but I think it is worth removing all unnecessary code. It will help you in the future when you don’t remember what you did, and don’t know if that bit of code is important.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A tip for removing all unecessary or redundant code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It can be hard to strip your code down to only the necessary bits, but it is worth it for the sake of clarity and reproducibility. I sometimes create a <code>scratch.R</code> file or a <code>scratch/</code> directory where I copy and paste bits of code that I am reluctant to throw away. It helps clean up the final code and makes me feel a little less like I wasted my time.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-vc" class="level2">
+<h2 class="anchored" data-anchor-id="sec-vc">Version control</h2>
+<p>The details of the software are beyond the scope of this workshop, but one important way people ensure the reproducibility of their projects is to utilize <a href="https://en.wikipedia.org/wiki/Version_control" target="_blank">Version Control</a>. In short, Version Control is a useful way to make sure that as you edit and add to large projects over time you don’t lose or change any of the bits that make it work. For example, if you were to accidentally break a script, you could restore to a previous working version of that file, and then begin again. There are several software designed to do this, but the most popular in the data science world is <a href="https://en.wikipedia.org/wiki/GitHub" target="_blank">Git and GitHub</a>.</p>
+<p>These tools can seem intimidating at first – especially because they typically are interfaced with in the command line. But if it makes you more comfortable, you can use the point-and-click approach to git within RStudio itself or a desktop clients (<em>e.g.</em>, <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a>). <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/" target="_blank">Here</a> is a very useful tutorial on how to use Git and GitHub within RStudio.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Goodman2016-ex" class="csl-entry" role="listitem">
+Goodman, Steven N, Daniele Fanelli, and John P A Ioannidis. 2016. <span>“What Does Research Reproducibility Mean?”</span> <em>Sci. Transl. Med.</em> 8 (341): 341ps12.
+</div>
+<div id="ref-National_Academies_of_Sciences_Engineering2019-vr" class="csl-entry" role="listitem">
+National Academies of Sciences, Engineering, Medicine, Policy, Global Affairs, Committee on Science, Engineering, Medicine, Public Policy, Board on Research Data, et al. 2019. <em>Understanding Reproducibility and Replicability</em>. National Academies Press (US).
+</div>
+<div id="ref-Sandve2013-cq" class="csl-entry" role="listitem">
+Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLoS Comput. Biol.</em> 9 (10): e1003285.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Please see <span class="citation" data-cites="Goodman2016-ex">Goodman, Fanelli, and Ioannidis (<a href="#ref-Goodman2016-ex" role="doc-biblioref">2016</a>)</span> for a more rigorous discussion of terms.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>One example of this sort of reproducibility, was the independent sets of experiments that showed that DNA as the hereditary molecule.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>I hope the workshop helps <span class="emoji" data-emoji="grin">😁</span>!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>I definitely don’t have a perfect workflow, but it has gotten better slowly over the years.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>In particular, taking control of the small details that make your code easier to share and easier for others to understand<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Google data provenance and look at the flow charts.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Statistical programming is right in R’s wheelhouse. And it is also the most common type of programming for early career students in my discipline. You design and conduct an experiment. You generate data. You analyze data. You present data.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>As with all advice in these workshop, these are just my opinions – no more. And as with all rules, there are always good exceptions to breaking any of these rules.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>If some of the tips don’t make sense or you want more context, read on!<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Either in reality or just as a mental exercise.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>What’s in the BOX???<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Read this link to R for Data Science, for more information.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Check out <a href="https://en.wikipedia.org/wiki/Neverwhere_(novel)">Neverwhere by Neil Gaiman</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
