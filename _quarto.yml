@@ -8,9 +8,9 @@ book:
   date: "Fall 2023"
   chapters:
     - index.qmd
-    - repro.qmd
     - tidyverse.qmd
     - data_viz.qmd
+    - repro.qmd
     - references.qmd
 
 bibliography: references.bib

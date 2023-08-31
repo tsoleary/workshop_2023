@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./repro.html" rel="next">
+<link href="./tidyverse.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -107,20 +107,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./repro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./tidyverse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./repro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,14 +185,14 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="r_fly.jpg" class="img-fluid" style="width:50.0%"></p>
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome</h1>
-<p>Thank you for checking out this workshop! This page contains a brief overview of the goals, structure, and prerequisites of the workshop.</p>
+<p>Thank you for checking out this workshop! This page contains a brief overview of the goals, structure, and prerequisites. Although, much of the text is written like a book, this is meant to be an active workshop with RStudio open and fingers at our keyboards. We will reference the narrative text occasionally, but mostly its purpose is a solid reference after the fact to fully flesh out the practical principles we will be talking about.</p>
 <section id="goals" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="goals">Goals</h2>
 <p>As an open-source programming language, there is an abundance of approaches to doing data science in R. It is a wide open landscape ready for your exploration! But — to extend this metaphor to its breaking point — it isn’t just a flat landscape, where each spot is as fertile as the next. It is more complicated. Its closer to a <a href="https://en.wikipedia.org/wiki/Fitness_landscape">fitness landscape</a> where there are hidden local and global optima <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. You are encouraged to explore that space for yourself – find the high points and low points – what works best for you and what doesn’t<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. But it is my hope that this workshop will serve as a useful initialization of your search of that complex adaptive landscape. And that along the way you will gain tools which will help you dig out of those valleys and climb to the top of those peaks. I have the following high-level goals for this workshop:</p>
 <ol type="1">
-<li><strong>Encourage best practices to ensure computational reproducibility.</strong> Reproducibility is not just necessary for good science – it will save you and your collaborators a lot of time in the long run. Making sure your code is reproducible is not as difficult as it may seem.</li>
-<li><strong>Foster an appreciation of the tidyverse and its underlying principles.</strong> Tools in R, and many other programming languages, are constantly evolving and that can make learning new tools seem futile. Especially if you already have something functional with a different set of tools. But the tidyverse, is likely <a href="https://lrdegeest.github.io/blog/totalverse">to stick around</a>, and it also represents something beyond a set of tools. It worth thinking about as a <a href="https://tidyverse.tidyverse.org/articles/manifesto.html" target="_blank">philosophy of programming</a> that can help us write more useful and readable code.</li>
+<li><strong>Foster an appreciation of the tidyverse and its underlying principles.</strong> Tools in R, and many other programming languages, are constantly evolving and that can make learning new tools seem futile. Especially if you already have something functional with a different set of tools. But the tidyverse, is likely <a href="https://lrdegeest.github.io/blog/totalverse">to stick around</a>, and it also represents something beyond a set of tools. Working with the tidyverse encourages <a href="https://tidyverse.tidyverse.org/articles/manifesto.html" target="_blank">good coding practices</a> that can help us write more useful and readable code.</li>
 <li><strong>Persuade you to go beyond a graph that merely <em>gets the job done</em> and toward a version that most clearly communicates the story behind your data.</strong> There are many ways to represent data in graphical form. Each time we create a figure we are making dozens – or maybe hundreds – of choices. Some choices are passive<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, and some are active<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, and some may have little effect<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, but I hope to convince you that spending some additional time iterating figures that you will share is well worth it.</li>
+<li><strong>Encourage best practices to ensure computational reproducibility.</strong> Reproducibility is not just necessary for good science – it will save you and your collaborators a lot of time in the long run. Making sure your code is reproducible is not as difficult as it may seem.</li>
 </ol>
 </section>
 <section id="structure" class="level2 unnumbered">
@@ -519,8 +519,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./repro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tidyverse.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tidyverse</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

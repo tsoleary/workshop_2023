@@ -1,28 +1,35 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Reproducibility
 
-Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define^[Please see @Goodman2016-ex for a more rigorous discussion of terms.] terms, before moving on some practical principles of computational reproducibility.
+Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define terms^[Please see @Goodman2016-ex for a more rigorous discussion of terms.], before moving on to some practical principles of computational reproducibility.
 
-- **Results reproducibility** -- if you do the same thing, you should get the same results. This is essence of the scientific method. If you are unable to reproduce the results, you may not have a full understanding of the underlying causes. 
-- **Inferential reproducibility** -- reliably draw the same types of conclusions from different sets of experiments^[One example of this sort of reproducibility, was the independent sets of experiments that showed that DNA as the hereditary molecule.]. 
+- **Results reproducibility** -- if you do the same thing, you should get the same results. This is the essence of the scientific method. If you are unable to reproduce the results, you may not have a full understanding of the underlying causes. 
+- **Inferential reproducibility** -- reliably draw the same types of conclusions from different sets of experiments. One example of this sort of reproducibility would be independent sets of experiments that show DNA as the hereditary molecule.
 - **Methods reproducibility** -- description of the methods are sufficiently detailed, complete, and accurate enough so that the experiment may be replicated in full. 
 
-This workshop is focused on a narrow set of methods reproducibility, **computational reproducibility**, for which, I am adopting the formal definition: _"obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis"_ [@National_Academies_of_Sciences_Engineering2019-vr]. That seems self-evident, so for a practical, working definition, consider asking yourself the following questions.
+This workshop is focused on a narrow set of methods reproducibility, **computational reproducibility**, for which, I am adopting the formal definition: _"obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis"_ [@National_Academies_of_Sciences_Engineering2019-vr]. That definition can seem self-evident, so for a practical, working definition, consider asking yourself the following questions.
 
-:::{.callout-warning}
+:::{.callout-tip}
 ## Questions to ask yourself
 
 1. Will I be able to re-run this code, on a new computer, without alteration, and obtain identical results?
-1. One year from now, will I be able to understand what I did? How about 3 years from now?
-1. Will my collaborators (or potential unknown reviewers) be able to clone the project directory and run the code on their local machines without issue and without asking for any clarifications?
+1. Is there a clear workflow to obtaining all results and figures?
+1. Can I easily (_i.e._, in very few steps) replicate all these results by sourcing these scripts? Or do I need to go line-by-line, file-by-file, possibly fixing errors along the way, to ensure that it works?
+1. One year from now, will I be able to understand and replicate what I did?
+1. Will any interested party (_e.g._, collaborators, reviewers, or the public at large) be able to clone the project directory and run the code on their local machines without issue and without asking for any clarifications?
 :::
 
-If the answer to any of those questions above is not <i>yes</i>, then you probably have some room for improvement in your computational reproducibility. That is totally fine -- this is why you are taking this workshop^[I hope the workshop helps :grin:!]! **Reproducibility is a process**^[I definitely don't have a perfect workflow, but it has gotten better slowly over the years.] -- but there are small and meaningful ways that you can make your projects a little better. So let's dive in.
+If the answer to any of those questions above is not _yes_, then you have some room for improvement in your computational reproducibility. That is totally fine -- this is why you are taking this workshop^[I hope the workshop helps :grin:!]! **Reproducibility is a process**^[I definitely don't have a perfect workflow, although it has gotten better slowly over the years.] -- but there are small and meaningful ways that you can make your projects a little better. So let's dive in!
 
-:::{.callout-note icon="false" collapse="true"}
+:::{.callout-tip icon="false" collapse="true" appearance="minimal"}
 
-### A quick note on why you should care about computational reproducibility^[In particular, taking control of the small details that make your code easier to share and easier for others to understand].
+### A quick note on why you should care about computational reproducibility ^[In particular, taking control of the small details that make your code easier to share and easier for others to understand].
 
-Coding can feel like a personal exercise. It is an intimate bond between you and your computer. Every once in a while, you share the fruits of your labor --- a result or a figure, but no one really looks under the hood. This fosters a whatever-gets-the-job-done approach. It doesn't have to be pretty. It just needs to work. And I think that is appropriate, sometimes. But the reality is: if you plan on publishing, then, like it or not, you plan on sharing your code and others will relying on the accuracy of your results. If you keep that fact in mind from the beginning, you will likely save yourself, your collaborators, and the scientific world a lot of time. 
+Coding can feel like a personal exercise. It is an intimate bond between you and your computer. Every once in a while, you share the fruits of your labor --- a result or a figure, but no one really looks under the hood. This fosters a whatever-gets-the-job-done approach. It doesn't have to be pretty. It just needs to work. And I think that is appropriate, sometimes. But the reality is: if you plan on publishing, then, like it or not, you plan on sharing your code and others will be relying on the accuracy of your results. If you keep that fact in mind from the beginning, you will likely save you, your collaborators, and if you are lucky, the scientific world, a lot of time. 
 :::
 
 
@@ -30,59 +37,60 @@ Coding can feel like a personal exercise. It is an intimate bond between you and
 
 Much of the advice on computational reproducibility is somewhat abstract^[Google data provenance and look at the flow charts.]. That is, in part, the nature of the beast. Each project represents its own unique challenges. But it is also because the advice is often made for a broad range of projects in all sorts of different programming languages on everything from model simulations to genome assembly, all the way to creating programmatic tools for others. In contrast, this workshop will focus on a narrower set of tasks related to **statistical programming in R**^[Statistical programming is right in R's wheelhouse. And it is also the most common type of programming for early career students in my discipline. You design and conduct an experiment. You generate data. You analyze data. You present data.]. In other words, the type of programming where you have some raw data generated elsewhere (_e.g._, enzyme activity or species abundance data) that you are going to preform some sort of analysis on it (_e.g._, normalization and a significance test), and then make figures.
 
-:::{.callout-note collapse="true"}
+:::{.callout-tip collapse="true" appearance="simple"}
 
 ## TL;DR - Practical tips for computational reproducibility ^[As with all advice in these workshop, these are just my opinions -- no more. And as with all rules, there are always good exceptions to breaking any of these rules.]
 
 ### R & RStudio specific tips {.unnumbered}
 
-1. Use the "Projects" feature in R.
-1. Do not save `.RData` on exit, and do not restore `.RData` on open. You can change this default behavior in RStudio in the Global Options.
-1. Use the built in version control tools. There are easy ways to interact with Git and GitHub with the RStudio IDE.
-1. Use the tidyverse packages! See the tidyverse chapter of this workshop.
+1. Use the **Projects** feature in R.
+1. Start with a blank slate! Do not save `.RData` on exit, and do not restore `.RData` on open. You can change this default behavior in RStudio in the Global Options.
+1. Use tidyverse packages! See the tidyverse chapter of this workshop.
+1. Take advantage of the templates for RMarkdown and Quarto if you are learning how to make them.
 
 ### Repository tips {.unnumbered}
 
-1. Use a consistent directory structure. You can save this structure as a template and begin from there, rather than build each project from scratch. 
-1. Use sub-directories. Favor a highly nested directory structure, over a directory with dozens of files with long and repetative names. If you find yourself making a bunch of files with the same prefix, that probably means that they should all be in their own directory. 
-1. Add a number prefix to your scripts (and possible directories), so it is clear which order they must be run `01_normalize_data.R`.
-1. You can have directory structures that mirror each other -- this makes it easier to know where the relevant info is saved. For example, the data from `data/raw/pheno/2023-07-04_data.csv` could be analyzed in a script in `src/pheno/01_anova.R`, and the output could be saved in `output/pheno/anova_results.rds` and the corresponding figure saved in `output/figs/pheno/boxplot.pdf`.
+1. Use a consistent directory structure. You can save this structure as a template! 
+1. Use sub-directories. Favor an ordered highly nested directory structure, over a directory with dozens of files with long and repetitive names.^[If you find yourself making a bunch of files with the same prefix, that probably means that they should all be in their own directory.] 
+1. Add number prefixes to your scripts (and possibly directories), so it is clear which order they must be run `01_normalize_data.R`.
+1. Try a subdirectory structure that is symmetrical -- this makes it easier to know where the relevant info is saved. For example, the data from `data/raw/pheno/2023-07-04_data.csv` could be analyzed in a script in `src/pheno/01_anova.R`, and the output could be saved in `output/pheno/anova_results.rds` and the corresponding figure saved in `output/figs/pheno/boxplot.pdf`. In each case, there is a `pheno/` subdirectory.
 
 ### Script writing  {.unnumbered}
 
 1. Every script should be able to run without errors from top to bottom (_i.e._, in R, `source(file_name.R)` or clicking the source button in RStudio should always work when you save a file).
 1. When you are using multiple packages with overlapping function names, the order that you load the libraries can matter. If you have this make sure you can 
-1. The order of each script should make sense and be consistent (_e.g._, description, load packages, load data, manipulate data, save data). If you find yourself violating this rule. Loading packages later in a script or multiple saves of data intermediates within a file, it may make sense to split up the script. See next tip.
+1. Avoid magic numbers. Unexplained numbers within the middle of the script that could easily be replaced with assigning the number to a named variable at the top of the script.
+1. The order of each script should make sense and be consistent (_e.g._, description, load packages, load data, manipulate data, save data). If you find yourself violating this rule, either by loading packages later in a script or multiple saves of data intermediates within a file, it may make sense to split up the script.
 1. Favor small scripts that are focused on a single task, over big scripts that do many things.
 1. You should be able to run every script with a completely clean global environment.
-1. Develop a consistent coding style (_e.g._, snake_case, indents, comments)
-1. You should be able to clone the parent directory of the project and run the scripts -- without any alteration, on any machine.
+1. Develop a consistent coding style (_e.g._, snake_case, indents, comments). See the tidyverse style guide for a good set of rules.
+1. You should be able to clone the parent directory of the project and run the scripts without alteration on any machine.
 
 ### Data handling {.unnumbered}
 
-1. Avoid any manual manipulation of data (_i.e._, don't mess around copy-and-pasting or editing raw data, change it reproducibly with code).
+1. Avoid any manual manipulation of data (_i.e._, don't mess around copy-and-pasting or editing raw data. Change it reproducibly with code.
 1. Save output automatically by writing it into the code (_e.g._, `saveRDS()`, `readr::write_csv()`, `ggsave()`).
 1. Save intermediate data. If you are starting with a big data set, it is nice save that intermediate so a collaborator (or you in the future, or some random researcher on the internet), can re-do an intermediate step rather than begin from raw data. If they want to know how different you results would look normalized your data in a different way
 
 
 ### Random pet-peeves {.unnumbered}
 
-1. Don't copy and paste output into R scripts. If you need to save an output table, then write it to a csv or save it as an .rds file. If you need quick access to some intermediary info then use RMarkdown or Quarto to create .html reports.
-1. Don't include anything that isn't necessary in your code.
-1. Opt for long and explicit variable or function names over short and implicit names.
-1. Use a driver script that automates the entire workflow in a single script call.
-1. Do not save `install.packages("some_package")` in your script -- even if it is commented out. If in the future, you happen to have a new machine that doesn't have `some_package` installed, you will remember how to install it. This is something that can just be run directly in the console, when necessary, and does not need to be saved in the script.
+1. Don't copy and paste output into R scripts. If you need to save an output table, then write it to a csv or save it as an rds file. If you need quick access to some intermedite info then use RMarkdown or Quarto to create html reports.
+1. Don't include anything that isn't necessary to your final product in your code.
+1. Opt for long and explicit variable/function names over short and implicit names.
+1. Do not save `install.packages("some_package")` in your script -- even if it is commented out.^[If in the future, you happen to have a new machine that doesn't have `some_package` installed, you will remember how to install it. This is something that can just be run directly in the console, when necessary, and does not need to be saved in the script.]
 
 ### Version control {.unnumbered}
 
 1. Commit and push relatively often. This makes your commit history a useful record the changes you have made. It also makes it less likely that you will run into issues pushing and pulling. Or at least less traumatic if you do run into issues. 
+1. Use RStudio's built in version control tools. There are easy ways to interact with Git and GitHub with the RStudio IDE.
 1. Always `pull` first -- just in case your local state is a little behind.
 1. Don't commit large files (_e.g._, raw data or large pdf figures) to version control. The software usually has limits.
 :::
 
 ## Ten simple rules
 
-The tips outlined above are a useful and specific starting point^[If some of the tips don't make sense or you want more context, read on!]. But rather than rely solely on my eccentricities, let's instead adopt these simple rules from @Sandve2013-cq. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adpoting these rules is that they are easy enough to apply to other types of projects. It is worth [reading in full](https://doi.org/10.1371/journal.pcbi.1003285){target="_blank"}.
+The tips outlined above are a useful and specific starting point^[If you want more context to some of these tips, please read on!]. But rather than rely solely on my proclivities, let's instead adopt these simple rules from @Sandve2013-cq. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adopting these rules is that they are easy enough to apply to other types of projects. It is worth [reading in full](https://doi.org/10.1371/journal.pcbi.1003285){target="_blank"}.
 
 :::{.callout-tip icon="false"}
 
@@ -104,34 +112,49 @@ The tips outlined above are a useful and specific starting point^[If some of the
 
 Okay, let's begin by opening up RStudio^[Either in reality or just as a mental exercise.]. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?
 
-I know people that do great work in R and live their lives like this -- but it kinda makes me sweat. _How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?^[What's in the BOX???]_ It stresses me out, in part because you are violating **Rule 1** --  you don't necessarily have a good track record of how that object was produced. It could me something that you ran into the console long ago and you have since changed your script. You want your [source of truth](https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth){target="_blank"}^[Read this link to R for Data Science, for more information.] to be the script. In other words, the list of specfic commands that take you from raw data to your results. **Zombie objects in the Global Environment are not your friend.**
-
-It is best practice to start with a blank slate every time you open RStudio. This will force you to rely solely on the code infront of you. Rather than something that may or may not be what you remember it to be. It also mimics the environment of someone else, sitting down at their own machine, trying to replicate your results -- getting closer to ensuring reproducibility.
+I know people that do great work in R and live their lives like this -- but it kinda makes me sweat. _How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?_ It stresses me out, in part because you are violating **Rule 1** --  you don't necessarily have a good track record of how that object was produced. It could be something that you executed long ago and you have since changed your script. You want your [source of truth](https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth){target="_blank"}^[Read this link to R for Data Science, for more information.] to be the script. In other words, the list of specfic commands that take you from raw data to your results. **Zombie objects in the Global Environment are not your friend.**
 
 :::{.callout-tip}
-There is actually an easy way to set up a **blank slate** as RStudio's default behavior. Just execute `usethis::use_blank_slate()` in the console and it will ensure that the Global Options of RStudio are configured in such a way that you have a blank slate each time you open R. Alternatively, you can manually adjust the Global Options as explained [here](https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth:~:text=Figure%C2%A07.2%3A%20Copy%20these%20options%20in%20your%20RStudio%20options%20to%20always%20start%20your%20RStudio%20session%20with%20a%20clean%20slate.){target="_blank"}.
+## Tip: Set up a blank slate in RStudio by default
+
+There is an easy way to set up a **blank slate** as RStudio's default behavior. Just execute `usethis::use_blank_slate()` in the console and it will ensure that the Global Options of RStudio are configured in such a way that you have a blank slate each time you open R^[Remember: You may need to install the **usethis** package `install.packages("usethis")`.]. Alternatively, you can manually adjust the Global Options as explained [here](https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth:~:text=Figure%C2%A07.2%3A%20Copy%20these%20options%20in%20your%20RStudio%20options%20to%20always%20start%20your%20RStudio%20session%20with%20a%20clean%20slate.){target="_blank"}.
 :::
 
+It is best practice to start with a blank slate every time you open RStudio. This will force you to rely solely on the code in front of you. Rather than something that may or may not be what you remember it to be. This approach also has the added benefit of mimicking the environment of someone else sitting down at their own machine, trying to replicate your results. 
+
+:::{.callout-tip}
+## There are ultimately only two sources of truth
+
+1. **Raw data**
+2. **Source code**
+
+You should build every project with that in mind. You need to ensure that anyone can get from your raw data to your results^[Reproducibility in a nutshell.] using only your scripts!
+:::
 
 ## Projects in RStudio
 
-Projects are your friend. Jenny Bryan, a developer at RStudio, has an [impassioned blog post](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/){target="_blank"} on why you should embrace a project-oriented workflow. You should probably read her post in full, because if you don't listen, she is threatening to _set your computer on fire_ :fire:. But seriously, you should read it.
+:::{.callout-note}
 
-As a way of quickly summarizing one of her points: you should make sure that your final product (_i.e._, your script) is completely free of things that are specific to your own personal habits. For example, do you have something similar to `setwd("/Users/tsoleary/R/quest_workshop_2023")` at the start of your script? Or in some other way, are you using absolute paths? If you do, then for a certainty if someone else wants to run your code, they will have to edit it to make sure they don't immediately run into an error. This means that right off the bat, your code is not reproducibility-friendly. As a remedy, she suggests using projects and the here package discussed below.
+## [Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects) are your friend.
+
+Let's create a new project together now!
+:::
+
+Jenny Bryan, a developer at RStudio, has an [impassioned blog post](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/){target="_blank"} on why you should embrace a project-oriented workflow. You should probably read her post in full, because if you don't listen, she is threatening to _set your computer on fire_ :fire:. But seriously, you should read it.
+
+As a way of quickly summarizing one of her points: you should make sure that your final product (_i.e._, your script) is completely free of things that are specific to your own personal habits. For example, do you have something similar to `setwd("/Users/tsoleary/R/workshop_2023")` at the start of your script? Or in some other way, are you using absolute paths? If you do, then for a certainty if someone else wants to run your code, they will have to edit it to make sure they don't immediately run into an error. This means that right off the bat, your code is not reproducibility-friendly. As a remedy, she suggests using projects and the here package discussed below.
 
 ### `here` package {.unnumbered}
 
 The [here package](https://cran.r-project.org/package=here){target="_blank"} is a great way to make sure that your code can be run easily on someone else's machine. Jenny Bryan has another post dedicated specifically to the here package: read it [here](https://github.com/jennybc/here_here#readme){target="_blank"}.
 
-What I like about it is that it allows you to easily separate out the file and the directory that you want to place it in -- see below:
-
-
+<!-- What I like about it is that it allows you to easily separate out the file and the directory that you want to place it in -- see below: -->
 
 ```{r}
 #| eval: false
 
 # Load data
-dat <- read_csv(here::here("data/raw/counts.csv"))
+dat <- readr::read_csv(here::here("data/raw/counts.csv"))
 ```
 
 :::{.callout-tip}
@@ -142,20 +165,32 @@ As you'll notice above rather than load the here package with `library(here)` an
 
 I find the here package very useful for [working with RMarkdown documents](https://here.r-lib.org/articles/rmarkdown.html){target="_blank"}. By default, RMarkdown documents often use what ever directory that document is in as its root directory, so then all relative paths are in relation to where ever that RMarkdown document happens to be. But the here package allows you to continue to use the _project root_ for your relative paths!
 
-
-
-:::{.callout-tip}
-Projects in RStudio allows for easy integration with Version Control! Check out the short @sec-vc on Version Control.
+:::{.callout-tip appearance="minimal"}
+**Projects** in RStudio allow for easy integration with Version Control! Check out the short @sec-vc on Version Control.
 :::
-
 
 ## Directory structure
 
-There are thousands of ways you could structure your files in a project -- but there are really only two ways of going about it. The first is _ad hoc_. You group up files in sub-directores as you go along, tailoring the directory structure into something that makes sense to you, or at least something that is workable. And the other way, is to use a backbone template directory struture and build off that.
+There are probably thousands of ways you could structure your files in a project -- but there are really only two ways of going about it. The first is _ad hoc_. You group up files into subdirectores as you go along, tailoring the structure into something that makes sense to you, or at least something that is workable. And the other way, is to establish a template directory structure and build off that.
 
-For most of the time I have worked in R, I have used the _ad hoc_ approach. And it the best I can say for it is that it works. In my eyes, each project is its own snowflake. But if you ask someone else to look at it, they may think a dungeon maze or London Below^[Check out [Neverwhere by Neil Gaiman](https://en.wikipedia.org/wiki/Neverwhere_(novel))] is more apt a metaphor. But I have come to embrace a consistent directory structure. 
+For most of the time I have worked in R, I have used the _ad hoc_ approach. And the best I can say for it is that it can get the job done. In my eyes, each of those projects are their own unique snowflake. But if you ask someone else to look at it, they may think a dungeon maze is more apt a metaphor. _Which of these scripts should I run first? Wait, where is all your raw data? Where are your final figures?_ It is best if the directory structure answers these questions on its own. So I have come to embrace a consistent directory structure. 
 
-https://www.r-bloggers.com/2018/08/structuring-r-projects/
+:::{.callout-note}
+
+## Example directory structures
+
+Take a look at my [template directory structure.](https://github.com/tsoleary/template_Rproject){target="_blank"}. I did a bunch of poking around on the internet and thinking about it and this is where I landed. It has already evolved somewhat since I started^[Reproducubility is a process]. But here are a few useful links that I found in my stumblings that you should check out:
+
+1. PLOS Comp Bio: [A quick guide to organizing computational biology projects](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424){target="_blank"} [@Noble2009-dr]
+1. [Blog post with a few thoughts on strucuring R projects](https://www.r-bloggers.com/2018/08/structuring-r-projects/){target="_blank"}
+1. [The Johns Hopkins Data Science Lab](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/organizing-your-project.html){target="_blank"} tips for organizing projects.
+1. [Youtube playlist by Danielle Navarro](https://www.youtube.com/watch?v=u6MiDFvAs9w&list=PLRPB0ZzEYegPiBteC2dRn95TX9YefYFyy&pp=iAQB){target="_blank"}, author of the Learning Statistics with R.
+1. [Jenny Bryan's thoughts on formatting](https://www.stat.ubc.ca/~jenny/STAT545A/block19_codeFormattingOrganization.html){target="_blank"} from her course on stats
+1. [Data management plan](http://ivory.idyll.org/blog/data-management.html){target="_blank"} that will make you laugh
+
+:::
+
+Below is an example of a directory structure template:
 
 :::{.panel-tabset}
 
@@ -165,110 +200,145 @@ https://www.r-bloggers.com/2018/08/structuring-r-projects/
 ├── src/
 │   ├── 01_analysis/
 │   ├── 02_analysis/
-│   ├── 03_figures/
+│   └── 03_figures/
 ├── data/
 │   ├── raw/
-│   ├── processed/
-├── docs/
-│   ├── index.qmd
+│   └── processed/
 ├── output/
 │   ├── figs/
-│   ├── tables/
+│   └── tables/
+├── docs/
+│   └── index.qmd
 ├── scratch/
 ├── README.md
 └── .gitignore
 ```
 
+- `src` -- the source code, the ultimate source of truth
+- `data` -- the raw data and intermediate processed data
+- `output` -- output results and figures
+- `docs` -- a place where I compile all results to share with collaborators
+- `scratch` -- messy code I have rec
+
+
 ### Example
+
+This is a simplified example of the project I am working on right now.
 
 ```
 ├── src/
 │   ├── 00_pheno/
-│   │   ├── 00_pheno.R
+│   │   └── 00_pheno.R
 │   ├── 01_nuclei/
 │   │   ├── 00_count_nuclei.ijm
 │   ├── 02_cellranger-arc/
 │   │   ├── 00_mkref.sh
 │   │   ├── 01_count.sh
-│   │   ├── 02_aggr.sh
+│   │   └── 02_aggr.sh
 │   ├── 03_seurat/
 │   │   ├── 00_create_seurat_object.R
 │   │   ├── 01_quality_control_filtering.R
-│   │   ├── 02_initial_cluster.R
-│   ├── 04_plots/
+│   │   └── 02_initial_cluster.R
+│   └── 04_plots/
 │   │   ├── annot.R
 │   │   ├── cluster.R
-│   │   ├── final.R
+│   │   └── final.R
 ├── data/
 │   ├── raw/
 │   │   ├── annot/
 |   |   │   ├── calderon_markers.csv
 |   |   │   ├── dmel_cell-cycle_genes.csv
-|   |   │   ├── insitu_annot.csv
+|   |   │   └── insitu_annot.csv
 │   │   ├── nuclei/
 │   │   ├── pheno/
-│   │   ├── seq/
+│   │   └── seq/
 │   ├── processed/
 |   |   │   ├── annot.rds
 |   |   │   ├── cluster_all.rds
-|   |   │   ├── cluster_manual.rds
+|   |   │   └── cluster_manual.rds
 │   │   ├── annot/
 │   │   ├── genes/
 │   │   ├── seq/
-│   │   ├── seurat_object/
+│   │   └── seurat_object/
 |   |   │   ├── 00_dat_raw.rds
 |   |   │   ├── 01_dat_qc.rds
-|   |   │   ├── 02_dat_clust.rds
+|   |   │   └── 02_dat_clust.rds
 ├── docs/
-│   ├── index.qmd
+│   └── index.qmd
 ├── output/
 │   ├── figs/
 |   │   ├── annot/
 |   |   │   ├── umap.pdf
-|   |   │   ├── tsne.pdf
+|   |   │   └── tsne.pdf
 |   │   ├── cluster/
 |   |   │   ├── umap.pdf
-|   |   │   ├── tsne.pdf
+|   |   │   └── tsne.pdf
 |   │   ├── final/
 |   |   │   ├── fig_1.pdf
 |   |   │   ├── fig_2.pdf
-|   |   │   ├── fig_3.pdf
+|   |   │   └── fig_3.pdf
 │   ├── tables/
 │   ├── dars/
 |   │   ├── cell_type.rds
-|   │   ├── cluster.rds
-│   ├── degs/
+|   │   └── cluster.rds
+│   └── degs/
 |   │   ├── cell_type.rds
-|   │   ├── cluster.rds
+|   │   └── cluster.rds
 ├── scratch/
 ├── README.md
 └── .gitignore
 ```
 
+
+
 :::
 
 
 :::{.callout-tip}
+
+## Version control tip
+
 If you use Version Control this sort of directory structure is also helpful because you can easily mark entire directories to be ignored (_e.g._, including `data/*` our `output/figs/*` in the `.gitignore` file). Most version control software will have a file size limit. Anyway, the thing you are most concerned with version controlling is the code (_i.e._, the `src/` directory). The data and output can and should be backed up somewhere else. 
 :::
 
 ## Scripts
 
-I believe in short scripts that do _one_ thing, rather then a huge unruly script that does everything. This helps adhere to **Rule 5**: Record all intermediate results, when possible in standardized formats & **Rule 8**: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you in the future or a reviewer can easily jump into the analysis mid-way and explore the data.
-
 If you read Jenny Bryan's blog post on a project-oriented workflow referenced earlier, you likely ran across this advice:
 
 > What about objects that take a long time to create? Isolate that bit in its own script and write the precious object to file with `saveRDS(my_precious, here("results", "my_precious.rds"))`. Now you can develop scripts to do downstream work that reload the precious object via `my_precious <- readRDS(here("results", "my_precious.rds"))`. It is a good idea to break data analysis into logical, isolated pieces anyway.
 
-This is my favorite way to code. 
+This is a great way to code! 
 
-Imagine you have an RNA-sequencing project. The journal will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file, as well as a `.rds` file that contains the full DESeq2 object. This allows them to easily explore the data for themselves, rather than start from step zero. Then they could easily begin again at the model analysis step, without having to repeat the mapping steps. 
+Imagine you have an RNA-sequencing project. You could create a massive script that does everything from data cleaning, to normalization, model selection, and figure creation. But because you don't have things broken up into meaningful intermediate pieces
+
+The journal will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file, as well as a `.rds` file that contains the full DESeq2 object. This allows them to easily explore the data for themselves, rather than start from step zero. Then they could easily begin again at the model analysis step, without having to repeat the mapping steps.
 
 
 :::{.callout-tip}
 
+## Split up code into meaningful bite sized chunks
+
+Favor short scripts that do _one_ thing, rather then a huge unruly script that does everything. This helps adhere to **Rule 5**: Record all intermediate results, when possible in standardized formats & **Rule 8**: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you, in the future, or a reviewer can easily jump into the analysis mid-way and explore the data and repeat some analyses.
 
 :::
+
+
+
+
+
+
+
+
+:::{.callout-tip}
+## Avoid magic numbers 
+
+It is a good idea to give numbers in your code a variable name. This makes it easier to know what that random number means. 
+
+For example, in the above code.  
+
+:::
+
+
 
 ### Driver scripts
 
@@ -283,13 +353,49 @@ If you now have a bunch of small scripts that do small tasks, it can be useful t
 # ------------------------------------------------------------------------------
 
 # Source all files
-source(here::here("src/analysis_1/00_normalize.R"))
+source(here::here("src/heights/00_normalize.R"))
 source(here::here("src/analysis_1/01_analyze.R"))
 source(here::here("src/analysis_1/02_model.R"))
 source(here::here("src/analysis_1/03_integrate.R"))
 ```
 
-One thing that I have been experimenting with is using 
+
+#### Using Rmarkdown as a driver script {.unnumbered}
+
+One thing that I have been experimenting with is using Rmarkdown/Quarto as the driver script that both summarizes the results and can reproducibly run all the code.
+
+
+````{verbatim}
+#| eval: false
+---
+title: "How embryos acclimate to temperature through epigenetic regulation"
+authors: "Thomas O’Leary"
+format:
+  html:
+    theme: lumen
+---
+  
+```{r init, filename = "00_init_data.R"}
+#| eval: false
+#| cache: true
+#| echo: true
+#| file: "../src/00_pheno/00_init_data.R"
+```
+
+```{r init, filename = "01_norm_data.R"}
+#| eval: false
+#| cache: true
+#| echo: true
+#| file: "../src/00_pheno/01_norm_data.R"
+```
+````
+
+
+[knitr cache time consuming chunks](https://bookdown.org/yihui/rmarkdown-cookbook/cache.html)
+
+
+
+## Tools
 
 ### Snippets
 
@@ -329,19 +435,18 @@ This template ensures that I do several things:
 2. Gives a place to load libraries and data at the top of the script.
 3. Reminds me to save the output at the end of the script.
 
+:::{.callout-note}
+## Let's check out these quick tools
 
-### Quick tools
+- [Styler](https://styler.r-lib.org/) -- an R Studio Addin that can automatically format your code to the tidyverse style guide or to some other custom style.
+- [janitor package](https://sfirke.github.io/janitor/) -- to clean up 
 
-
-
-### Scratch code
-
-I often find that I write code that is not used in the final analysis. You may find yourself doing the same. It is sometimes a random exploratory figure that doesn't end up telling you much, or maybe you normalized some data in the wrong way, or used an inappropriate type of statistical model. But in each case, you have spent some valuable amount of time writing that code, and so you are reluctant to remove it from you script. So you just comment it out -- or worse, just leave it _hanging there_ in the script. After all, it might be useful down the line, somehow, somewhere. I sympathize with that, but I think it is worth removing all unnecessary code. It will help you in the future when you don't remember what you did, and don't know if that bit of code is important.
+:::
 
 :::{.callout-tip}
-## A tip for removing all unecessary or redundant code
+## Scratch code: A tip for removing all unecessary or redundant code
 
-It can be hard to strip your code down to only the necessary bits, but it is worth it for the sake of clarity and reproducibility. I sometimes create a `scratch.R` file or a `scratch/` directory where I copy and paste bits of code that I am reluctant to throw away. It helps clean up the final code and makes me feel a little less like I wasted my time. 
+I often find that I write code that is not used in the final analysis. You may find yourself doing the same. It is sometimes a random exploratory figure that doesn't end up telling you much, or maybe you normalized some data in the wrong way, or used an inappropriate type of statistical model. But in each case, you have spent some valuable amount of time writing that code, and so you are reluctant to remove it from you script. So you just comment it out -- or worse, just leave it _hanging there_ in the script. After all, it might be useful down the line, somehow, somewhere. I sympathize with that, but I think it is worth removing all unnecessary code. It will help you in the future when you don't remember what you did, and don't know if that bit of code is important. It can be hard to strip your code down to only the necessary bits, but it is worth it for the sake of clarity and reproducibility. I sometimes create a `scratch.R` file or a `scratch/` directory where I copy and paste bits of code that I am reluctant to throw away. It helps clean up the final code and makes me feel a little less like I wasted my time. 
 :::
 
 ## Version control {#sec-vc}
@@ -349,3 +454,234 @@ It can be hard to strip your code down to only the necessary bits, but it is wor
 The details of the software are beyond the scope of this workshop, but one important way people ensure the reproducibility of their projects is to utilize [Version Control](https://en.wikipedia.org/wiki/Version_control){target="_blank"}. In short, Version Control is a useful way to make sure that as you edit and add to large projects over time you don't lose or change any of the bits that make it work. For example, if you were to accidentally break a script, you could restore to a previous working version of that file, and then begin again. There are several software designed to do this, but the most popular in the data science world is [Git and GitHub](https://en.wikipedia.org/wiki/GitHub){target="_blank"}. 
 
 These tools can seem intimidating at first -- especially because they typically are interfaced with in the command line. But if it makes you more comfortable, you can use the point-and-click approach to git within RStudio itself or a desktop clients (_e.g._, [GitHub Desktop](https://desktop.github.com/){target="_blank"}). [Here](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/){target="_blank"} is a very useful tutorial on how to use Git and GitHub within RStudio.
+
+
+## Practice
+
+:::{.callout-note}
+
+## Let's practice these principles with a toy example
+
+There are several things that could be better in this script. Note each area You don't need to know exactly what each step does. But take this 
+
+Try addressing these problems by splitting 
+
+:::
+
+
+
+
+```{r, filename="big_unruly_script_height_weight_norm_plot_tso_01122022.R"}
+#| eval: false
+# ------------------------------------------------------------------------------
+# Script that runs through all my analyses for this project
+# TS O'Leary
+# ------------------------------------------------------------------------------
+
+# Load libraries
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(data.table)
+library(drc)
+
+# Load data
+# Rather than actually loading local data let's just use the built-in starwars
+#   data for this and rename to dat as a place holder for dat <- read_csv().
+dat <- starwars 
+
+# Normalize data 
+dat2 <- dat |> 
+  filter(!is.na(height)) |> 
+  group_by(species) |> 
+  mutate(norm_height = height/mean(height)) 
+
+# Normalize data mass
+dat3 <- dat |> 
+  filter(!is.na(mass)) |> 
+  group_by(species) |> 
+  mutate(norm_mass = height/mean(mass)) 
+
+# Tall characters
+tall <- dat |> 
+  filter(!is.na(height)) |> 
+  group_by(species) |> 
+  mutate(norm_height = height/mean(height)) |> 
+  filter(norm_height > 1.1) |> 
+  arrange(desc(norm_height))
+
+# Short characters
+short <- dat |> 
+  filter(!is.na(height)) |> 
+  group_by(species) |> 
+  mutate(norm_height = height/mean(height)) |> 
+  filter(norm_height < 0.9) |> 
+  arrange(desc(norm_height))
+
+# Create a histogram
+dat2 |> 
+  filter(!is.na(height) ) |> 
+  group_by(species) |> 
+  mutate(norm_height = height/mean(height)) |> 
+  ggplot() +
+  geom_histogram(aes(x = norm_height),
+                 color = "grey20",
+                 fill = "grey80") +
+  scale_y_continuous(expand = c(0, 0.05),
+                     name = "Count") +
+  scale_x_continuous(name = "Normalized height") +
+  cowplot::theme_half_open()
+
+# Create histogram
+dat2 |> 
+  filter(!is.na(height) ) |> 
+  group_by(species) |> 
+  mutate(norm_height = height/mean(height)) |> 
+  ggplot() +
+  geom_histogram(aes(x = log2(norm_height)),
+                 color = "grey20",
+                 fill = "grey80") +
+  scale_y_continuous(expand = c(0, 0.05),
+                     name = "Count") +
+  scale_x_continuous(name = "log2(Normalized height)") +
+  cowplot::theme_half_open()
+
+# Create a lolipop plot
+dat2 |> 
+  filter(norm_height != 1) |> 
+  ungroup(species) |> 
+  mutate(name = fct_reorder(name, norm_height)) |> 
+  ggplot(aes(y = name,
+             x = log2(norm_height),
+             fill = norm_height < 1)) +
+  geom_segment(aes(xend = 0, yend = name,
+                   color = norm_height < 1),
+               size = 1) +
+  geom_point(color = "grey80",
+             size = 5,
+             shape = 21) +
+  geom_vline(xintercept = 0, color = "grey50") +
+  scale_x_continuous(name = "log2(Normalized height)") +
+  scale_fill_manual(values = c("orchid", "skyblue")) +
+  scale_color_manual(values = c("orchid", "skyblue")) +
+  labs(y = element_blank()) +
+  cowplot::theme_minimal_vgrid() +
+  theme(legend.position = "none",
+        axis.line.y = element_blank())
+
+# Create another plot
+bind_rows(tall, short) |> 
+  ungroup(species) |> 
+  mutate(name = fct_reorder(name, norm_height)) |> 
+  ggplot(aes(y = name,
+             x = log2(norm_height),
+             fill = norm_height < 1)) +
+  geom_segment(aes(xend = 0, yend = name,
+                   color = norm_height < 1),
+               size = 1) +
+  geom_point(color = "grey80",
+             size = 5,
+             shape = 21) +
+  geom_vline(xintercept = 0, color = "grey50") +
+  scale_x_continuous(name = "log2(Normalized height)") +
+  scale_fill_manual(values = c("orchid", "skyblue")) +
+  scale_color_manual(values = c("orchid", "skyblue")) +
+  labs(y = element_blank()) +
+  cowplot::theme_minimal_vgrid() +
+  theme(legend.position = "none",
+        axis.line.y = element_blank())
+```
+
+
+:::{.callout-warning collapse="true"}
+
+## Notice the mistakes in the above script
+
+1. The description of the script doesn't explain what the script does.
+1. None of the script output is saved. Neither the normalized data or plots.
+1. There are several objects that are created. Some that aren't used later. 
+1. There are multiple exploratory plots that are unsaved and unexplained and somewhat repetitive.
+
+:::
+
+### Fix it!
+
+
+```{r, filename="src/height/00_norm_data.R"}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Show the code"
+# ------------------------------------------------------------------------------
+# Log-normalize heights for each species in the starwars data set and filter to
+#   characters that are 10% taller or shorter than average within their species.
+# TS O'Leary
+# ------------------------------------------------------------------------------
+
+# Load libraries
+library(tidyverse)
+
+# Load data
+dat <- starwars 
+
+# Minimum log2 normalized height
+min_l2fc <- 0.1
+
+# Normalize data and take the log2 of the normalized height
+dat <- dat |> 
+  filter(!is.na(height)) |> 
+  group_by(species) |> 
+  mutate(norm_height = height/mean(height),
+         log2_norm_height = log2(norm_height)) |> 
+  ungroup(species) |> 
+  filter(abs(log2_norm_height) > min_l2fc)
+
+# Save normalized data
+saveRDS(dat, here::here("data/processed/starwars_norm.rds"))
+```
+
+
+```{r, filename="src/height/01_plot_data.R"}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Show the code"
+# ------------------------------------------------------------------------------
+# Create a lolipop plot highlighting tall and short characters
+# TS O'Leary
+# ------------------------------------------------------------------------------
+
+# Load libraries
+library(tidyverse)
+
+# Load data that has been log-normalized 
+dat <- readRDS(here::here("data/processed/starwars_norm.rds"))
+
+# Variables for plotting 
+height_colors <- c("orchid", "skyblue")
+
+# Create another plot
+dat |> 
+  mutate(name = fct_reorder(name, log2_norm_height)) |> 
+  ggplot(aes(y = name,
+             x = log2_norm_height,
+             fill = log2_norm_height < 0)) +
+  geom_segment(aes(xend = 0, yend = name,
+                   color = log2_norm_height < 0),
+               size = 1) +
+  geom_point(color = "grey80",
+             size = 5,
+             shape = 21) +
+  geom_vline(xintercept = 0, color = "grey50") +
+  scale_x_continuous(name = "log2(Normalized height)") +
+  scale_fill_manual(values = height_colors) +
+  scale_color_manual(values = height_colors) +
+  labs(y = element_blank()) +
+  cowplot::theme_minimal_vgrid() +
+  theme(legend.position = "none",
+        axis.line.y = element_blank())
+
+# Save the plot
+ggsave(here::here("output/figs/norm_height_lolipop.pdf"),
+       height = 15,
+       width = 10,
+       units = "cm")
+```

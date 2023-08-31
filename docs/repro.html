@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Workshop - 1&nbsp; Reproducibility</title>
+<title>Data Science Workshop - 3&nbsp; Reproducibility</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,8 +83,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tidyverse.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./data_viz.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -126,7 +126,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./repro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./repro.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducibility</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,20 +159,20 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./repro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./tidyverse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./repro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,22 +191,27 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#practical-reproducibility" id="toc-practical-reproducibility" class="nav-link active" data-scroll-target="#practical-reproducibility"><span class="header-section-number">1.1</span> Practical reproducibility</a></li>
-  <li><a href="#ten-simple-rules" id="toc-ten-simple-rules" class="nav-link" data-scroll-target="#ten-simple-rules"><span class="header-section-number">1.2</span> Ten simple rules</a></li>
-  <li><a href="#opening-in-rstudio" id="toc-opening-in-rstudio" class="nav-link" data-scroll-target="#opening-in-rstudio"><span class="header-section-number">1.3</span> Opening in RStudio</a></li>
-  <li><a href="#projects-in-rstudio" id="toc-projects-in-rstudio" class="nav-link" data-scroll-target="#projects-in-rstudio"><span class="header-section-number">1.4</span> Projects in RStudio</a>
+  <li><a href="#practical-reproducibility" id="toc-practical-reproducibility" class="nav-link active" data-scroll-target="#practical-reproducibility"><span class="header-section-number">3.1</span> Practical reproducibility</a></li>
+  <li><a href="#ten-simple-rules" id="toc-ten-simple-rules" class="nav-link" data-scroll-target="#ten-simple-rules"><span class="header-section-number">3.2</span> Ten simple rules</a></li>
+  <li><a href="#opening-in-rstudio" id="toc-opening-in-rstudio" class="nav-link" data-scroll-target="#opening-in-rstudio"><span class="header-section-number">3.3</span> Opening in RStudio</a></li>
+  <li><a href="#projects-in-rstudio" id="toc-projects-in-rstudio" class="nav-link" data-scroll-target="#projects-in-rstudio"><span class="header-section-number">3.4</span> Projects in RStudio</a>
   <ul class="collapse">
   <li><a href="#here-package" id="toc-here-package" class="nav-link" data-scroll-target="#here-package"><code>here</code> package</a></li>
   </ul></li>
-  <li><a href="#directory-structure" id="toc-directory-structure" class="nav-link" data-scroll-target="#directory-structure"><span class="header-section-number">1.5</span> Directory structure</a></li>
-  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">1.6</span> Scripts</a>
+  <li><a href="#directory-structure" id="toc-directory-structure" class="nav-link" data-scroll-target="#directory-structure"><span class="header-section-number">3.5</span> Directory structure</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">3.6</span> Scripts</a>
   <ul class="collapse">
-  <li><a href="#driver-scripts" id="toc-driver-scripts" class="nav-link" data-scroll-target="#driver-scripts"><span class="header-section-number">1.6.1</span> Driver scripts</a></li>
-  <li><a href="#snippets" id="toc-snippets" class="nav-link" data-scroll-target="#snippets"><span class="header-section-number">1.6.2</span> Snippets</a></li>
-  <li><a href="#quick-tools" id="toc-quick-tools" class="nav-link" data-scroll-target="#quick-tools"><span class="header-section-number">1.6.3</span> Quick tools</a></li>
-  <li><a href="#scratch-code" id="toc-scratch-code" class="nav-link" data-scroll-target="#scratch-code"><span class="header-section-number">1.6.4</span> Scratch code</a></li>
+  <li><a href="#driver-scripts" id="toc-driver-scripts" class="nav-link" data-scroll-target="#driver-scripts"><span class="header-section-number">3.6.1</span> Driver scripts</a></li>
   </ul></li>
-  <li><a href="#sec-vc" id="toc-sec-vc" class="nav-link" data-scroll-target="#sec-vc"><span class="header-section-number">1.7</span> Version control</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">3.7</span> Tools</a>
+  <ul class="collapse">
+  <li><a href="#snippets" id="toc-snippets" class="nav-link" data-scroll-target="#snippets"><span class="header-section-number">3.7.1</span> Snippets</a></li>
+  </ul></li>
+  <li><a href="#sec-vc" id="toc-sec-vc" class="nav-link" data-scroll-target="#sec-vc"><span class="header-section-number">3.8</span> Version control</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">3.9</span> Practice</a>
+  <ul class="collapse">
+  <li><a href="#fix-it" id="toc-fix-it" class="nav-link" data-scroll-target="#fix-it"><span class="header-section-number">3.9.1</span> Fix it!</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -215,7 +220,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducibility</span></h1>
 </div>
 
 
@@ -230,14 +235,14 @@ div.csl-indent {
 
 </header>
 
-<p>Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> terms, before moving on some practical principles of computational reproducibility.</p>
+<p>Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define terms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, before moving on to some practical principles of computational reproducibility.</p>
 <ul>
-<li><strong>Results reproducibility</strong> – if you do the same thing, you should get the same results. This is essence of the scientific method. If you are unable to reproduce the results, you may not have a full understanding of the underlying causes.</li>
-<li><strong>Inferential reproducibility</strong> – reliably draw the same types of conclusions from different sets of experiments<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
+<li><strong>Results reproducibility</strong> – if you do the same thing, you should get the same results. This is the essence of the scientific method. If you are unable to reproduce the results, you may not have a full understanding of the underlying causes.</li>
+<li><strong>Inferential reproducibility</strong> – reliably draw the same types of conclusions from different sets of experiments. One example of this sort of reproducibility would be independent sets of experiments that show DNA as the hereditary molecule.</li>
 <li><strong>Methods reproducibility</strong> – description of the methods are sufficiently detailed, complete, and accurate enough so that the experiment may be replicated in full.</li>
 </ul>
-<p>This workshop is focused on a narrow set of methods reproducibility, <strong>computational reproducibility</strong>, for which, I am adopting the formal definition: <em>“obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis”</em> <span class="citation" data-cites="National_Academies_of_Sciences_Engineering2019-vr">(<a href="references.html#ref-National_Academies_of_Sciences_Engineering2019-vr" role="doc-biblioref">National Academies of Sciences, Engineering et al. 2019</a>)</span>. That seems self-evident, so for a practical, working definition, consider asking yourself the following questions.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
+<p>This workshop is focused on a narrow set of methods reproducibility, <strong>computational reproducibility</strong>, for which, I am adopting the formal definition: <em>“obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis”</em> <span class="citation" data-cites="National_Academies_of_Sciences_Engineering2019-vr">(<a href="references.html#ref-National_Academies_of_Sciences_Engineering2019-vr" role="doc-biblioref">National Academies of Sciences, Engineering et al. 2019</a>)</span>. That definition can seem self-evident, so for a practical, working definition, consider asking yourself the following questions.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -249,38 +254,40 @@ Questions to ask yourself
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Will I be able to re-run this code, on a new computer, without alteration, and obtain identical results?</li>
-<li>One year from now, will I be able to understand what I did? How about 3 years from now?</li>
-<li>Will my collaborators (or potential unknown reviewers) be able to clone the project directory and run the code on their local machines without issue and without asking for any clarifications?</li>
+<li>Is there a clear workflow to obtaining all results and figures?</li>
+<li>Can I easily (<em>i.e.</em>, in very few steps) replicate all these results by sourcing these scripts? Or do I need to go line-by-line, file-by-file, possibly fixing errors along the way, to ensure that it works?</li>
+<li>One year from now, will I be able to understand and replicate what I did?</li>
+<li>Will any interested party (<em>e.g.</em>, collaborators, reviewers, or the public at large) be able to clone the project directory and run the code on their local machines without issue and without asking for any clarifications?</li>
 </ol>
 </div>
 </div>
-<p>If the answer to any of those questions above is not <i>yes</i>, then you probably have some room for improvement in your computational reproducibility. That is totally fine – this is why you are taking this workshop<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>! <strong>Reproducibility is a process</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> – but there are small and meaningful ways that you can make your projects a little better. So let’s dive in.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<p>If the answer to any of those questions above is not <em>yes</em>, then you have some room for improvement in your computational reproducibility. That is totally fine – this is why you are taking this workshop<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>! <strong>Reproducibility is a process</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> – but there are small and meaningful ways that you can make your projects a little better. So let’s dive in!</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A quick note on why you should care about computational reproducibility<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.
+A quick note on why you should care about computational reproducibility <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Coding can feel like a personal exercise. It is an intimate bond between you and your computer. Every once in a while, you share the fruits of your labor — a result or a figure, but no one really looks under the hood. This fosters a whatever-gets-the-job-done approach. It doesn’t have to be pretty. It just needs to work. And I think that is appropriate, sometimes. But the reality is: if you plan on publishing, then, like it or not, you plan on sharing your code and others will relying on the accuracy of your results. If you keep that fact in mind from the beginning, you will likely save yourself, your collaborators, and the scientific world a lot of time.</p>
+<p>Coding can feel like a personal exercise. It is an intimate bond between you and your computer. Every once in a while, you share the fruits of your labor — a result or a figure, but no one really looks under the hood. This fosters a whatever-gets-the-job-done approach. It doesn’t have to be pretty. It just needs to work. And I think that is appropriate, sometimes. But the reality is: if you plan on publishing, then, like it or not, you plan on sharing your code and others will be relying on the accuracy of your results. If you keep that fact in mind from the beginning, you will likely save you, your collaborators, and if you are lucky, the scientific world, a lot of time.</p>
 </div>
 </div>
 </div>
-<section id="practical-reproducibility" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="practical-reproducibility"><span class="header-section-number">1.1</span> Practical reproducibility</h2>
-<p>Much of the advice on computational reproducibility is somewhat abstract<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. That is, in part, the nature of the beast. Each project represents its own unique challenges. But it is also because the advice is often made for a broad range of projects in all sorts of different programming languages on everything from model simulations to genome assembly, all the way to creating programmatic tools for others. In contrast, this workshop will focus on a narrower set of tasks related to <strong>statistical programming in R</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. In other words, the type of programming where you have some raw data generated elsewhere (<em>e.g.</em>, enzyme activity or species abundance data) that you are going to preform some sort of analysis on it (<em>e.g.</em>, normalization and a significance test), and then make figures.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="practical-reproducibility" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="practical-reproducibility"><span class="header-section-number">3.1</span> Practical reproducibility</h2>
+<p>Much of the advice on computational reproducibility is somewhat abstract<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. That is, in part, the nature of the beast. Each project represents its own unique challenges. But it is also because the advice is often made for a broad range of projects in all sorts of different programming languages on everything from model simulations to genome assembly, all the way to creating programmatic tools for others. In contrast, this workshop will focus on a narrower set of tasks related to <strong>statistical programming in R</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. In other words, the type of programming where you have some raw data generated elsewhere (<em>e.g.</em>, enzyme activity or species abundance data) that you are going to preform some sort of analysis on it (<em>e.g.</em>, normalization and a significance test), and then make figures.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>
+TL;DR - Practical tips for computational reproducibility <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -289,19 +296,19 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="f
 <section id="r-rstudio-specific-tips" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="r-rstudio-specific-tips">R &amp; RStudio specific tips</h3>
 <ol type="1">
-<li>Use the “Projects” feature in R.</li>
-<li>Do not save <code>.RData</code> on exit, and do not restore <code>.RData</code> on open. You can change this default behavior in RStudio in the Global Options.</li>
-<li>Use the built in version control tools. There are easy ways to interact with Git and GitHub with the RStudio IDE.</li>
-<li>Use the tidyverse packages! See the tidyverse chapter of this workshop.</li>
+<li>Use the <strong>Projects</strong> feature in R.</li>
+<li>Start with a blank slate! Do not save <code>.RData</code> on exit, and do not restore <code>.RData</code> on open. You can change this default behavior in RStudio in the Global Options.</li>
+<li>Use tidyverse packages! See the tidyverse chapter of this workshop.</li>
+<li>Take advantage of the templates for RMarkdown and Quarto if you are learning how to make them.</li>
 </ol>
 </section>
 <section id="repository-tips" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="repository-tips">Repository tips</h3>
 <ol type="1">
-<li>Use a consistent directory structure. You can save this structure as a template and begin from there, rather than build each project from scratch.</li>
-<li>Use sub-directories. Favor a highly nested directory structure, over a directory with dozens of files with long and repetative names. If you find yourself making a bunch of files with the same prefix, that probably means that they should all be in their own directory.</li>
-<li>Add a number prefix to your scripts (and possible directories), so it is clear which order they must be run <code>01_normalize_data.R</code>.</li>
-<li>You can have directory structures that mirror each other – this makes it easier to know where the relevant info is saved. For example, the data from <code>data/raw/pheno/2023-07-04_data.csv</code> could be analyzed in a script in <code>src/pheno/01_anova.R</code>, and the output could be saved in <code>output/pheno/anova_results.rds</code> and the corresponding figure saved in <code>output/figs/pheno/boxplot.pdf</code>.</li>
+<li>Use a consistent directory structure. You can save this structure as a template!</li>
+<li>Use sub-directories. Favor an ordered highly nested directory structure, over a directory with dozens of files with long and repetitive names.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+<li>Add number prefixes to your scripts (and possibly directories), so it is clear which order they must be run <code>01_normalize_data.R</code>.</li>
+<li>Try a subdirectory structure that is symmetrical – this makes it easier to know where the relevant info is saved. For example, the data from <code>data/raw/pheno/2023-07-04_data.csv</code> could be analyzed in a script in <code>src/pheno/01_anova.R</code>, and the output could be saved in <code>output/pheno/anova_results.rds</code> and the corresponding figure saved in <code>output/figs/pheno/boxplot.pdf</code>. In each case, there is a <code>pheno/</code> subdirectory.</li>
 </ol>
 </section>
 <section id="script-writing" class="level3 unnumbered">
@@ -309,17 +316,18 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="f
 <ol type="1">
 <li>Every script should be able to run without errors from top to bottom (<em>i.e.</em>, in R, <code>source(file_name.R)</code> or clicking the source button in RStudio should always work when you save a file).</li>
 <li>When you are using multiple packages with overlapping function names, the order that you load the libraries can matter. If you have this make sure you can</li>
-<li>The order of each script should make sense and be consistent (<em>e.g.</em>, description, load packages, load data, manipulate data, save data). If you find yourself violating this rule. Loading packages later in a script or multiple saves of data intermediates within a file, it may make sense to split up the script. See next tip.</li>
+<li>Avoid magic numbers. Unexplained numbers within the middle of the script that could easily be replaced with assigning the number to a named variable at the top of the script.</li>
+<li>The order of each script should make sense and be consistent (<em>e.g.</em>, description, load packages, load data, manipulate data, save data). If you find yourself violating this rule, either by loading packages later in a script or multiple saves of data intermediates within a file, it may make sense to split up the script.</li>
 <li>Favor small scripts that are focused on a single task, over big scripts that do many things.</li>
 <li>You should be able to run every script with a completely clean global environment.</li>
-<li>Develop a consistent coding style (<em>e.g.</em>, snake_case, indents, comments)</li>
-<li>You should be able to clone the parent directory of the project and run the scripts – without any alteration, on any machine.</li>
+<li>Develop a consistent coding style (<em>e.g.</em>, snake_case, indents, comments). See the tidyverse style guide for a good set of rules.</li>
+<li>You should be able to clone the parent directory of the project and run the scripts without alteration on any machine.</li>
 </ol>
 </section>
 <section id="data-handling" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="data-handling">Data handling</h3>
 <ol type="1">
-<li>Avoid any manual manipulation of data (<em>i.e.</em>, don’t mess around copy-and-pasting or editing raw data, change it reproducibly with code).</li>
+<li>Avoid any manual manipulation of data (<em>i.e.</em>, don’t mess around copy-and-pasting or editing raw data. Change it reproducibly with code.</li>
 <li>Save output automatically by writing it into the code (<em>e.g.</em>, <code>saveRDS()</code>, <code>readr::write_csv()</code>, <code>ggsave()</code>).</li>
 <li>Save intermediate data. If you are starting with a big data set, it is nice save that intermediate so a collaborator (or you in the future, or some random researcher on the internet), can re-do an intermediate step rather than begin from raw data. If they want to know how different you results would look normalized your data in a different way</li>
 </ol>
@@ -327,17 +335,17 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="f
 <section id="random-pet-peeves" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="random-pet-peeves">Random pet-peeves</h3>
 <ol type="1">
-<li>Don’t copy and paste output into R scripts. If you need to save an output table, then write it to a csv or save it as an .rds file. If you need quick access to some intermediary info then use RMarkdown or Quarto to create .html reports.</li>
-<li>Don’t include anything that isn’t necessary in your code.</li>
-<li>Opt for long and explicit variable or function names over short and implicit names.</li>
-<li>Use a driver script that automates the entire workflow in a single script call.</li>
-<li>Do not save <code>install.packages("some_package")</code> in your script – even if it is commented out. If in the future, you happen to have a new machine that doesn’t have <code>some_package</code> installed, you will remember how to install it. This is something that can just be run directly in the console, when necessary, and does not need to be saved in the script.</li>
+<li>Don’t copy and paste output into R scripts. If you need to save an output table, then write it to a csv or save it as an rds file. If you need quick access to some intermedite info then use RMarkdown or Quarto to create html reports.</li>
+<li>Don’t include anything that isn’t necessary to your final product in your code.</li>
+<li>Opt for long and explicit variable/function names over short and implicit names.</li>
+<li>Do not save <code>install.packages("some_package")</code> in your script – even if it is commented out.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
 </ol>
 </section>
 <section id="version-control" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="version-control">Version control</h3>
 <ol type="1">
 <li>Commit and push relatively often. This makes your commit history a useful record the changes you have made. It also makes it less likely that you will run into issues pushing and pulling. Or at least less traumatic if you do run into issues.</li>
+<li>Use RStudio’s built in version control tools. There are easy ways to interact with Git and GitHub with the RStudio IDE.</li>
 <li>Always <code>pull</code> first – just in case your local state is a little behind.</li>
 <li>Don’t commit large files (<em>e.g.</em>, raw data or large pdf figures) to version control. The software usually has limits.</li>
 </ol>
@@ -346,9 +354,9 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="f
 </div>
 </div>
 </section>
-<section id="ten-simple-rules" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="ten-simple-rules"><span class="header-section-number">1.2</span> Ten simple rules</h2>
-<p>The tips outlined above are a useful and specific starting point<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. But rather than rely solely on my eccentricities, let’s instead adopt these simple rules from <span class="citation" data-cites="Sandve2013-cq">Sandve et al. (<a href="references.html#ref-Sandve2013-cq" role="doc-biblioref">2013</a>)</span>. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adpoting these rules is that they are easy enough to apply to other types of projects. It is worth <a href="https://doi.org/10.1371/journal.pcbi.1003285" target="_blank">reading in full</a>.</p>
+<section id="ten-simple-rules" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="ten-simple-rules"><span class="header-section-number">3.2</span> Ten simple rules</h2>
+<p>The tips outlined above are a useful and specific starting point<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. But rather than rely solely on my proclivities, let’s instead adopt these simple rules from <span class="citation" data-cites="Sandve2013-cq">Sandve et al. (<a href="references.html#ref-Sandve2013-cq" role="doc-biblioref">2013</a>)</span>. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adopting these rules is that they are easy enough to apply to other types of projects. It is worth <a href="https://doi.org/10.1371/journal.pcbi.1003285" target="_blank">reading in full</a>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -374,36 +382,66 @@ Ten simple rules for reproducible computational research
 </div>
 </div>
 </section>
-<section id="opening-in-rstudio" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="opening-in-rstudio"><span class="header-section-number">1.3</span> Opening in RStudio</h2>
-<p>Okay, let’s begin by opening up RStudio<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?</p>
-<p>I know people that do great work in R and live their lives like this – but it kinda makes me sweat. <em>How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></em> It stresses me out, in part because you are violating <strong>Rule 1</strong> – you don’t necessarily have a good track record of how that object was produced. It could me something that you ran into the console long ago and you have since changed your script. You want your <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth" target="_blank">source of truth</a><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> to be the script. In other words, the list of specfic commands that take you from raw data to your results. <strong>Zombie objects in the Global Environment are not your friend.</strong></p>
-<p>It is best practice to start with a blank slate every time you open RStudio. This will force you to rely solely on the code infront of you. Rather than something that may or may not be what you remember it to be. It also mimics the environment of someone else, sitting down at their own machine, trying to replicate your results – getting closer to ensuring reproducibility.</p>
+<section id="opening-in-rstudio" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="opening-in-rstudio"><span class="header-section-number">3.3</span> Opening in RStudio</h2>
+<p>Okay, let’s begin by opening up RStudio<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?</p>
+<p>I know people that do great work in R and live their lives like this – but it kinda makes me sweat. <em>How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?</em> It stresses me out, in part because you are violating <strong>Rule 1</strong> – you don’t necessarily have a good track record of how that object was produced. It could be something that you executed long ago and you have since changed your script. You want your <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth" target="_blank">source of truth</a><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> to be the script. In other words, the list of specfic commands that take you from raw data to your results. <strong>Zombie objects in the Global Environment are not your friend.</strong></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Tip: Set up a blank slate in RStudio by default
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There is actually an easy way to set up a <strong>blank slate</strong> as RStudio’s default behavior. Just execute <code>usethis::use_blank_slate()</code> in the console and it will ensure that the Global Options of RStudio are configured in such a way that you have a blank slate each time you open R. Alternatively, you can manually adjust the Global Options as explained <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth:~:text=Figure%C2%A07.2%3A%20Copy%20these%20options%20in%20your%20RStudio%20options%20to%20always%20start%20your%20RStudio%20session%20with%20a%20clean%20slate." target="_blank">here</a>.</p>
+<p>There is an easy way to set up a <strong>blank slate</strong> as RStudio’s default behavior. Just execute <code>usethis::use_blank_slate()</code> in the console and it will ensure that the Global Options of RStudio are configured in such a way that you have a blank slate each time you open R<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>. Alternatively, you can manually adjust the Global Options as explained <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth:~:text=Figure%C2%A07.2%3A%20Copy%20these%20options%20in%20your%20RStudio%20options%20to%20always%20start%20your%20RStudio%20session%20with%20a%20clean%20slate." target="_blank">here</a>.</p>
+</div>
+</div>
+<p>It is best practice to start with a blank slate every time you open RStudio. This will force you to rely solely on the code in front of you. Rather than something that may or may not be what you remember it to be. This approach also has the added benefit of mimicking the environment of someone else sitting down at their own machine, trying to replicate your results.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+There are ultimately only two sources of truth
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Raw data</strong></li>
+<li><strong>Source code</strong></li>
+</ol>
+<p>You should build every project with that in mind. You need to ensure that anyone can get from your raw data to your results<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> using only your scripts!</p>
 </div>
 </div>
 </section>
-<section id="projects-in-rstudio" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="projects-in-rstudio"><span class="header-section-number">1.4</span> Projects in RStudio</h2>
-<p>Projects are your friend. Jenny Bryan, a developer at RStudio, has an <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/" target="_blank">impassioned blog post</a> on why you should embrace a project-oriented workflow. You should probably read her post in full, because if you don’t listen, she is threatening to <em>set your computer on fire</em> <span class="emoji" data-emoji="fire">🔥</span>. But seriously, you should read it.</p>
-<p>As a way of quickly summarizing one of her points: you should make sure that your final product (<em>i.e.</em>, your script) is completely free of things that are specific to your own personal habits. For example, do you have something similar to <code>setwd("/Users/tsoleary/R/quest_workshop_2023")</code> at the start of your script? Or in some other way, are you using absolute paths? If you do, then for a certainty if someone else wants to run your code, they will have to edit it to make sure they don’t immediately run into an error. This means that right off the bat, your code is not reproducibility-friendly. As a remedy, she suggests using projects and the here package discussed below.</p>
+<section id="projects-in-rstudio" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="projects-in-rstudio"><span class="header-section-number">3.4</span> Projects in RStudio</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">Projects</a> are your friend.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s create a new project together now!</p>
+</div>
+</div>
+<p>Jenny Bryan, a developer at RStudio, has an <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/" target="_blank">impassioned blog post</a> on why you should embrace a project-oriented workflow. You should probably read her post in full, because if you don’t listen, she is threatening to <em>set your computer on fire</em> <span class="emoji" data-emoji="fire">🔥</span>. But seriously, you should read it.</p>
+<p>As a way of quickly summarizing one of her points: you should make sure that your final product (<em>i.e.</em>, your script) is completely free of things that are specific to your own personal habits. For example, do you have something similar to <code>setwd("/Users/tsoleary/R/workshop_2023")</code> at the start of your script? Or in some other way, are you using absolute paths? If you do, then for a certainty if someone else wants to run your code, they will have to edit it to make sure they don’t immediately run into an error. This means that right off the bat, your code is not reproducibility-friendly. As a remedy, she suggests using projects and the here package discussed below.</p>
 <section id="here-package" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="here-package"><code>here</code> package</h3>
 <p>The <a href="https://cran.r-project.org/package=here" target="_blank">here package</a> is a great way to make sure that your code can be run easily on someone else’s machine. Jenny Bryan has another post dedicated specifically to the here package: read it <a href="https://github.com/jennybc/here_here#readme" target="_blank">here</a>.</p>
-<p>What I like about it is that it allows you to easily separate out the file and the directory that you want to place it in – see below:</p>
+<!-- What I like about it is that it allows you to easily separate out the file and the directory that you want to place it in -- see below: -->
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/counts.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/counts.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -419,26 +457,44 @@ Tip
 </div>
 </div>
 <p>I find the here package very useful for <a href="https://here.r-lib.org/articles/rmarkdown.html" target="_blank">working with RMarkdown documents</a>. By default, RMarkdown documents often use what ever directory that document is in as its root directory, so then all relative paths are in relation to where ever that RMarkdown document happens to be. But the here package allows you to continue to use the <em>project root</em> for your relative paths!</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Projects</strong> in RStudio allow for easy integration with Version Control! Check out the short <a href="#sec-vc"><span>Section&nbsp;3.8</span></a> on Version Control.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="directory-structure" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="directory-structure"><span class="header-section-number">3.5</span> Directory structure</h2>
+<p>There are probably thousands of ways you could structure your files in a project – but there are really only two ways of going about it. The first is <em>ad hoc</em>. You group up files into subdirectores as you go along, tailoring the structure into something that makes sense to you, or at least something that is workable. And the other way, is to establish a template directory structure and build off that.</p>
+<p>For most of the time I have worked in R, I have used the <em>ad hoc</em> approach. And the best I can say for it is that it can get the job done. In my eyes, each of those projects are their own unique snowflake. But if you ask someone else to look at it, they may think a dungeon maze is more apt a metaphor. <em>Which of these scripts should I run first? Wait, where is all your raw data? Where are your final figures?</em> It is best if the directory structure answers these questions on its own. So I have come to embrace a consistent directory structure.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Example directory structures
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Projects in RStudio allows for easy integration with Version Control! Check out the short <a href="#sec-vc"><span>Section&nbsp;1.7</span></a> on Version Control.</p>
+<p>Take a look at my <a href="https://github.com/tsoleary/template_Rproject" target="_blank">template directory structure.</a>. I did a bunch of poking around on the internet and thinking about it and this is where I landed. It has already evolved somewhat since I started<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. But here are a few useful links that I found in my stumblings that you should check out:</p>
+<ol type="1">
+<li>PLOS Comp Bio: <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424" target="_blank">A quick guide to organizing computational biology projects</a> <span class="citation" data-cites="Noble2009-dr">(<a href="references.html#ref-Noble2009-dr" role="doc-biblioref">Noble 2009</a>)</span></li>
+<li><a href="https://www.r-bloggers.com/2018/08/structuring-r-projects/" target="_blank">Blog post with a few thoughts on strucuring R projects</a></li>
+<li><a href="https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/organizing-your-project.html" target="_blank">The Johns Hopkins Data Science Lab</a> tips for organizing projects.</li>
+<li><a href="https://www.youtube.com/watch?v=u6MiDFvAs9w&amp;list=PLRPB0ZzEYegPiBteC2dRn95TX9YefYFyy&amp;pp=iAQB" target="_blank">Youtube playlist by Danielle Navarro</a>, author of the Learning Statistics with R.</li>
+<li><a href="https://www.stat.ubc.ca/~jenny/STAT545A/block19_codeFormattingOrganization.html" target="_blank">Jenny Bryan’s thoughts on formatting</a> from her course on stats</li>
+<li><a href="http://ivory.idyll.org/blog/data-management.html" target="_blank">Data management plan</a> that will make you laugh</li>
+</ol>
 </div>
 </div>
-</section>
-</section>
-<section id="directory-structure" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="directory-structure"><span class="header-section-number">1.5</span> Directory structure</h2>
-<p>There are thousands of ways you could structure your files in a project – but there are really only two ways of going about it. The first is <em>ad hoc</em>. You group up files in sub-directores as you go along, tailoring the directory structure into something that makes sense to you, or at least something that is workable. And the other way, is to use a backbone template directory struture and build off that.</p>
-<p>For most of the time I have worked in R, I have used the <em>ad hoc</em> approach. And it the best I can say for it is that it works. In my eyes, each project is its own snowflake. But if you ask someone else to look at it, they may think a dungeon maze or London Below<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> is more apt a metaphor. But I have come to embrace a consistent directory structure.</p>
-<p>https://www.r-bloggers.com/2018/08/structuring-r-projects/</p>
+<p>Below is an example of a directory structure template:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Template</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Example</a></li></ul>
 <div class="tab-content">
@@ -446,78 +502,86 @@ Tip
 <pre><code>├── src/
 │   ├── 01_analysis/
 │   ├── 02_analysis/
-│   ├── 03_figures/
+│   └── 03_figures/
 ├── data/
 │   ├── raw/
-│   ├── processed/
-├── docs/
-│   ├── index.qmd
+│   └── processed/
 ├── output/
 │   ├── figs/
-│   ├── tables/
+│   └── tables/
+├── docs/
+│   └── index.qmd
 ├── scratch/
 ├── README.md
 └── .gitignore</code></pre>
+<ul>
+<li><code>src</code> – the source code, the ultimate source of truth</li>
+<li><code>data</code> – the raw data and intermediate processed data</li>
+<li><code>output</code> – output results and figures</li>
+<li><code>docs</code> – a place where I compile all results to share with collaborators</li>
+<li><code>scratch</code> – messy code I have rec</li>
+</ul>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>This is a simplified example of the project I am working on right now.</p>
 <pre><code>├── src/
 │   ├── 00_pheno/
-│   │   ├── 00_pheno.R
+│   │   └── 00_pheno.R
 │   ├── 01_nuclei/
 │   │   ├── 00_count_nuclei.ijm
 │   ├── 02_cellranger-arc/
 │   │   ├── 00_mkref.sh
 │   │   ├── 01_count.sh
-│   │   ├── 02_aggr.sh
+│   │   └── 02_aggr.sh
 │   ├── 03_seurat/
 │   │   ├── 00_create_seurat_object.R
 │   │   ├── 01_quality_control_filtering.R
-│   │   ├── 02_initial_cluster.R
-│   ├── 04_plots/
+│   │   └── 02_initial_cluster.R
+│   └── 04_plots/
 │   │   ├── annot.R
 │   │   ├── cluster.R
-│   │   ├── final.R
+│   │   └── final.R
 ├── data/
 │   ├── raw/
 │   │   ├── annot/
 |   |   │   ├── calderon_markers.csv
 |   |   │   ├── dmel_cell-cycle_genes.csv
-|   |   │   ├── insitu_annot.csv
+|   |   │   └── insitu_annot.csv
 │   │   ├── nuclei/
 │   │   ├── pheno/
-│   │   ├── seq/
+│   │   └── seq/
 │   ├── processed/
 |   |   │   ├── annot.rds
 |   |   │   ├── cluster_all.rds
-|   |   │   ├── cluster_manual.rds
+|   |   │   └── cluster_manual.rds
 │   │   ├── annot/
 │   │   ├── genes/
 │   │   ├── seq/
-│   │   ├── seurat_object/
+│   │   └── seurat_object/
 |   |   │   ├── 00_dat_raw.rds
 |   |   │   ├── 01_dat_qc.rds
-|   |   │   ├── 02_dat_clust.rds
+|   |   │   └── 02_dat_clust.rds
 ├── docs/
-│   ├── index.qmd
+│   └── index.qmd
 ├── output/
 │   ├── figs/
 |   │   ├── annot/
 |   |   │   ├── umap.pdf
-|   |   │   ├── tsne.pdf
+|   |   │   └── tsne.pdf
 |   │   ├── cluster/
 |   |   │   ├── umap.pdf
-|   |   │   ├── tsne.pdf
+|   |   │   └── tsne.pdf
 |   │   ├── final/
 |   |   │   ├── fig_1.pdf
 |   |   │   ├── fig_2.pdf
-|   |   │   ├── fig_3.pdf
+|   |   │   └── fig_3.pdf
 │   ├── tables/
 │   ├── dars/
 |   │   ├── cell_type.rds
-|   │   ├── cluster.rds
-│   ├── degs/
+|   │   └── cluster.rds
+│   └── degs/
 |   │   ├── cell_type.rds
-|   │   ├── cluster.rds
+|   │   └── cluster.rds
 ├── scratch/
 ├── README.md
 └── .gitignore</code></pre>
@@ -530,7 +594,7 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Version control tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -538,30 +602,44 @@ Tip
 </div>
 </div>
 </section>
-<section id="scripts" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="scripts"><span class="header-section-number">1.6</span> Scripts</h2>
-<p>I believe in short scripts that do <em>one</em> thing, rather then a huge unruly script that does everything. This helps adhere to <strong>Rule 5</strong>: Record all intermediate results, when possible in standardized formats &amp; <strong>Rule 8</strong>: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you in the future or a reviewer can easily jump into the analysis mid-way and explore the data.</p>
+<section id="scripts" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="scripts"><span class="header-section-number">3.6</span> Scripts</h2>
 <p>If you read Jenny Bryan’s blog post on a project-oriented workflow referenced earlier, you likely ran across this advice:</p>
 <blockquote class="blockquote">
 <p>What about objects that take a long time to create? Isolate that bit in its own script and write the precious object to file with <code>saveRDS(my_precious, here("results", "my_precious.rds"))</code>. Now you can develop scripts to do downstream work that reload the precious object via <code>my_precious &lt;- readRDS(here("results", "my_precious.rds"))</code>. It is a good idea to break data analysis into logical, isolated pieces anyway.</p>
 </blockquote>
-<p>This is my favorite way to code.</p>
-<p>Imagine you have an RNA-sequencing project. The journal will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file, as well as a <code>.rds</code> file that contains the full DESeq2 object. This allows them to easily explore the data for themselves, rather than start from step zero. Then they could easily begin again at the model analysis step, without having to repeat the mapping steps.</p>
+<p>This is a great way to code!</p>
+<p>Imagine you have an RNA-sequencing project. You could create a massive script that does everything from data cleaning, to normalization, model selection, and figure creation. But because you don’t have things broken up into meaningful intermediate pieces</p>
+<p>The journal will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file, as well as a <code>.rds</code> file that contains the full DESeq2 object. This allows them to easily explore the data for themselves, rather than start from step zero. Then they could easily begin again at the model analysis step, without having to repeat the mapping steps.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Split up code into meaningful bite sized chunks
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Favor short scripts that do <em>one</em> thing, rather then a huge unruly script that does everything. This helps adhere to <strong>Rule 5</strong>: Record all intermediate results, when possible in standardized formats &amp; <strong>Rule 8</strong>: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you, in the future, or a reviewer can easily jump into the analysis mid-way and explore the data and repeat some analyses.</p>
 </div>
 </div>
-<section id="driver-scripts" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="driver-scripts"><span class="header-section-number">1.6.1</span> Driver scripts</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Avoid magic numbers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is a good idea to give numbers in your code a variable name. This makes it easier to know what that random number means.</p>
+<p>For example, in the above code.</p>
+</div>
+</div>
+<section id="driver-scripts" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="driver-scripts"><span class="header-section-number">3.6.1</span> Driver scripts</h3>
 <p>If you now have a bunch of small scripts that do small tasks, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -574,38 +652,66 @@ Tip
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Source all files</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/00_normalize.R"</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/heights/00_normalize.R"</span>))</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/01_analyze.R"</span>))</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/02_model.R"</span>))</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"src/analysis_1/03_integrate.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>One thing that I have been experimenting with is using</p>
+<section id="using-rmarkdown-as-a-driver-script" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-rmarkdown-as-a-driver-script">Using Rmarkdown as a driver script</h4>
+<p>One thing that I have been experimenting with is using Rmarkdown/Quarto as the driver script that both summarizes the results and can reproducibly run all the code.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>title: "How embryos acclimate to temperature through epigenetic regulation"</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>authors: "Thomas O’Leary"</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>format:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  html:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    theme: lumen</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>```{r init, filename = "00_init_data.R"}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>#| eval: false</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>#| cache: true</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>#| echo: true</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>#| file: "../src/00_pheno/00_init_data.R"</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>```{r init, filename = "01_norm_data.R"}</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>#| eval: false</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>#| cache: true</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>#| echo: true</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>#| file: "../src/00_pheno/01_norm_data.R"</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/cache.html">knitr cache time consuming chunks</a></p>
 </section>
-<section id="snippets" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="snippets"><span class="header-section-number">1.6.2</span> Snippets</h3>
+</section>
+</section>
+<section id="tools" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="tools"><span class="header-section-number">3.7</span> Tools</h2>
+<section id="snippets" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="snippets"><span class="header-section-number">3.7.1</span> Snippets</h3>
 <p>You should use the available tools as much as you can to aid your workflow.</p>
 <p>I use snippets to create my script templates.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>snippet mhead_snip</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ------------------------------------------------------------------------------</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ${1:script_description}</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># TS O'Leary</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ------------------------------------------------------------------------------</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load libraries</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load data</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/starwars.csv"</span>))</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Analyze data</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">count</span>()</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save data</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">saveRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/processed/count.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>snippet mhead_snip</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ${1:script_description}</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># TS O'Leary</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load libraries</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load data</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/starwars.csv"</span>))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Analyze data</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">count</span>()</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save data</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">saveRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/processed/count.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This template ensures that I do several things:</p>
 <ol type="1">
@@ -613,32 +719,285 @@ Tip
 <li>Gives a place to load libraries and data at the top of the script.</li>
 <li>Reminds me to save the output at the end of the script.</li>
 </ol>
-</section>
-<section id="quick-tools" class="level3" data-number="1.6.3">
-<h3 data-number="1.6.3" class="anchored" data-anchor-id="quick-tools"><span class="header-section-number">1.6.3</span> Quick tools</h3>
-</section>
-<section id="scratch-code" class="level3" data-number="1.6.4">
-<h3 data-number="1.6.4" class="anchored" data-anchor-id="scratch-code"><span class="header-section-number">1.6.4</span> Scratch code</h3>
-<p>I often find that I write code that is not used in the final analysis. You may find yourself doing the same. It is sometimes a random exploratory figure that doesn’t end up telling you much, or maybe you normalized some data in the wrong way, or used an inappropriate type of statistical model. But in each case, you have spent some valuable amount of time writing that code, and so you are reluctant to remove it from you script. So you just comment it out – or worse, just leave it <em>hanging there</em> in the script. After all, it might be useful down the line, somehow, somewhere. I sympathize with that, but I think it is worth removing all unnecessary code. It will help you in the future when you don’t remember what you did, and don’t know if that bit of code is important.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Let’s check out these quick tools
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://styler.r-lib.org/">Styler</a> – an R Studio Addin that can automatically format your code to the tidyverse style guide or to some other custom style.</li>
+<li><a href="https://sfirke.github.io/janitor/">janitor package</a> – to clean up</li>
+</ul>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A tip for removing all unecessary or redundant code
+Scratch code: A tip for removing all unecessary or redundant code
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It can be hard to strip your code down to only the necessary bits, but it is worth it for the sake of clarity and reproducibility. I sometimes create a <code>scratch.R</code> file or a <code>scratch/</code> directory where I copy and paste bits of code that I am reluctant to throw away. It helps clean up the final code and makes me feel a little less like I wasted my time.</p>
+<p>I often find that I write code that is not used in the final analysis. You may find yourself doing the same. It is sometimes a random exploratory figure that doesn’t end up telling you much, or maybe you normalized some data in the wrong way, or used an inappropriate type of statistical model. But in each case, you have spent some valuable amount of time writing that code, and so you are reluctant to remove it from you script. So you just comment it out – or worse, just leave it <em>hanging there</em> in the script. After all, it might be useful down the line, somehow, somewhere. I sympathize with that, but I think it is worth removing all unnecessary code. It will help you in the future when you don’t remember what you did, and don’t know if that bit of code is important. It can be hard to strip your code down to only the necessary bits, but it is worth it for the sake of clarity and reproducibility. I sometimes create a <code>scratch.R</code> file or a <code>scratch/</code> directory where I copy and paste bits of code that I am reluctant to throw away. It helps clean up the final code and makes me feel a little less like I wasted my time.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="sec-vc" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="sec-vc"><span class="header-section-number">1.7</span> Version control</h2>
+<section id="sec-vc" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-vc"><span class="header-section-number">3.8</span> Version control</h2>
 <p>The details of the software are beyond the scope of this workshop, but one important way people ensure the reproducibility of their projects is to utilize <a href="https://en.wikipedia.org/wiki/Version_control" target="_blank">Version Control</a>. In short, Version Control is a useful way to make sure that as you edit and add to large projects over time you don’t lose or change any of the bits that make it work. For example, if you were to accidentally break a script, you could restore to a previous working version of that file, and then begin again. There are several software designed to do this, but the most popular in the data science world is <a href="https://en.wikipedia.org/wiki/GitHub" target="_blank">Git and GitHub</a>.</p>
 <p>These tools can seem intimidating at first – especially because they typically are interfaced with in the command line. But if it makes you more comfortable, you can use the point-and-click approach to git within RStudio itself or a desktop clients (<em>e.g.</em>, <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a>). <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/" target="_blank">Here</a> is a very useful tutorial on how to use Git and GitHub within RStudio.</p>
+</section>
+<section id="practice" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="practice"><span class="header-section-number">3.9</span> Practice</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Let’s practice these principles with a toy example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are several things that could be better in this script. Note each area You don’t need to know exactly what each step does. But take this</p>
+<p>Try addressing these problems by splitting</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>big_unruly_script_height_weight_norm_plot_tso_01122022.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Script that runs through all my analyses for this project</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># TS O'Leary</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drc)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Rather than actually loading local data let's just use the built-in starwars</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   data for this and rename to dat as a place holder for dat &lt;- read_csv().</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> starwars </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize data </span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">norm_height =</span> height<span class="sc">/</span><span class="fu">mean</span>(height)) </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize data mass</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>dat3 <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(mass)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">norm_mass =</span> height<span class="sc">/</span><span class="fu">mean</span>(mass)) </span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Tall characters</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>tall <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">norm_height =</span> height<span class="sc">/</span><span class="fu">mean</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(norm_height <span class="sc">&gt;</span> <span class="fl">1.1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(norm_height))</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Short characters</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>short <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> </span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">norm_height =</span> height<span class="sc">/</span><span class="fu">mean</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(norm_height <span class="sc">&lt;</span> <span class="fl">0.9</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(norm_height))</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">|&gt;</span> </span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height) ) <span class="sc">|&gt;</span> </span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">norm_height =</span> height<span class="sc">/</span><span class="fu">mean</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> norm_height),</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">"grey20"</span>,</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"grey80"</span>) <span class="sc">+</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>),</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"Normalized height"</span>) <span class="sc">+</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">theme_half_open</span>()</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">|&gt;</span> </span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height) ) <span class="sc">|&gt;</span> </span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">norm_height =</span> height<span class="sc">/</span><span class="fu">mean</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log2</span>(norm_height)),</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">"grey20"</span>,</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"grey80"</span>) <span class="sc">+</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>),</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"log2(Normalized height)"</span>) <span class="sc">+</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">theme_half_open</span>()</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a lolipop plot</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">|&gt;</span> </span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(norm_height <span class="sc">!=</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">fct_reorder</span>(name, norm_height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> name,</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> <span class="fu">log2</span>(norm_height),</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> norm_height <span class="sc">&lt;</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name,</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> norm_height <span class="sc">&lt;</span> <span class="dv">1</span>),</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>               <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"grey80"</span>,</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>,</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"grey50"</span>) <span class="sc">+</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"log2(Normalized height)"</span>) <span class="sc">+</span></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orchid"</span>, <span class="st">"skyblue"</span>)) <span class="sc">+</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orchid"</span>, <span class="st">"skyblue"</span>)) <span class="sc">+</span></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">theme_minimal_vgrid</span>() <span class="sc">+</span></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Create another plot</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(tall, short) <span class="sc">|&gt;</span> </span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">fct_reorder</span>(name, norm_height)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> name,</span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> <span class="fu">log2</span>(norm_height),</span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> norm_height <span class="sc">&lt;</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name,</span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> norm_height <span class="sc">&lt;</span> <span class="dv">1</span>),</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>               <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"grey80"</span>,</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>,</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"grey50"</span>) <span class="sc">+</span></span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"log2(Normalized height)"</span>) <span class="sc">+</span></span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orchid"</span>, <span class="st">"skyblue"</span>)) <span class="sc">+</span></span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orchid"</span>, <span class="st">"skyblue"</span>)) <span class="sc">+</span></span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">theme_minimal_vgrid</span>() <span class="sc">+</span></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notice the mistakes in the above script
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The description of the script doesn’t explain what the script does.</li>
+<li>None of the script output is saved. Neither the normalized data or plots.</li>
+<li>There are several objects that are created. Some that aren’t used later.</li>
+<li>There are multiple exploratory plots that are unsaved and unexplained and somewhat repetitive.</li>
+</ol>
+</div>
+</div>
+</div>
+<section id="fix-it" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="fix-it"><span class="header-section-number">3.9.1</span> Fix it!</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>src/height/00_norm_data.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" data-code-fold="true" data-code-summary="Show the code"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Log-normalize heights for each species in the starwars data set and filter to</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   characters that are 10% taller or shorter than average within their species.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># TS O'Leary</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> starwars </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum log2 normalized height</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>min_l2fc <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize data and take the log2 of the normalized height</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(height)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">norm_height =</span> height<span class="sc">/</span><span class="fu">mean</span>(height),</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">log2_norm_height =</span> <span class="fu">log2</span>(norm_height)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(log2_norm_height) <span class="sc">&gt;</span> min_l2fc)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Save normalized data</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/processed/starwars_norm.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>src/height/01_plot_data.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9" data-code-fold="true" data-code-summary="Show the code"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a lolipop plot highlighting tall and short characters</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># TS O'Leary</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data that has been log-normalized </span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/processed/starwars_norm.rds"</span>))</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables for plotting </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>height_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"orchid"</span>, <span class="st">"skyblue"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create another plot</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">|&gt;</span> </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">fct_reorder</span>(name, log2_norm_height)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> name,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> log2_norm_height,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> log2_norm_height <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> log2_norm_height <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>               <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"grey80"</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"grey50"</span>) <span class="sc">+</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"log2(Normalized height)"</span>) <span class="sc">+</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> height_colors) <span class="sc">+</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> height_colors) <span class="sc">+</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">theme_minimal_vgrid</span>() <span class="sc">+</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the plot</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"output/figs/norm_height_lolipop.pdf"</span>),</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">15</span>,</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>,</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">"cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -648,27 +1007,33 @@ Goodman, Steven N, Daniele Fanelli, and John P A Ioannidis. 2016. <span>“What 
 <div id="ref-National_Academies_of_Sciences_Engineering2019-vr" class="csl-entry" role="listitem">
 National Academies of Sciences, Engineering, Medicine, Policy, Global Affairs, Committee on Science, Engineering, Medicine, Public Policy, Board on Research Data, et al. 2019. <em>Understanding Reproducibility and Replicability</em>. National Academies Press (US).
 </div>
+<div id="ref-Noble2009-dr" class="csl-entry" role="listitem">
+Noble, William Stafford. 2009. <span>“A Quick Guide to Organizing Computational Biology Projects.”</span> <em>PLoS Comput. Biol.</em> 5 (7): e1000424.
+</div>
 <div id="ref-Sandve2013-cq" class="csl-entry" role="listitem">
 Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLoS Comput. Biol.</em> 9 (10): e1003285.
 </div>
 </div>
 </section>
+</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>Please see <span class="citation" data-cites="Goodman2016-ex">Goodman, Fanelli, and Ioannidis (<a href="references.html#ref-Goodman2016-ex" role="doc-biblioref">2016</a>)</span> for a more rigorous discussion of terms.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>One example of this sort of reproducibility, was the independent sets of experiments that showed that DNA as the hereditary molecule.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>I hope the workshop helps <span class="emoji" data-emoji="grin">😁</span>!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>I definitely don’t have a perfect workflow, but it has gotten better slowly over the years.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>In particular, taking control of the small details that make your code easier to share and easier for others to understand<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Google data provenance and look at the flow charts.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>Statistical programming is right in R’s wheelhouse. And it is also the most common type of programming for early career students in my discipline. You design and conduct an experiment. You generate data. You analyze data. You present data.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>As with all advice in these workshop, these are just my opinions – no more. And as with all rules, there are always good exceptions to breaking any of these rules.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>If some of the tips don’t make sense or you want more context, read on!<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>Either in reality or just as a mental exercise.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>What’s in the BOX???<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>I hope the workshop helps <span class="emoji" data-emoji="grin">😁</span>!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>I definitely don’t have a perfect workflow, although it has gotten better slowly over the years.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>In particular, taking control of the small details that make your code easier to share and easier for others to understand<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Google data provenance and look at the flow charts.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Statistical programming is right in R’s wheelhouse. And it is also the most common type of programming for early career students in my discipline. You design and conduct an experiment. You generate data. You analyze data. You present data.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>As with all advice in these workshop, these are just my opinions – no more. And as with all rules, there are always good exceptions to breaking any of these rules.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>If you find yourself making a bunch of files with the same prefix, that probably means that they should all be in their own directory.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>If in the future, you happen to have a new machine that doesn’t have <code>some_package</code> installed, you will remember how to install it. This is something that can just be run directly in the console, when necessary, and does not need to be saved in the script.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>If you want more context to some of these tips, please read on!<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Either in reality or just as a mental exercise.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>Read this link to R for Data Science, for more information.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>Check out <a href="https://en.wikipedia.org/wiki/Neverwhere_(novel)">Neverwhere by Neil Gaiman</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Remember: You may need to install the <strong>usethis</strong> package <code>install.packages("usethis")</code>.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Reproducibility in a nutshell.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>Reproducubility is a process<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -908,13 +1273,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="./data_viz.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tidyverse.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

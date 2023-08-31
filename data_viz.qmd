@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Data visualization
 
 There are several great resources out there on the world wide web for learning how to create figures in R. They do a thorough job of introducing the basics. The simple (but sometimes not so simple) mechanics of moving from data to a figure. In particular, I recommend, the [Data Visualization Chapter](https://r4ds.had.co.nz/data-visualisation.html){target="_blank"} of R for Data Science. It is a great place to get started with a narrative introduction to ggplot. As you make more ambitious figures, [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/){target="_blank"} will provide you with even more detail. Similarly, the [R Graphics Cookbook](https://r-graphics.org/) provides useful solutions to common problems (_e.g._, [changing the order of items on a categorical axis](https://r-graphics.org/recipe-axis-order)).
@@ -10,7 +15,7 @@ However, this workshop is not intended to replace that kind of book. Instead, it
 
 Much of the content of this workshop is inspired by the approach in **Fundamentals of Data Visualization** by Claus O. Wilke. You may recognize these initials if you have tried to arrange a multi-panel figure in R with `cowplot::plot_grid()`. I can't recommend this book highly enough. I will consider this workshop a success even if the only thing you get out of it is reading this book. 
 
-The mechanics of plotting are important. They are how you create the figure after all. But at the end of the day 99% of readers won't see how you created the plots^[Shhh! Don't tell that to Chapter 1 of this workshop.], they will only see the final image you produce. That image is your chance to capture their attention with your data. Make it count.
+The mechanics of plotting are important. They are how you create the figure after all. But at the end of the day 99% of readers won't see how you created the plots^[Shhh! Don't tell that to the Reproducibility Chapter of this workshop.], they will only see the final image you produce. That image is your chance to capture their attention with your data. Make it count.
 :::
 
 ### A note on structure {.unnumbered}
@@ -24,27 +29,50 @@ The structure of this workshop will be to take some data. Explore it and slowly 
 1. Include as much detail of your data as possible -- but no more. 
 1. 
 1. Favor including **zero** in the plot axis limits when it seems appropriate. This is particularly true for things where zero actually means something (_e.g._, amounts).
-1. Use color as a tool to highlight. But don't go overboard.
-1. Use consistent a color scheme.
-1. Do not use abbreviations in figures. Unless the abbreviation is ubiquitous or more useful than the full terms (_e.g._, a specific mutation in a gene). If you have coded your underlying data to have certain abbreviations for the sake of brevity, re-code them for the figure.
+1. Use color as a tool to highlight. Don't overwhelm the eye.
+1. When making multiple figures, carry a consistent a color scheme and design elements throughout.
+1. Do not use abbreviations in figures. Unless the abbreviation is more useful than the full terms (_e.g._, a specific mutation in a gene or some very specific small molecule, FCCP). If you have coded your underlying data to have certain abbreviations for the sake of brevity, re-code them for the figure.
 1. Use sentence case for axis titles.
-1. Use gridlines that emphasize the variable of interest.  
-1. Include units in axis titles.
+1. Use gridlines that emphasize the variable of interest. For example, if the dependent variable is on the vertical axis, have horizontal gridlines to emphasize how that is changing across the horizontal axis.
+1. Always include relevant units in axis titles.
+1. 
 :::
 
 
 ## Gallery of visualizations
 
+:::{.panel-tabset}
+
+### Ocean temperature
+
+![https://www.nytimes.com/interactive/2023/08/03/climate/ocean-temperatures-heat-earth.html](figs_examples/ocean_temp.png)
+
+![https://www.nytimes.com/interactive/2023/08/03/climate/ocean-temperatures-heat-earth.html](figs_examples/ocean_heat.png)
+
+### Politics
+
+![https://www.nytimes.com/2023/08/01/us/politics/biden-trump-poll.html](figs_examples/politics.png)
+
+### College admissions
+
+![https://www.nytimes.com/interactive/2023/07/24/upshot/ivy-league-elite-college-admissions.html](figs_examples/admissions_acceptance.png)
+
+![https://www.nytimes.com/interactive/2023/07/24/upshot/ivy-league-elite-college-admissions.html](figs_examples/admissions_ratings.png)
+
+:::
+
+![](figs_examples/ctmin_ctmax.png)
+
+![](figs_examples/degs.png)
 
 ## Explore the data
 
-### Meet the Palmer penguins {.unnumbered}
+:::{.callout-note icon="palmerpenquins.png"}
+## Meet the Palmer penguins {.unnumbered}
 
 ![Artwork by \@allison_horst](penguins.png)
 
-:::{.callout-tip icon="palmerpenquins.png"}
-## Test
-
+An alternative to the `iris` data set. 
 :::
 
 ```{r}
@@ -62,17 +90,24 @@ glimpse(penguins)
 
 ## Choosing a type of visualization
 
-Okay this is a little bit of a warm up
-
-Choosing a type of visualization depends entirely on the sorts of questions you are trying to ask. So for now, let's pick a few different questions. I don't know anything about these penguins. So here are some simple questions that I have brainstormed:
+Choosing a type of visualization depends entirely on the sorts of questions you are trying to ask. So for now, let's pick a specific question. I don't know anything about these penguins. So here are some simple questions that I have brainstormed:
 
 1. Are different species of penguins different weights?
-2. Are penguins from different islands different weights?
-3. 
+1. What is the distribution of species on each island?
+1. Does the correlation between flipper length and body mass vary between species?
 
-We will stick with the first question for now. But it is worth trying the others. 
 
-I really hate the default theme for ggplot. So rather than look at it. Let's just set something that is a little easier on the eyes at the beginning. This command below will set `cowplot::theme_minimal_grid()` as the default theme for all plots going forward.
+The first question is probably the easiest to imagine visualizing so we will start with that. But it is worth trying the others. 
+
+:::{.callout-note}
+
+## Practice: Let's build these plots from the ground up
+
+I really hate the default theme for ggplot. I can't even stand looking at it. We will get into some thoughts on themes later. But for now, let's just set something that is a little easier on the eyes. This command below will set `cowplot::theme_minimal_grid()` as the default theme for all plots going forward. 
+
+:::
+
+
 
 ```{r}
 # Set a nicer looking theme as a place holder
@@ -158,16 +193,93 @@ penguins |>
 
 :::
 
-:::{.callout-warning}
+:::{.callout-tip}
 
 ## Notice the advantages and disadvantages of the different styles.
 
 Some have more information than others. If you had to pick one? Which would you pick?
+
 :::
 
-Fortunately we don't have to pick. 
+:::{.callout-note appearance="minimal"}
+
+Fortunately we don't have to pick just one. 
+
+I think choosing the box plot and individual points is the best of both worlds, because you have both the individual data points and summary statistics. But 
+
+:::
+
+:::{.panel-tabset}
+
+### Box-and-dots
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_boxplot(width = 0.3) +
+  geom_jitter(width = 0.1,
+              shape = 21)
+```
+
+### Box-and-swarm
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_boxplot(width = 0.4) +
+  ggbeeswarm::geom_beeswarm(shape = 21,
+                            fill = "grey90",
+                            alpha = 0.7)
+```
+
+### Box-and-violin
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_violin(width = 0.8) + 
+  geom_boxplot(width = 0.2)
+```
 
 ## Limits
+
+:::{.callout-tip}
+
+## Including zero on the axis
+
+You should favor including **zero** on the axis when it is appropriate. For example, in the versions of the figure we have made so far, it looks like Gentoo is double the body mass of the other two species, but the difference is more subtle than that as you can see when you include zero.
+
+You do not need to be a zero absolutist, but use your judgement for when it makes sense to include zero, and when it is misleading to omit zero. There are variables where zero has no meaning and therefore does not need to be included (_e.g._ temperature). And there are occasions where including zero can minimize otherwise important variation in your data (_e.g._ life expectancy). But there are ways around it. Check out [this example](https://clauswilke.com/dataviz/visualizing-amounts.html#:~:text=Bars%20are%20not,or%20y%20axis.).
+
+:::
+
+
+```{r}
+#| warning: false
+# Added zero on the vertical axis
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g)
+    ) +
+  geom_boxplot(width = 0.5) +
+  ggbeeswarm::geom_beeswarm(shape = 21,
+                            fill = "grey90",
+                            alpha = 0.7) +
+  scale_y_continuous(limits = c(0, 7000))
+```
 
 ```{r}
 #| warning: false
@@ -178,26 +290,6 @@ penguins |>
     ) +
   geom_violin(width = 0.8) + 
   geom_boxplot(width = 0.2) +
-  scale_y_continuous(
-    limits = c(0, 7000)
-  )
-```
-
-```{r}
-#| warning: false
-penguins |> 
-  ggplot(
-    aes(x = species,
-        y = body_mass_g)
-    ) +
-  geom_boxplot(
-    width = 0.6,
-    outlier.shape = NA
-    ) + 
-  ggbeeswarm::geom_beeswarm(
-    shape = 21,
-    width = 0.2
-    ) +
   scale_y_continuous(
     limits = c(0, 7000)
   )
@@ -257,7 +349,13 @@ penguins |>
   cowplot::theme_minimal_hgrid()
 ```
 
-Oh no! Look at that brual 
+
+:::{.callout-caution}
+
+## Weird spacing
+
+Oh no! Look at that brutal extra space between the zero line and the x-axis. You can remove that by adding `expand = c(0, 0.5)` to the `scale_y_continous()` function. This is particularly annoying on histograms. 
+:::
 
 ```{r}
 #| warning: false
@@ -267,12 +365,11 @@ penguins |>
         y = body_mass_g)
     ) +
   geom_boxplot(
-    width = 0.6,
+    width = 0.5,
     outlier.shape = NA
     ) + 
   ggbeeswarm::geom_beeswarm(
-    shape = 21,
-    width = 0.2
+    shape = 21
     ) +
   scale_y_continuous(
     name = "Body mass (g)",
@@ -285,22 +382,388 @@ penguins |>
   cowplot::theme_minimal_hgrid()
 ```
 
-## The small details
+## Color
+
+Use color to a tool highlight your results and the story of your data. But make sure not to overdo it. 
+
+[Okabe-Ito colors](https://easystats.github.io/see/reference/okabeito_colors.html).
+
+To continue with the penguins, if you are going to focus your data on the bigger Gentoo penguins, you could pick color to emphasize that 
+
+
+
+And be sure to map salience to relevance. Don't pick bad colors.\
+
+
+Lighten and Darken a palette for emphasis.
+
+```{r}
+#| warning: false
+
+# Lighten and desaturate the color palette
+oi_colors_light <- see::oi_colors() |> 
+  colorspace::lighten(amount = 0.6) |> 
+  colorspace::desaturate(amount = 0.8) 
+
+# Darken the palette
+oi_colors_dark <- see::oi_colors() |> 
+  colorspace::darken(amount = 0.05)
+
+# Print colors
+scales::show_col(
+  c(oi_colors_light,
+    oi_colors_dark),
+  cex_label = 0.5,
+  ncol = 9, 
+  borders = "white"
+)
+```
+
 
 
 
 ```{r}
-penguins |>  
+# Choose three colors -- two light and one dark from the palettes we created
+colors <- c(oi_colors_light[3:2], oi_colors_dark[5])
+
+# Plot with colors
+penguins |> 
   ggplot(
-    aes(x = body_mass_g)
+    aes(x = species,
+        y = body_mass_g,
+        fill = species)
     ) +
-  geom_histogram(
-    color = "grey20",
-    fill = "grey80"
+  geom_boxplot(
+    width = 0.5,
+    outlier.shape = NA,
+    #color = "grey40",
+    #alpha = 0.8
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    #color = "grey60",
+    #stroke = 0.3,
+    #alpha = 0.9
     ) +
-  facet_grid(rows = vars(island),
-             cols = vars(species)) +
+  scale_y_continuous(
+    name = "Body mass (g)",
+    limits = c(0, 7000),
+    expand = c(0, 0.5)
+    ) +
+  scale_x_discrete(
+   name = element_blank()
+   ) +
+  scale_fill_manual(values = colors) +
   cowplot::theme_minimal_hgrid() +
-  theme(strip.background = element_rect(fill = "grey90"))
+  theme(legend.position = "none")
 ```
 
+:::{.callout-caution}
+
+## Similar colors
+
+Because the species is already encoded by the position along the x-axis, using a similar color for Chinstrap and Adelie penguins is okay, especially if we are just trying to emphasize the Gentoo penguins.
+
+:::
+
+
+## Small details
+
+There are many small things that you can do to emphasize your data.
+
+You want to emphasize your data over all other elements of the plot. You want True black is particularly distracting for the eye. So it is best to 
+
+
+```{r}
+#| warning: false
+# Plot with grey and alpha included
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g,
+        fill = species)
+    ) +
+  geom_boxplot(
+    width = 0.5,
+    outlier.shape = NA,
+    color = "grey40",
+    alpha = 0.8
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    color = "grey60",
+    stroke = 0.3,
+    alpha = 0.9
+    ) +
+  scale_y_continuous(
+    name = "Body mass (g)",
+    limits = c(0, 7000),
+    expand = c(0, 0.5)
+    ) +
+  scale_x_discrete(
+   name = element_blank()
+   ) +
+  scale_fill_manual(values = colors) +
+  cowplot::theme_minimal_hgrid() +
+  theme(legend.position = "none")
+```
+
+
+
+### Custom theme
+
+```{r}
+# Define a custom theme
+theme_light_axis <- function(color = "grey50") {
+    theme(
+      axis.title = element_text(color = color),
+      axis.text = element_text(color = color)
+    )
+}
+```
+
+
+```{r}
+#| warning: false
+# Plot with lighter axis text
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g,
+        fill = species)
+    ) +
+  geom_boxplot(
+    width = 0.5,
+    outlier.shape = NA,
+    color = "grey40",
+    alpha = 0.8
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    color = "grey60",
+    stroke = 0.3,
+    alpha = 0.9
+    ) +
+  scale_y_continuous(
+    name = "Body mass (g)",
+    limits = c(0, 7000),
+    expand = c(0, 0.5)
+    ) +
+  scale_x_discrete(
+   name = element_blank()
+   ) +
+  scale_fill_manual(values = colors) +
+  cowplot::theme_minimal_hgrid() +
+  theme(legend.position = "none") +
+  theme_light_axis()
+```
+
+
+```{r}
+#| warning: false
+
+# Plot with lighter axis text
+penguins |> 
+  ggplot(
+    aes(x = species,
+        y = body_mass_g/1000,
+        fill = species)
+    ) +
+  geom_boxplot(
+    width = 0.5,
+    outlier.shape = NA,
+    color = "grey40",
+    alpha = 0.8
+    ) + 
+  ggbeeswarm::geom_beeswarm(
+    shape = 21,
+    color = "grey60",
+    stroke = 0.3,
+    alpha = 0.9
+    ) +
+  annotate(
+    geom = "text",
+    x = 0.5,
+    y = c(0.2,2.2,4.2,6.2),
+    label = c("0 kg", "2 kg", "4 kg", "6 kg"),
+    color = "grey50"
+  ) +
+  scale_y_continuous(
+    name = "Body mass",
+    limits = c(0, 7),
+    breaks = c(0, 2, 4, 6), 
+    labels = c("0 kg", "2 kg", "4 kg", "6 kg"),
+    expand = c(0, 0)
+    ) +
+  scale_x_discrete(
+   name = element_blank()
+   ) +
+  scale_fill_manual(values = colors) +
+  cowplot::theme_minimal_hgrid() +
+  theme(
+    legend.position = "none",
+    axis.text.y = element_blank(),
+    axis.ticks.length.y = unit(0, "cm")
+    ) +
+  theme_light_axis()
+```
+
+
+## Practice
+
+
+:::{.panel-tabset}
+
+### Prompt
+
+:::{.callout-note}
+
+## Practice
+
+There are two other questions I brainstormed from the beginning:
+
+1. What is the distribution of species on each island?
+1. Does the correlation between flipper length and body mass vary between species?
+
+**Pick one.** Or come up with a question yourself and make a graph! 
+
+When you are done, compare what you have to the graph that I made in the other panels.
+
+:::
+
+### Island-Species distribution
+
+```{r}
+#| fig-height: 3
+penguins |>  
+  group_by(species, island) |> 
+  tally() |> 
+  group_by(island) |> 
+  mutate(island_percent = n/sum(n)) |> 
+  ggplot(
+    aes(x = island_percent,
+        y = paste(island, "island"),
+        fill = species)
+    ) +
+  geom_col(width = 0.7) +
+  annotate(geom = "text", x = 0.15, y = 1, label = "74% Gentoo   ",  color = "grey80", size = 5) +
+  annotate(geom = "text", x = 0.15, y = 2, label = "55% Chinstrap",  color = "grey30", size = 5) +
+  annotate(geom = "text", x = 0.15, y = 3, label = "100% Adelie  ", color = "grey30", size = 5) +
+  annotate(geom = "text", x = 0.95, y = 1, label = "26%",  color = "grey30", size = 5) +
+  annotate(geom = "text", x = 0.95, y = 2, label = "45%",  color = "grey30", size = 5) +
+  scale_x_continuous(limits = c(0, 1),
+                     expand = c(0, 0),
+                     position = "top",
+                     labels = scales::percent_format(accuracy = 1),
+                     name = element_blank()) + 
+  scale_y_discrete(name = element_blank()) +
+  scale_fill_manual(values = colors,
+                    name = element_blank()) +
+  cowplot::theme_minimal_vgrid() +
+  theme_light_axis() +
+  theme(legend.position = "none",
+        plot.margin = margin(r = 20))
+```
+
+### Flipper length vs. body mass
+
+```{r}
+#| fig-height: 4
+#| warning: false
+penguins |>
+  ggplot(
+    aes(x = body_mass_g/1000,
+        y = flipper_length_mm/10,
+        color = species,
+        fill = species)
+    ) +
+  geom_point(shape = 21,
+             color = "grey50") +
+  geom_smooth(method = "lm",
+              linetype = 2,
+              color = "grey50",
+              fullrange = TRUE,
+              se = FALSE) +
+  scale_fill_manual(values = colors) +
+  cowplot::theme_minimal_grid() +
+  labs(x = "Body mass (kg)", y = "Flipper length (cm)") +
+  theme_light_axis() +
+  theme(legend.position = "none",
+        plot.margin = margin(r = 20),
+        strip.background = element_rect(fill = "grey95")) +
+  facet_wrap(~species) +
+  theme(panel.spacing = unit(0.75, "cm"))
+```
+
+:::
+
+## Other data sets
+
+Let's take some of these insights and use them to explore other data sets. 
+
+:::{.panel-tabset}
+
+## Prompt
+
+:::{.callout-note}
+
+## Practice
+
+Find a useful tip in [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/). Then take some data (built in data would be easiest), and try it out!
+
+:::
+
+## Chick weight
+
+We looked at the `ChickWeight` data in the tidyverse section of this workshop. This is my attempt at making a legend-less polished figure that compares the growth rate of chicks across all four diet groups.
+
+```{r}
+#| fig-height: 4
+#| code-fold: true
+dat <- ChickWeight |>
+  mutate(diet_name = case_when(Diet == 1 ~ " Control diet",
+                               Diet == 2 ~ " 10% protein added",
+                               Diet == 3 ~ " 20% protein added",
+                               Diet == 4 ~ " 30% protein added")) |> 
+  group_by(diet_name, Time) |> 
+  summarise(weight = mean(weight),
+            .groups = "drop")
+  
+dat |>  
+  ggplot(aes(x = Time,
+             y = weight,
+             color = diet_name,
+             linetype = diet_name)) +
+  geom_line(linewidth = 1) +
+  geom_text(data = dat |> 
+              filter(Time == 21),
+            aes(label = diet_name),
+            hjust = 0,
+            nudge_x = 0) +
+  scale_color_manual(name = element_blank(), 
+                     values = c("grey70",
+                                "orange",
+                                "grey70",
+                                "grey30")) +
+  scale_y_continuous(limits = c(0, 300),
+                     expand = c(0, 0),
+                     minor_breaks = c(50, 150, 250),
+                     labels = c("0", "100g", "200g", "300g"),
+                     name = "Average chick mass") +
+  scale_x_continuous(limits = c(0, 21),
+                     expand = c(0, 0),
+                     breaks = c(0, 7, 14, 21),
+                     labels = c("0", "7", "14", "21 days"),
+                     name = element_blank()) +
+  scale_linetype_manual(values = c(1, 1, 1, 2)) +
+  coord_cartesian(clip = "off", xlim = c(0, 21)) +
+  cowplot::theme_minimal_hgrid() +
+  theme(legend.position = "none",
+        plot.margin = unit(c(1, 7, 1, 1), "lines"),
+        panel.grid.minor.y = element_line(color = "grey80", 
+                                          linetype = 3),
+        axis.text.x = element_text(hjust = 0.2)) +
+  theme_light_axis()
+```
+
+:::

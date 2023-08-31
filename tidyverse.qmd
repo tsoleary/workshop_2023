@@ -1,6 +1,11 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Tidyverse {#sec-tidy}
 
-The [tidyverse](https://www.tidyverse.org/) is an inter-related set of packages that have a common grammar and syntax. It encompases  We will not dive deeply into each topic, but instead, the workshop will introduce the core philosophy behind the tidyverse and some of the most used functions. Then, we will spend more time on some of the more advanced techniques that make the tidyverse powerful and exciting.
+The [tidyverse](https://www.tidyverse.org/){target="_blank"} is an inter-related set of packages that have a common grammar and syntax. It encompases  We will not dive deeply into each topic, but instead, the workshop will introduce the core philosophy behind the tidyverse and some of the most used functions. Then, we will spend more time on some of the more advanced techniques that make the tidyverse powerful and exciting.
 
 ## Why use the the tidyverse?
 
@@ -14,7 +19,7 @@ There are base R equivalents to most things that you can do in the tidyverse. So
 ### Tidyverse style
 
 :::{.callout-note}
-# [The tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html)
+# [The tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html){target="_blank"}
 
  My favorite part of the tidyverse is the final principle in this manifesto: 
  
@@ -22,11 +27,11 @@ There are base R equivalents to most things that you can do in the tidyverse. So
 
 :::
  
-[The tidyverse style guide](https://style.tidyverse.org/index.html) 
+The tidyverse has a [style guide](https://style.tidyverse.org/index.html){target="_blank"} that gives advice on everything from file names, to syntax, spacing, and function names. Although following these rules isn't at all necessary, it good coding practice to have a consistent coding style. It will make it easier for you to read and prevent you from making as many mistakes. This will also save you some time, because you will spend less time making those small decisions if you fully adopt a specific coding style. We will check out some tools for automating your style later at the end of the workshop!
  
 > "Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread." ^[Honestly I think that joke underestimates how important good coding style is. You can actually read "butitsuremakesthingseasiertoread" pretty easily because you are an expert reader -- you've been at it everyday for decades -- coding, probably not so much. I don't think can overstate how important I think it is to write visually pleasing code.]
 
-:::{.callout-note}
+:::{.callout-tip}
 
 ### Cheat sheets
 
@@ -34,6 +39,7 @@ Tidyverse packages can help with many common tasks. Check out these cheat sheets
 
 - [Data import](https://rstudio.github.io/cheatsheets/data-import.pdf){target="_blank"}
 - [Data tidying](https://rstudio.github.io/cheatsheets/tidyr.pdf){target="_blank"}
+- [Data wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf){target="_blank"}
 - [Data transformation](https://rstudio.github.io/cheatsheets/data-transformation.pdf){target="_blank"}
 - [Data visualization](https://rstudio.github.io/cheatsheets/data-visualization.pdf){target="_blank"}
 - [Functional programming](https://rstudio.github.io/cheatsheets/purrr.pdf){target="_blank"}
@@ -47,20 +53,18 @@ Tidyverse packages can help with many common tasks. Check out these cheat sheets
 library(tidyverse)
 ```
 
-:::{.callout-note}
+:::{.callout-tip}
 # `library(tidyverse)`
 
 Rather than loading each package individually -- I often just load all of the core packages with the convenient `library(tidyverse)`^[Notice above that this function call loads nine core tidyverse packages. Any other tidyverse packages, including some we will cover later (_e.g._, **broom**), must be loaded separately.]. Most of my scripts are dependent on at least three of the core packages, so it is easier to just have them all included. But you could load each individually.
 :::
 
 
-
-
 ## Tidy data
 
-The tidyverse gets its name from the type of data that it is designed to interact with -- **tidy data**. So let's quickly define [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)^[@Wickham2014-yo].
+The tidyverse gets its name from the type of data that it is designed to interact with -- **tidy data**. So let's quickly define [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html){target="_blank"}^[@Wickham2014-yo].
 
-:::{.callout-note}
+:::{.callout-tip}
 # Tidy data -- definition
 
 1. Every column is a variable.
@@ -70,116 +74,76 @@ The tidyverse gets its name from the type of data that it is designed to interac
 
 But that definition is a bit abstract -- especially if you have never thought about whether data is messy or tidy before -- so let's try a practical example. 
 
-Below is some made-up messy data.
+:::{.callout-note appearance="minimal"}
 
-Imagine over the course of several days, you measure the height of a few plants
+Imagine over the course of several weeks, you measure the height of a few plants. If you record the data by hand or in a spread sheet. It is likely to look something like the below data.
 
-```{r}
-# Make up some random data
-dat <- tibble(
-  plant_id = 1:15,
-  week1 = rnorm(15, mean = 10, sd = 3),
-  week2 = week1*runif(15, min = 1, max = 1.5),
-  week3 = week2*runif(15, min = 1, max = 1.5),
-  week4 = week3*runif(15, min = 1, max = 1.5),
-  week5 = week4*runif(15, min = 1, max = 1.5)
-)
-
-# Print the data
-dat
-```
-
-### Let's tidy it
-```{r}
-dat |>
-  pivot_longer(contains("week"),
-               names_to = "week",
-               values_to = "height_cm")
-```
-
-
-:::{.callout-success}
-**BAM**! That is tidy data. 1. Every column is a variable -- id, time, height. 2. Every row is an observation -- a height measurement on a single plant. 3. Every cell is a single value.
 :::
 
 ```{r}
-dat |>
+#| code-fold: true
+
+# Number of plants
+n <- 10
+
+# Make up some random data
+dat <- tibble(
+  plant_id = 1:n,
+  treatment = c(rep("control", n/2), rep("treatment", n/2)),
+  week_1 = rnorm(n, mean = 10, sd = 3),
+  week_2 = week_1*runif(n, min = 1, max = 1.5),
+  week_3 = week_2*runif(n, min = 1, max = 1.5),
+  week_4 = week_3*runif(n, min = 1, max = 1.5),
+  week_5 = week_4*runif(n, min = 1, max = 1.5)
+  ) |> 
+  mutate_if(is.numeric, round, 1)
+
+# Print out pretty table
+dat |> 
+  kableExtra::kable("html") |> 
+  kableExtra::kable_styling("striped")
+```
+
+The above is messy data. The _week_ variable is hidden in the column names and for each row there are as many observations as there are weeks (_i.e._, in this case there are five observations in each row). This way is probably how you naturally record data. 
+
+But in reality, it is better
+
+```{r}
+#| code-fold: true
+
+# Pivot data to tidy format and then convert week to numeric
+dat_long <- dat |>
   pivot_longer(contains("week"),
                names_to = "week",
                values_to = "height_cm") |> 
-  mutate(week = as.numeric(str_remove_all(week, "week")))
-```
+  mutate(week = as.numeric(str_remove_all(week, "week_")))
 
-## Advanced techniques
-
-#### Other useful tidyverse packages {.unnumbered}
-
-- `broom` -- **clean model output** -- technically a subpackage of `tidymodels` a cousin of the tidyverse
-- `rvest` -- **web scraping** -- mining data from a website
-- `modelr` -- **modelling** -- support for modelling data in the tidyverse
-
-## Importing data
-
-I find it a lot easier to define the data structure as you import data. And it creates a `tibble` instead of `data.frame`. 
-
-There are several reasons to prefer `readr::read_csv()` over base R's `read.csv`. 
-
-## Tools for quick clean up
-
-A hazard of caring about how coding in the tidyverse style, is that you will notice bad formatting everywhere. 
-
-### Stylr package
-
-
-
-### Janitor package
-
-
-
-[Janitor package](https://sfirke.github.io/janitor/)
-
-[Cleaning up data](https://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html)
-
-
-```{r}
-iris |> 
-  janitor::clean_names()
-```
-
-```{r}
-# Create a .csv file to import
-write_csv(iris, "iris.csv")
-```
-
-```{r}
-# Try read.csv
-d.f <- read.csv("iris.csv")
-
-str(d.f)
+# Print out pretty table
+dat_long |> 
+  kableExtra::kable("html") |> 
+  kableExtra::kable_styling("striped") |> 
+  kableExtra::scroll_box(height = "500px")
 ```
 
 
-```{r}
-# Try read_csv
-read_csv("iris.csv")
+:::{.callout-tip}
+## **BAM**! That is tidy data. 
 
-# Set col_type as you import data -- allows you to define level order too
-d_f <- read_csv("iris.csv",
-                col_types = list(Species = col_factor(c("versicolor",
-                                                        "setosa", 
-                                                        "virginica"))))
-d_f
-str(d_f)
-glimpse(d_f)
-```
+1. Every column is a variable -- plant_id, treatment, time, height. 
+2. Every row is an observation -- a height measurement on a single plant. 
+3. Every cell is a single value.
 
-## Wrangling data
+For right now, no need to worry about the code used to convert the original data to tidy format. Although if you are curious, take a look under the hood. We will return to this later in the workshop.
+:::
 
-### Intro to `dplyr`
 
-`dplyr` has a few core functions that are built to work on 
+## Introduction to data wrangling
 
-Taken from the [`dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html).
+The package dplyr has a few core functions (or verbs) that are built to work on tidy data. We will check out a few briefly. But before we do, let's introduce the sometimes confusing, but often useful, pipe operator.
+
+:::{.callout-tip collapse="true"}
+
+### [Core verbs](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html){target="_blank"}
 
 #### Rows
 
@@ -198,154 +162,491 @@ Taken from the [`dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/
 
 - `summarise()` collapses a group into a single row.
 
-### Pipe `%>%`
+:::
 
-From [`magrittr`](https://magrittr.tidyverse.org/index.html).
+### Pipe `%>%` {.unnumbered}
+
+The pipe operator is a more human-readable alternative to nesting function calls within each other. As the [`magrittr`](https://magrittr.tidyverse.org/index.html){target="_blank"} vignette explains, it makes function calls more naturally reflect the true order of operations. Here are the abstract examples of using a pipe. 
 
 - `x %>% f` is equivalent to `f(x)`
 - `x %>% f(y)` is equivalent to `f(x, y)`
 - `x %>% f %>% g %>% h` is equivalent to `h(g(f(x)))`
 
-The argument placeholder
+The argument placeholder^[This argument placeholder is the biggest difference between the magrittr pipe `%>%` and the native pipe `|>`.]
 
 - `x %>% f(y, .)` is equivalent to `f(y, x)`
 - `x %>% f(y, z = .)` is equivalent to `f(y, z = x)`
 
-:::{.callout-warning}
+:::{.callout-warning collapse="true"}
 ## `|>` native pipe operator
 
-In new versions of R (> 4.1.0), there is now a native pipe operator that comes within the syntax of R itself, rather than being loaded as a part of a separate package.
+In new versions of R (> 4.1.0), there is now a native pipe operator (`|>`) that comes within the syntax of R itself, rather than being loaded as a part of a separate package.
 
-Although they are largely the same, there are some meaningful differences between the two. These two articles from the [tidyverse](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/) and [Isabella Velásquez](https://towardsdatascience.com/understanding-the-native-r-pipe-98dea6d8b61b) do a good job of explaining the differences relevant differences.
+Although they are largely the same, there are some meaningful differences between the two. These two articles from the [tidyverse](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/){target="_blank"} and [Isabella Velásquez](https://towardsdatascience.com/understanding-the-native-r-pipe-98dea6d8b61b){target="_blank"} do a good job of explaining the differences relevant differences.
 
-I have started just using the native pipe (`|>`) for almost all cases now. First, becuase it just looks cleaner. But also because then you can use a pipe without explicitly loading the mattingr package (_e.g. `iris |> dplyr::glimpse()`). Where if you had used the magrittr pipe (`%>%`), but not loaded the magrittr package, you would get an error. 
+I have started just using the native pipe (`|>`) for almost all cases now. Trivially because it just looks cleaner. But also because using the native pipe allows you to use a pipe without explicitly loading the mattingr package. For example `iris |> head()` just works, where if you instead had used the magrittr pipe (`%>%`), but not loaded the magrittr package (or the whole tidverse), you would get an error. 
+
+I will use the native pipe in almost all instances for the rest of this workshop. 
 :::
 
-#### A fun example from [R for data science](https://r4ds.had.co.nz/pipes.html)
+#### A fun example from [R for data science](https://r4ds.had.co.nz/pipes.html){target="_blank"}
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+
+# As a series of statements with intermediate objects
 foo_foo <- little_bunny()
 foo_foo_1 <- hop(foo_foo, through = forest)
 foo_foo_2 <- scoop(foo_foo_1, up = field_mice)
 foo_foo_3 <- bop(foo_foo_2, on = head)
 ```
 
-```{r, eval = FALSE}
-foo_foo |>
+```{r}
+#| eval: false
+
+# As a bunch of nested function calls
+foo_foo <- bop(scoop(hop(little_bunny(), through = forest), up = field_mice), on = head)
+```
+
+```{r}
+#| eval: false
+
+# With the pipe!
+foo_foo <- foo_foo |>
   hop(through = forest) |>
   scoop(up = field_mice) |>
   bop(on = head)
 ```
 
+:::{.callout-tip appearance="minimal"}
 
-### `arrange`
+This last way of coding is much more human readable! Both the order of operations and which arguments belong to which function are clear. And it doesn't clog up the global environment with a bunch of meaningless intermediate objects.
+
+:::
+
+## Core verbs
+
+Now let's use the `starwars` data from the dplyr package to explore the some of the core functions of the tidyverse.
 
 ```{r}
-# dat |>
-#   arrange(tissue, iu_gfw)
+dplyr::starwars
 ```
 
 ```{r}
-# dat |>
-#   arrange(desc(tissue), desc(iu_gfw))
+starwars |>
+  arrange(height)
 ```
 
-### `summarise`
-
 ```{r}
-# dat |>
-#   summarise(iu_gfw_avg = mean(iu_gfw))
+starwars |>
+  arrange(desc(height))
 ```
 
-### `group_by`
-
 ```{r}
-# dat |>
-#   group_by(tissue) |>
-#   summarise(iu_gfw_avg = mean(iu_gfw),
-#             iu_gfw_sd = sd(iu_gfw))
-```
-
-Warning that you must be careful about the order when reusing variable names.
-
-```{r}
-# # Bad order
-# dat |>
-#   group_by(tissue) |>
-#   summarise(iu_gfw = mean(iu_gfw),
-#             sd = sd(iu_gfw))
+starwars |>
+  summarise(height_avg = mean(height, na.rm = TRUE))
 ```
 
 
 ```{r}
-# # This order works because it collapses the data into a mean last
-# dat |>
-#   group_by(tissue) |>
-#   summarise(sd = sd(iu_gfw),
-#             iu_gfw = mean(iu_gfw))
+# Alternatively, you could filter out any rows without a height recorded
+starwars |>
+  filter(!is.na(height)) |> 
+  summarise(height_avg = mean(height))
 ```
 
-Print out a pretty table using `kableExtra`.
-
-
-### `nest`
-
-For the most part, I find myself working with 2D structured data (_e.g._, `tibble` or `data.frame`). But sometimes you need to 
 
 ```{r}
+starwars |>
+  group_by(species) |>
+  summarise(height_avg = mean(height, na.rm = TRUE))
+```
+
+```{r}
+starwars |>
+  group_by(species) |>
+  summarise(height_avg = mean(height, na.rm = TRUE)) |> 
+  arrange(desc(height_avg))
+```
+
+:::{.callout-note}
+
+## Practice!
+
+Now let's spend five minutes putting this to practice. Check out the [data wrangling cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf){target="_blank"} for more functions. Or better yet, try to think of something you want to do with your data and then look it up and do it.
+
+You can also try these on other data sets! Calling `data()` in your console will show a bunch of pre-loaded data sets .
+
+:::
+
+
+## A step further
+
+These core verbs and other data wrangling functions are useful for the first steps of your data exploration, but often you are ultimately aiming to do something complex than calculating a per group mean or standard deviation. For example, you may want to run a linear model or an analysis of variance on your data. The good news is you can do this with help from the tidyverse!
+
+Because people often learn how to do a linear regression or an analysis of variance in base R and the output of the model is often non-standard format, they never realize that there are tidy alternatives! Let's briefly look at the base R way of doing things and then see how tidyverse packages (_e.g._, [`broom`, `dplyr`, and `purrr`](https://cran.r-project.org/web/packages/broom/vignettes/broom_and_dplyr.html){target="_blank"})
+
+:::{.callout-note}
+
+## Let's use the `ChickWeight` data as a quick example. 
+
+Quick note: We will run some statistical tests (_e.g._, a linear regression and an ANOVA) on this data. There is some reason to think that these specific tests may not be best choice for this data (_e.g._, growth rate over time may not be linear^[Although, this data happens to be close to linear.]). But because this is not a statistics workshop, we will concern ourselves primarily with the mechanics of the coding, and save the worry about the specifics of the model for some other time.
+
+:::
+
+Before we do anything, let's take a quick look at the data.
+
+:::{.panel-tabset}
+
+### Average per diet
+
+
+```{r}
+#| code-fold: true
+dat <- ChickWeight |>
+  mutate(diet_name = case_when(Diet == 1 ~ " Control diet",
+                               Diet == 2 ~ " 10% protein added",
+                               Diet == 3 ~ " 20% protein added",
+                               Diet == 4 ~ " 30% protein added")) |> 
+  group_by(diet_name, Time) |> 
+  summarise(weight = mean(weight),
+            .groups = "drop")
+  
+dat |>  
+  ggplot(aes(x = Time,
+             y = weight,
+             color = diet_name,
+             linetype = diet_name)) +
+  geom_line(linewidth = 1) +
+  geom_text(data = dat |> 
+              filter(Time == 21),
+            aes(label = diet_name),
+            hjust = 0,
+            nudge_x = 0) +
+  scale_color_manual(name = element_blank(), 
+                     values = c("grey70",
+                                "orange",
+                                "grey70",
+                                "grey30")) +
+  scale_y_continuous(limits = c(0, 300),
+                     expand = c(0, 0),
+                     minor_breaks = c(50, 150, 250),
+                     labels = c("0", "100g", "200g", "300g"),
+                     name = "Average chick mass") +
+  scale_x_continuous(limits = c(0, 21),
+                     expand = c(0, 0),
+                     breaks = c(0, 7, 14, 21),
+                     labels = c("0", "7", "14", "21 days"),
+                     name = element_blank()) +
+  scale_linetype_manual(values = c(1, 1, 1, 2)) +
+  coord_cartesian(clip = "off", xlim = c(0, 21)) +
+  cowplot::theme_minimal_hgrid() +
+  theme(legend.position = "none",
+        plot.margin = unit(c(1, 7, 1, 1), "lines"),
+        panel.grid.minor.y = element_line(color = "grey80", 
+                                          linetype = 3),
+        axis.text.x = element_text(hjust = 0.2),
+        axis.title = element_text(color = "grey50"),
+        axis.text = element_text(color = "grey50"))
+  
+```
+
+### Each chick individually
+
+```{r}
+#| code-fold: true
 ChickWeight |>
-  glimpse()
+  mutate(diet_name = case_when(Diet == 1 ~ "Control diet",
+                               Diet == 2 ~ "Protein added (10%)",
+                               Diet == 3 ~ "Protein added (20%)",
+                               Diet == 4 ~ "Protein added (30%)")) |> 
+  ggplot() +
+  geom_line(aes(x = Time, 
+                y = weight,
+                group = Chick)) +
+  facet_wrap(~ diet_name) +
+  cowplot::theme_minimal_hgrid() +
+  scale_y_continuous(limits = c(0, 400),
+                     expand = c(0, 0.5),
+                     name = "mass (g)") +
+  labs(x = "Time (days)") +
+  theme(strip.background = element_rect(fill = "grey80"))
+```
+
+:::
+
+So let's say you wanted to know the growth rate for each chick^[We will assume that it is linear]. The base R approach would be to take each indi
+
+```{r}
+# Take the data for chick one
+chick_1 <- ChickWeight |> 
+  filter(Chick == 1)
+
+# Print out data for Chick 1
+chick_1
 ```
 
 ```{r}
-ChickWeight |>
-  group_by(Chick, Diet) |>
-  nest() 
+# Run a linear model on chick 1 data
+lm_mod <- lm(weight ~ Time, data = chick_1)
+
+# Print results
+lm_mod
+
+# Print summary of results with more information
+summary(lm_mod)
+```
+
+But the brutal part of this base R workflow is that it requires you to work with this non-standard formatted object "lm". 
+
+```{r}
+class(lm_mod)
+```
+
+If you wanted to extract the specific slope you would have to use `lm_mod$coefficients["Time"]` or for the R-squared: `summary(lm_mod)$r.squared`, or even worse, the p-value associated with the slope is a wild call. `summary(lm_mod)$coefficients["Time",4]`. These are really a nightmare to extract, which might not be a huge problem if you are just running one model. But if you are running several or more models and you want to filter down those results to certain criteria (_e.g._, p-value < 0.05 or R<sup>2</sup> > 0.1), it would be a real headache. But there are two simple functions in the `broom` packages that make getting that information easy! Check them out!
+
+### Tidy alternative
+
+:::{.callout-tip}
+
+## Two useful `broom` functions (Info from [here](https://cran.r-project.org/web/packages/broom/vignettes/broom.html#:~:text=This%20package%20provides,contains%20values%20such){target="_blank"})
+
+- `tidy()`: constructs a tibble that summarizes the model’s statistical findings. This includes coefficients and p-values for each term in a regression, per-cluster information in clustering applications, or per-test information for `multtest` functions.
+
+`- glance()`: constructs a concise one-row summary of the model. This typically contains values such as R<sup>2</sup>, adjusted R<sup>2</sup>, and residual standard error that are computed once for the entire model.
+
+:::
+
+```{r}
+# Tidy output of linear model
+broom::tidy(lm_mod)
 ```
 
 ```{r}
-ChickWeight_nest <- ChickWeight |>
-  group_by(Chick, Diet) |>
-  nest() 
-
-ChickWeight_nest$data[1:2]
+# Glance output of linear model
+broom::glance(lm_mod)
 ```
 
+### Take it to the next level with `purrr`
 
-### `broom`
+That approach is a good supplement to the base R workflow. You can possibly imagine doing a large [`for` loop](https://r4ds.hadley.nz/base-r#for-loops){target="_blank"} to go through all the individual chicks one by one. And that might work fine, but it is a bit of a hassle.
+
+
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Click here for a quick for loop example"
+
+# Create an empty list to populate results
+lm_mod_all <- list()
+
+# Loop through all chicks
+for (i in unique(ChickWeight$Chick)) {
+ lm_mod_all[[i]] <- lm(
+   weight ~ Time, 
+   data = subset(ChickWeight, Chick == i)
+  )
+}
+
+# Print a result from example 25
+summary(lm_mod_all$`25`)
+```
+
+Fortunately, there are alternatives within the tidyverse!
 
 ```{r}
 # Load library
 library(broom)
+
+# Nest the data 
+ChickWeight |>
+  group_by(Chick, Diet) |>
+  nest() 
 ```
 
-Check out the [`broom` vignette](https://cran.r-project.org/web/packages/broom/vignettes/broom.html).
+:::{.callout-caution}
 
-[And the `broom` and `dplyr` vignette](https://cran.r-project.org/web/packages/broom/vignettes/broom_and_dplyr.html).
+Notice that by doing the nesting we are violating Rule 3 of tidy data -- every cell is a single value. But that's okay because we are just doing that temporarily so we can run a linear model on the data nested within each row.
 
-`tidy`: constructs a tibble that summarizes the model’s statistical findings. This includes coefficients and p-values for each term in a regression, per-cluster information in clustering applications, or per-test information for multtest functions.
+:::
 
-`glance`: construct a concise one-row summary of the model. This typically contains values such as R^2, adjusted R^2, and residual standard error that are computed once for the entire model.
+```{r}
+# Create a nested data frame to check out the object
+dat_nest <- ChickWeight |>
+  group_by(Chick, Diet) |>
+  nest() 
+
+# Print out the new nested data
+dat_nest
+
+# It is still a tibble
+class(dat_nest)
+
+# But new data column is a list 
+class(dat_nest$data)
+
+# And each item within that list is actually a tibble!
+dat_nest$data[1]
+```
+
+
+Now, let's use that nested data to run a linear model on the data column in each row (_i.e._, on each individual chick).
 
 
 ```{r}
-ChickWeight |>
+# Linear model of weight over time for each chick
+linear_model_results <- ChickWeight |>
   group_by(Chick, Diet) |>
   nest() |>
   mutate(
-    fit = map(data, ~ lm(weight ~ Time, data = .x)),
+    fit = map(data, ~ lm(weight ~ Time, data = .)),
     tidied = map(fit, tidy),
     glanced = map(fit, glance)
   ) |> 
   unnest(tidied) 
+
+# Print out the tibble results
+linear_model_results
 ```
+
+
+### Calculating average linear growth rate
+
+```{r}
+# Calculate a per diet average growth rate from the slopes
+growth <- linear_model_results |> 
+  filter(term == "Time") |> 
+  group_by(Diet) |> 
+  summarize(avg_slope = mean(estimate),
+            sd = sd(estimate))
+
+# Print out a pretty table with the results
+growth |> 
+  mutate(`Mean growth rate (g/day) ± std. dev.` = 
+           glue::glue("{round(avg_slope, 2)} ± {round(sd, 2)}")) |> 
+  mutate(`Diet name` =
+    case_when(Diet == 1 ~ "Control diet",
+              Diet == 2 ~ "10% protein added",
+              Diet == 3 ~ "20% protein added",
+              Diet == 4 ~ "30% protein added")) |> 
+  select(Diet, `Diet name`, `Mean growth rate (g/day) ± std. dev.`) |> 
+  kableExtra::kable("html") |> 
+  kableExtra::kable_styling("striped")
+```
+
+:::{.callout-note}
+
+## Practice!
+
+We likely won't have time for this within the workshop. But on your own, try to see if you can test using an analysis of variance on the effect of diet on weight after 21 days.
+
+:::
+
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: Click here for simple ANOVA example
+
+# One-way ANOVA of the effect of diet on Chick Weight after 21 days
+aov_mod <- ChickWeight |> 
+  filter(Time == 21) %>%
+  aov(weight ~ Diet, data = .)
+
+# Print out the tibble results
+tidy(aov_mod)
+```
+
+
+## Tools for quick clean up
+
+:::{.callout-caution}
+
+A hazard of caring about how coding style is that you will notice bad formatting everywhere. But there are quick tools too help format messy code and data.
+
+:::
+
+### Styler package
+
+The styler package is an Addin within RStudio that can format messy code into a custom coding style. [Check it out!](https://www.tidyverse.org/blog/2017/12/styler-1.0.0/){target="_blank"}
+
+### Janitor package
+
+The [janitor package](https://sfirke.github.io/janitor/){target="_blank"} makes cleaning up messy data names a lot easier. For example, if you are like me, you had some trouble remembering which letters were capitalized in the `ChickWeight` data (_i.e._, the independent variables, `Chick`, `Diet`, and `Time` are capitalized but the dependent variable `weight` isn't). I find this super annoying, but with the janitor package 
+
+Install with `install.packages("janitor")` and check it out!
 
 
 ```{r}
-ChickWeight |>
-  ggplot() +
-  geom_line(aes(x = Time, 
-                 y = weight, 
-                 color = Chick)) +
-  facet_wrap(~ Diet)
+iris |> 
+  colnames()
+
+ChickWeight |> 
+  colnames()
 ```
+
+```{r}
+iris |> 
+  janitor::clean_names() |> 
+  colnames()
+
+ChickWeight |> 
+  janitor::clean_names() |> 
+  colnames()
+```
+
+
+## Tidy data
+
+### Convert billboard to tidy data {.unnumbered}
+
+
+```{r}
+# Print billboard data form the year 2000
+tidyr::billboard
+```
+
+
+
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Click for hidden solution"
+
+# Load libraries
+library(tidyverse)
+
+# Convert to tidy format
+billboard |> 
+  pivot_longer(contains("wk"),
+               names_to = "week",
+               values_to = "rank") |> 
+  mutate(week = as.numeric(str_remove_all(week, "wk")))
+```
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+
+## `readr` package
+
+We won't spend much time here [importing data](https://r4ds.hadley.nz/data-import){target="_blank"}, but it is worth thinking about and I do reccomend the tidyverse functions here too. I prefer `readr::read_csv()` over `read.csv()` from base R. And same with `readr::write_csv()` over the base version^[`readr::write_csv()` doesn't write the rownames to the file, which is wonderful.]. 
+
+While importing data with `readr::read_csv()`, I find it a lot easier to define the data structure as you import data. For example, setting specific columns as a factor and setting the levels is easier to do with tidyverse functions. It also makes it so you are already working with a `tibble` instead of `data.frame`. 
+:::
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+
+## `conflicted` package
+
+Great way to explicitly tell R which function to prefer by default when you have function names being masked by different packages.
+
+[Check it out!](https://conflicted.r-lib.org/){target="_blank"}
+
+:::
+
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+
+## `glue` package
+
+A small package I ran across that allows for a cool alternative to `paste()` when you need to use named variables. For example, you can use `name <- "Thomas"; glue::glue("My name is {name}.")` as an alternative to `name <- "Thomas"; paste0("My name is ", name, ".")`, which you have to be careful about the spacing. And as what your goal gets more complicated, it gets more and more useful. [Check it out!](https://glue.tidyverse.org/){target="_blank"}
+
+:::
