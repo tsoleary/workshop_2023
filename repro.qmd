@@ -322,20 +322,164 @@ Favor short scripts that do _one_ thing, rather then a huge unruly script that d
 
 :::
 
+### Spot & fix the errors
+
+:::{.panel-tabset}
+
+#### Messy
+
+```{r}
+#| eval: false
+#| filename: "messyFile_fromTSO October 17, 2023.R"
+# install.packages("tidyverse")
+# install.packages("drc")
+library(ggplot2)
+library(drc)
+library(timechange)
+library(cowplot)
+library(reshape)
+data(mpg)
+data(iris)
+data(diamonds)
+
+# Plot
+plotScatter <- ggplot(mpg, aes(displ, hwy, color = class)) + geom_point() + labs(title = "Scatter Plot of MPG Data", x_label = "Displacement", y_label = "Highway MPG") + theme_minimal()
+print(p)
+
+# Function
+messyFunction <- function(dataFrame) {
+  summaryData <- aggregate(dataFrame$Sepal.Length, by = list(dataFrame$Species), FUN = sum)
+  returnSummaryData <- summaryData
+  return(returnSummaryData)
+}
+
+resultData <- messyFunction(iris)
+print(resultData)
+#      Group.1     x
+# 1     setosa 250.3
+# 2 versicolor 296.8
+# 3  virginica 329.4
+
+# Plot
+plot_1 <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color_species = Species)) + geom_point()
+plotAll <- plot_1 +
+  labs(title = "Scatter Plot of Iris Data", x_label = "Sepal Length", y_label = "Sepal Width") +
+  theme_minimal()
+
+plotAll
+
+meanMpgHwy <- mean(mpg$hwy)
+# [1] 23.44017
+meanMpgDispl <- mean(mpg$displ)
+# [1] 3.471795
+sdIrisSepalLength <- sd(iris$Sepal.Length)
+# [1] 0.8280661
+sdIrisSepalWidth <- sd(iris$Sepal.Width)
+# [1] 0.4358663
+
+unique(mpg$manufacturer)
+#  [1] "audi"       "chevrolet"  "dodge"      "ford"       "honda"      "hyundai"    "jeep"      
+#  [8] "land rover" "lincoln"    "mercury"    "nissan"     "pontiac"    "subaru"     "toyota"    
+# [15] "volkswagen"
+
+Chevydata <- subset(mpg, manufacturer == "chevrolet")
+Forddata <- subset(mpg, manufacturer == "ford")
+nissan_data <- subset(mpg, manufacturer == "nissan")
+pontiac <- subset(mpg, manufacturer == "pontiac")
+
+mean(pontiac$hwy, na.rm = TRUE)
+# [1] 26.4
+mean(nissan_data$hwy, na.rm = TRUE)
+# [1] 24.61538
+mean(Forddata$hwy, na.rm = TRUE)
+# [1] 24.61538
+```
 
 
+#### Cleaned
 
+```{r}
+#| eval: false
+#| filename: "mpg_analysis.R"
+# ------------------------------------------------------------------------------
+# Plot mpg data and save mean highway mpg per manufacturer
+# TS O'Leary
+# ------------------------------------------------------------------------------
 
+# Load libraries
+library(tidyverse)
 
+# Load data
+data(mpg)
 
+# Scatter plot of highway mpg vs. engine displacement for different class cars
+ggplot(mpg, 
+       aes(x = displ, 
+           y = hwy, 
+           color = class)) + 
+  geom_point() + 
+  labs(title = "Scatter Plot of MPG Data", 
+       x = "Displacement", 
+       y = "Highway MPG") + 
+  theme_minimal()
+
+# Save above scatter plot
+ggsave(here::here("output/figs/mpg", "scatter_hwy_displ.png"),
+       width = 10,
+       height = 8,
+       units = "cm")
+
+# Calculate mean highway mpg per manufacturer
+mean_hwy_manufacturer <- mpg |> 
+  summarise(
+    .by = manufacturer,
+    mean = mean(hwy)
+  )
+
+# Save results
+saveRDS(
+  mean_hwy_manufacturer,
+  file = here::here("output/results/mpg", "mean_hwy_manufacturer.rds")
+)
+
+```
+
+```{r}
+#| eval: false
+#| filename: "iris_analysis.R"
+# ------------------------------------------------------------------------------
+# Plot sepal iris data per species and save sum of sepal lengths per species
+# TS O'Leary
+# ------------------------------------------------------------------------------
+
+# Load libraries
+library(tidyverse)
+
+# Load data and clean column names
+iris <- iris |> 
+  janitor::clean_names()
+
+# Scatter plot of sepal length and width colored by species
+ggplot(iris, aes(x = sepal_length,
+                 y = sepal_width, 
+                 color = species)) + 
+  geom_point()
+
+# Save above scatter plot
+ggsave(here::here("output/figs/iris", "scatter_sepal.png"),
+       width = 10,
+       height = 10,
+       units = "cm")
+
+# Removed the sum of sepal length calculation.
+```
+
+:::
 
 :::{.callout-tip}
 ## Avoid magic numbers 
 
-It is a good idea to give numbers in your code a variable name. This makes it easier to know what that random number means. 
-
-For example, in the above code.  
-
+It is a good idea to give numbers in your code a variable name and assign them at the beginning of your script. This makes it easier to know what that random number means. 
 :::
 
 
@@ -439,7 +583,7 @@ This template ensures that I do several things:
 ## Let's check out these quick tools
 
 - [Styler](https://styler.r-lib.org/) -- an R Studio Addin that can automatically format your code to the tidyverse style guide or to some other custom style.
-- [janitor package](https://sfirke.github.io/janitor/) -- to clean up 
+- [janitor package](https://sfirke.github.io/janitor/) -- to clean up messy data names etc.
 
 :::
 
