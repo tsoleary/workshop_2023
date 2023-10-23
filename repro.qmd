@@ -7,7 +7,7 @@ editor_options:
 
 Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define terms^[Please see @Goodman2016-ex for a more rigorous discussion of terms.], before moving on to some practical principles of computational reproducibility.
 
-- **Results reproducibility** -- if you do the same thing, you should get the same results. This is the essence of the scientific method. If you are unable to reproduce the results, you may not have a full understanding of the underlying causes. 
+- **Results reproducibility** -- if you do the same thing, you should get the same results. This is the essence of the scientific method.
 - **Inferential reproducibility** -- reliably draw the same types of conclusions from different sets of experiments. One example of this sort of reproducibility would be independent sets of experiments that show DNA as the hereditary molecule.
 - **Methods reproducibility** -- description of the methods are sufficiently detailed, complete, and accurate enough so that the experiment may be replicated in full. 
 

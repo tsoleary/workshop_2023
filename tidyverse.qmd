@@ -302,6 +302,7 @@ Before we do anything, let's take a quick look at the data.
 
 
 ```{r}
+#| fig-height: 4
 #| code-fold: true
 dat <- ChickWeight |>
   mutate(diet_name = case_when(Diet == 1 ~ " Control diet",
@@ -375,7 +376,7 @@ ChickWeight |>
 
 :::
 
-So let's say you wanted to know the growth rate for each chick^[We will assume that it is linear]. The base R approach would be to take each indi
+Let's say you wanted to know the growth rate for each chick^[We will assume that it is linear.]. The base R approach would be to run a model individually for each chick. Something like the following:
 
 ```{r}
 # Take the data for chick one
@@ -397,7 +398,7 @@ lm_mod
 summary(lm_mod)
 ```
 
-But the brutal part of this base R workflow is that it requires you to work with this non-standard formatted object "lm". 
+The worst part of this base R workflow is that it requires you to work with this non-standard formatted object "lm". 
 
 ```{r}
 class(lm_mod)
