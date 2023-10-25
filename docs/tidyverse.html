@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Workshop - 1&nbsp; Tidyverse</title>
+<title>Data Science Workshop - 2&nbsp; Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./data_viz.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./repro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -129,7 +129,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyverse.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tidyverse</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyverse.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -162,20 +162,20 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./repro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./tidyverse.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_viz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./repro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -194,28 +194,28 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-use-the-the-tidyverse" id="toc-why-use-the-the-tidyverse" class="nav-link active" data-scroll-target="#why-use-the-the-tidyverse"><span class="header-section-number">1.1</span> Why use the the tidyverse?</a>
+  <li><a href="#why-use-the-the-tidyverse" id="toc-why-use-the-the-tidyverse" class="nav-link active" data-scroll-target="#why-use-the-the-tidyverse"><span class="header-section-number">2.1</span> Why use the the tidyverse?</a>
   <ul class="collapse">
-  <li><a href="#tidyverse-style" id="toc-tidyverse-style" class="nav-link" data-scroll-target="#tidyverse-style"><span class="header-section-number">1.1.1</span> Tidyverse style</a></li>
+  <li><a href="#tidyverse-style" id="toc-tidyverse-style" class="nav-link" data-scroll-target="#tidyverse-style"><span class="header-section-number">2.1.1</span> Tidyverse style</a></li>
   </ul></li>
-  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data"><span class="header-section-number">1.2</span> Tidy data</a></li>
-  <li><a href="#introduction-to-data-wrangling" id="toc-introduction-to-data-wrangling" class="nav-link" data-scroll-target="#introduction-to-data-wrangling"><span class="header-section-number">1.3</span> Introduction to data wrangling</a>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data"><span class="header-section-number">2.2</span> Tidy data</a></li>
+  <li><a href="#introduction-to-data-wrangling" id="toc-introduction-to-data-wrangling" class="nav-link" data-scroll-target="#introduction-to-data-wrangling"><span class="header-section-number">2.3</span> Introduction to data wrangling</a>
   <ul class="collapse">
   <li><a href="#pipe" id="toc-pipe" class="nav-link" data-scroll-target="#pipe">Pipe <code>%&gt;%</code></a></li>
   </ul></li>
-  <li><a href="#core-verbs-1" id="toc-core-verbs-1" class="nav-link" data-scroll-target="#core-verbs-1"><span class="header-section-number">1.4</span> Core verbs</a></li>
-  <li><a href="#a-step-further" id="toc-a-step-further" class="nav-link" data-scroll-target="#a-step-further"><span class="header-section-number">1.5</span> A step further</a>
+  <li><a href="#core-verbs-1" id="toc-core-verbs-1" class="nav-link" data-scroll-target="#core-verbs-1"><span class="header-section-number">2.4</span> Core verbs</a></li>
+  <li><a href="#a-step-further" id="toc-a-step-further" class="nav-link" data-scroll-target="#a-step-further"><span class="header-section-number">2.5</span> A step further</a>
   <ul class="collapse">
-  <li><a href="#tidy-alternative" id="toc-tidy-alternative" class="nav-link" data-scroll-target="#tidy-alternative"><span class="header-section-number">1.5.1</span> Tidy alternative</a></li>
-  <li><a href="#take-it-to-the-next-level-with-purrr" id="toc-take-it-to-the-next-level-with-purrr" class="nav-link" data-scroll-target="#take-it-to-the-next-level-with-purrr"><span class="header-section-number">1.5.2</span> Take it to the next level with <code>purrr</code></a></li>
-  <li><a href="#calculating-average-linear-growth-rate" id="toc-calculating-average-linear-growth-rate" class="nav-link" data-scroll-target="#calculating-average-linear-growth-rate"><span class="header-section-number">1.5.3</span> Calculating average linear growth rate</a></li>
+  <li><a href="#tidy-alternative" id="toc-tidy-alternative" class="nav-link" data-scroll-target="#tidy-alternative"><span class="header-section-number">2.5.1</span> Tidy alternative</a></li>
+  <li><a href="#take-it-to-the-next-level-with-purrr" id="toc-take-it-to-the-next-level-with-purrr" class="nav-link" data-scroll-target="#take-it-to-the-next-level-with-purrr"><span class="header-section-number">2.5.2</span> Take it to the next level with <code>purrr</code></a></li>
+  <li><a href="#calculating-average-linear-growth-rate" id="toc-calculating-average-linear-growth-rate" class="nav-link" data-scroll-target="#calculating-average-linear-growth-rate"><span class="header-section-number">2.5.3</span> Calculating average linear growth rate</a></li>
   </ul></li>
-  <li><a href="#tools-for-quick-clean-up" id="toc-tools-for-quick-clean-up" class="nav-link" data-scroll-target="#tools-for-quick-clean-up"><span class="header-section-number">1.6</span> Tools for quick clean up</a>
+  <li><a href="#tools-for-quick-clean-up" id="toc-tools-for-quick-clean-up" class="nav-link" data-scroll-target="#tools-for-quick-clean-up"><span class="header-section-number">2.6</span> Tools for quick clean up</a>
   <ul class="collapse">
-  <li><a href="#styler-package" id="toc-styler-package" class="nav-link" data-scroll-target="#styler-package"><span class="header-section-number">1.6.1</span> Styler package</a></li>
-  <li><a href="#janitor-package" id="toc-janitor-package" class="nav-link" data-scroll-target="#janitor-package"><span class="header-section-number">1.6.2</span> Janitor package</a></li>
+  <li><a href="#styler-package" id="toc-styler-package" class="nav-link" data-scroll-target="#styler-package"><span class="header-section-number">2.6.1</span> Styler package</a></li>
+  <li><a href="#janitor-package" id="toc-janitor-package" class="nav-link" data-scroll-target="#janitor-package"><span class="header-section-number">2.6.2</span> Janitor package</a></li>
   </ul></li>
-  <li><a href="#tidy-data-1" id="toc-tidy-data-1" class="nav-link" data-scroll-target="#tidy-data-1"><span class="header-section-number">1.7</span> Tidy data</a>
+  <li><a href="#tidy-data-1" id="toc-tidy-data-1" class="nav-link" data-scroll-target="#tidy-data-1"><span class="header-section-number">2.7</span> Tidy data</a>
   <ul class="collapse">
   <li><a href="#convert-billboard-to-tidy-data" id="toc-convert-billboard-to-tidy-data" class="nav-link" data-scroll-target="#convert-billboard-to-tidy-data">Convert billboard to tidy data</a></li>
   </ul></li>
@@ -227,7 +227,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-tidy" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></h1>
+<h1 class="title"><span id="sec-tidy" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></h1>
 </div>
 
 
@@ -243,8 +243,8 @@ div.csl-indent {
 </header>
 
 <p>The <a href="https://www.tidyverse.org/" target="_blank">tidyverse</a> is an inter-related set of packages that have a common grammar and syntax. It encompases We will not dive deeply into each topic, but instead, the workshop will introduce the core philosophy behind the tidyverse and some of the most used functions. Then, we will spend more time on some of the more advanced techniques that make the tidyverse powerful and exciting.</p>
-<section id="why-use-the-the-tidyverse" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="why-use-the-the-tidyverse"><span class="header-section-number">1.1</span> Why use the the tidyverse?</h2>
+<section id="why-use-the-the-tidyverse" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="why-use-the-the-tidyverse"><span class="header-section-number">2.1</span> Why use the the tidyverse?</h2>
 <p>There are base R equivalents to most things that you can do in the tidyverse. So you might wonder why it is necessary, or even useful, to learn the tidyverse. I think that skepticism is fair, but here are a few reasons why I think you should not only learn the tidyverse, but make it a regular part of your workflow<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <ol type="1">
 <li>As a data scientist, most of your time will be spent writing code, not waiting for code to execute. Therefore you should put more value the coding style that is easiest to write and understand. The tidyverse emphasizes human readable code.</li>
@@ -252,8 +252,8 @@ div.csl-indent {
 <li>An increasing number of newly developed packages depend on the tidyverse. So you might as well embrace it.</li>
 <li>You are already using it! If have made any figures in R, more likely than not, you are already used one tidyverse package, <code>ggplot2</code>.</li>
 </ol>
-<section id="tidyverse-style" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="tidyverse-style"><span class="header-section-number">1.1.1</span> Tidyverse style</h3>
+<section id="tidyverse-style" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="tidyverse-style"><span class="header-section-number">2.1.1</span> Tidyverse style</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -328,8 +328,8 @@ Cheat sheets
 </div>
 </section>
 </section>
-<section id="tidy-data" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="tidy-data"><span class="header-section-number">1.2</span> Tidy data</h2>
+<section id="tidy-data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="tidy-data"><span class="header-section-number">2.2</span> Tidy data</h2>
 <p>The tidyverse gets its name from the type of data that it is designed to interact with – <strong>tidy data</strong>. So let’s quickly define <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" target="_blank">tidy data</a><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -399,92 +399,92 @@ Tidy data – definition
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">control</td>
-<td style="text-align: right;">16.2</td>
-<td style="text-align: right;">21.4</td>
-<td style="text-align: right;">22.3</td>
-<td style="text-align: right;">23.5</td>
-<td style="text-align: right;">32.1</td>
+<td style="text-align: right;">5.6</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">9.4</td>
+<td style="text-align: right;">12.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">control</td>
-<td style="text-align: right;">11.1</td>
-<td style="text-align: right;">16.4</td>
-<td style="text-align: right;">17.3</td>
-<td style="text-align: right;">25.2</td>
-<td style="text-align: right;">27.7</td>
+<td style="text-align: right;">7.8</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: right;">21.9</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">control</td>
-<td style="text-align: right;">5.9</td>
-<td style="text-align: right;">8.8</td>
-<td style="text-align: right;">8.8</td>
-<td style="text-align: right;">9.2</td>
-<td style="text-align: right;">12.7</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">10.2</td>
+<td style="text-align: right;">14.2</td>
+<td style="text-align: right;">19.9</td>
+<td style="text-align: right;">28.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
 <td style="text-align: left;">control</td>
-<td style="text-align: right;">12.5</td>
-<td style="text-align: right;">15.1</td>
-<td style="text-align: right;">16.6</td>
-<td style="text-align: right;">19.6</td>
-<td style="text-align: right;">27.3</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: right;">9.1</td>
+<td style="text-align: right;">12.1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
 <td style="text-align: left;">control</td>
-<td style="text-align: right;">13.8</td>
-<td style="text-align: right;">15.7</td>
-<td style="text-align: right;">18.6</td>
-<td style="text-align: right;">23.3</td>
-<td style="text-align: right;">27.2</td>
+<td style="text-align: right;">12.3</td>
+<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">23.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
 <td style="text-align: left;">treatment</td>
-<td style="text-align: right;">5.6</td>
-<td style="text-align: right;">7.3</td>
-<td style="text-align: right;">10.1</td>
-<td style="text-align: right;">10.9</td>
-<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">11.6</td>
+<td style="text-align: right;">12.9</td>
+<td style="text-align: right;">13.8</td>
+<td style="text-align: right;">16.6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
 <td style="text-align: left;">treatment</td>
-<td style="text-align: right;">9.9</td>
-<td style="text-align: right;">11.3</td>
-<td style="text-align: right;">14.6</td>
-<td style="text-align: right;">20.1</td>
-<td style="text-align: right;">22.1</td>
+<td style="text-align: right;">10.7</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: right;">17.3</td>
+<td style="text-align: right;">20.8</td>
+<td style="text-align: right;">25.2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
 <td style="text-align: left;">treatment</td>
-<td style="text-align: right;">12.5</td>
-<td style="text-align: right;">18.3</td>
-<td style="text-align: right;">22.9</td>
-<td style="text-align: right;">33.3</td>
-<td style="text-align: right;">35.0</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: right;">16.4</td>
+<td style="text-align: right;">16.7</td>
+<td style="text-align: right;">20.8</td>
+<td style="text-align: right;">27.7</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
 <td style="text-align: left;">treatment</td>
-<td style="text-align: right;">15.4</td>
-<td style="text-align: right;">17.0</td>
-<td style="text-align: right;">18.6</td>
-<td style="text-align: right;">19.9</td>
-<td style="text-align: right;">23.0</td>
+<td style="text-align: right;">13.5</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: right;">20.3</td>
+<td style="text-align: right;">30.0</td>
+<td style="text-align: right;">40.1</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">treatment</td>
-<td style="text-align: right;">8.4</td>
-<td style="text-align: right;">11.8</td>
-<td style="text-align: right;">12.2</td>
-<td style="text-align: right;">15.3</td>
-<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: right;">21.8</td>
+<td style="text-align: right;">24.4</td>
+<td style="text-align: right;">34.2</td>
 </tr>
 </tbody>
 </table>
@@ -526,301 +526,301 @@ Tidy data – definition
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">control</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">16.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">21.4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">22.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">23.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">32.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">11.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">16.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">17.3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">25.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">27.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">8.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">8.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">9.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">12.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">12.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">15.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">16.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">19.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">27.3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">13.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">15.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">18.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">23.3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">27.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">5.6</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">7.3</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">10.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">10.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">13.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">treatment</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">9.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">treatment</td>
+<td style="text-align: left;">control</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">11.3</td>
+<td style="text-align: right;">6.5</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">14.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">20.1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">22.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">treatment</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">12.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">18.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">treatment</td>
+<td style="text-align: left;">control</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">22.9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">33.3</td>
+<td style="text-align: right;">6.5</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">35.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">treatment</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">15.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">17.0</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">9.4</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">treatment</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">18.6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">12.6</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">14.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">21.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">14.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">control</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">19.9</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">28.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">9.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">12.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">13.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">13.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">19.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">23.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">11.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">12.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">13.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">16.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">14.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">17.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">25.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">16.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">16.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">27.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">16.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">20.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">treatment</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">30.0</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">9</td>
 <td style="text-align: left;">treatment</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">23.0</td>
+<td style="text-align: right;">40.1</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">treatment</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">8.4</td>
+<td style="text-align: right;">12.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">treatment</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">11.8</td>
+<td style="text-align: right;">16.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">treatment</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">12.2</td>
+<td style="text-align: right;">21.8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">treatment</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">15.3</td>
+<td style="text-align: right;">24.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">treatment</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">34.2</td>
 </tr>
 </tbody>
 </table>
@@ -847,8 +847,8 @@ Tidy data – definition
 </div>
 </div>
 </section>
-<section id="introduction-to-data-wrangling" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="introduction-to-data-wrangling"><span class="header-section-number">1.3</span> Introduction to data wrangling</h2>
+<section id="introduction-to-data-wrangling" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="introduction-to-data-wrangling"><span class="header-section-number">2.3</span> Introduction to data wrangling</h2>
 <p>The package dplyr has a few core functions (or verbs) that are built to work on tidy data. We will check out a few briefly. But before we do, let’s introduce the sometimes confusing, but often useful, pipe operator.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -862,16 +862,16 @@ Tidy data – definition
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="rows" class="level4" data-number="1.3.0.1">
-<h4 data-number="1.3.0.1" class="anchored" data-anchor-id="rows"><span class="header-section-number">1.3.0.1</span> Rows</h4>
+<section id="rows" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="rows">Rows</h4>
 <ul>
 <li><code>filter()</code> chooses rows based on column values.</li>
 <li><code>slice()</code> chooses rows based on location.</li>
 <li><code>arrange()</code> changes the order of the rows.</li>
 </ul>
 </section>
-<section id="columns" class="level4" data-number="1.3.0.2">
-<h4 data-number="1.3.0.2" class="anchored" data-anchor-id="columns"><span class="header-section-number">1.3.0.2</span> Columns</h4>
+<section id="columns" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="columns">Columns</h4>
 <ul>
 <li><code>select()</code> changes whether or not a column is included.</li>
 <li><code>rename()</code> changes the name of columns.</li>
@@ -879,8 +879,8 @@ Tidy data – definition
 <li><code>relocate()</code> changes the order of the columns.</li>
 </ul>
 </section>
-<section id="groups-of-rows" class="level4" data-number="1.3.0.3">
-<h4 data-number="1.3.0.3" class="anchored" data-anchor-id="groups-of-rows"><span class="header-section-number">1.3.0.3</span> Groups of rows</h4>
+<section id="groups-of-rows" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="groups-of-rows">Groups of rows</h4>
 <ul>
 <li><code>summarise()</code> collapses a group into a single row.</li>
 </ul>
@@ -920,8 +920,8 @@ Tidy data – definition
 </div>
 </div>
 </div>
-<section id="a-fun-example-from-r-for-data-science" class="level4" data-number="1.3.0.4">
-<h4 data-number="1.3.0.4" class="anchored" data-anchor-id="a-fun-example-from-r-for-data-science"><span class="header-section-number">1.3.0.4</span> A fun example from <a href="https://r4ds.had.co.nz/pipes.html" target="_blank">R for data science</a></h4>
+<section id="a-fun-example-from-r-for-data-science" class="level4" data-number="2.3.0.1">
+<h4 data-number="2.3.0.1" class="anchored" data-anchor-id="a-fun-example-from-r-for-data-science"><span class="header-section-number">2.3.0.1</span> A fun example from <a href="https://r4ds.had.co.nz/pipes.html" target="_blank">R for data science</a></h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As a series of statements with intermediate objects</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>foo_foo <span class="ot">&lt;-</span> <span class="fu">little_bunny</span>()</span>
@@ -953,8 +953,8 @@ Tidy data – definition
 </section>
 </section>
 </section>
-<section id="core-verbs-1" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="core-verbs-1"><span class="header-section-number">1.4</span> Core verbs</h2>
+<section id="core-verbs-1" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="core-verbs-1"><span class="header-section-number">2.4</span> Core verbs</h2>
 <p>Now let’s use the <code>starwars</code> data from the dplyr package to explore the some of the core functions of the tidyverse.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>starwars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1101,8 +1101,8 @@ Practice!
 </div>
 </div>
 </section>
-<section id="a-step-further" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="a-step-further"><span class="header-section-number">1.5</span> A step further</h2>
+<section id="a-step-further" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="a-step-further"><span class="header-section-number">2.5</span> A step further</h2>
 <p>These core verbs and other data wrangling functions are useful for the first steps of your data exploration, but often you are ultimately aiming to do something complex than calculating a per group mean or standard deviation. For example, you may want to run a linear model or an analysis of variance on your data. The good news is you can do this with help from the tidyverse!</p>
 <p>Because people often learn how to do a linear regression or an analysis of variance in base R and the output of the model is often non-standard format, they never realize that there are tidy alternatives! Let’s briefly look at the base R way of doing things and then see how tidyverse packages (<em>e.g.</em>, <a href="https://cran.r-project.org/web/packages/broom/vignettes/broom_and_dplyr.html" target="_blank"><code>broom</code>, <code>dplyr</code>, and <code>purrr</code></a>)</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1275,8 +1275,8 @@ F-statistic: 232.7 on 1 and 10 DF,  p-value: 2.974e-08</code></pre>
 </div>
 </div>
 <p>If you wanted to extract the specific slope you would have to use <code>lm_mod$coefficients["Time"]</code> or for the R-squared: <code>summary(lm_mod)$r.squared</code>, or even worse, the p-value associated with the slope is a wild call. <code>summary(lm_mod)$coefficients["Time",4]</code>. These are really a nightmare to extract, which might not be a huge problem if you are just running one model. But if you are running several or more models and you want to filter down those results to certain criteria (<em>e.g.</em>, p-value &lt; 0.05 or R<sup>2</sup> &gt; 0.1), it would be a real headache. But there are two simple functions in the <code>broom</code> packages that make getting that information easy! Check them out!</p>
-<section id="tidy-alternative" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="tidy-alternative"><span class="header-section-number">1.5.1</span> Tidy alternative</h3>
+<section id="tidy-alternative" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="tidy-alternative"><span class="header-section-number">2.5.1</span> Tidy alternative</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1317,8 +1317,8 @@ Two useful <code>broom</code> functions (Info from <a href="https://cran.r-proje
 </div>
 </div>
 </section>
-<section id="take-it-to-the-next-level-with-purrr" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="take-it-to-the-next-level-with-purrr"><span class="header-section-number">1.5.2</span> Take it to the next level with <code>purrr</code></h3>
+<section id="take-it-to-the-next-level-with-purrr" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="take-it-to-the-next-level-with-purrr"><span class="header-section-number">2.5.2</span> Take it to the next level with <code>purrr</code></h3>
 <p>That approach is a good supplement to the base R workflow. You can possibly imagine doing a large <a href="https://r4ds.hadley.nz/base-r#for-loops" target="_blank"><code>for</code> loop</a> to go through all the individual chicks one by one. And that might work fine, but it is a bit of a hassle.</p>
 <div class="cell">
 <details>
@@ -1469,8 +1469,8 @@ Caution
 </div>
 </div>
 </section>
-<section id="calculating-average-linear-growth-rate" class="level3" data-number="1.5.3">
-<h3 data-number="1.5.3" class="anchored" data-anchor-id="calculating-average-linear-growth-rate"><span class="header-section-number">1.5.3</span> Calculating average linear growth rate</h3>
+<section id="calculating-average-linear-growth-rate" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="calculating-average-linear-growth-rate"><span class="header-section-number">2.5.3</span> Calculating average linear growth rate</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate a per diet average growth rate from the slopes</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> linear_model_results <span class="sc">|&gt;</span> </span>
@@ -1554,8 +1554,8 @@ Practice!
 </div>
 </section>
 </section>
-<section id="tools-for-quick-clean-up" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="tools-for-quick-clean-up"><span class="header-section-number">1.6</span> Tools for quick clean up</h2>
+<section id="tools-for-quick-clean-up" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="tools-for-quick-clean-up"><span class="header-section-number">2.6</span> Tools for quick clean up</h2>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1569,12 +1569,12 @@ Caution
 <p>A hazard of caring about how coding style is that you will notice bad formatting everywhere. But there are quick tools too help format messy code and data.</p>
 </div>
 </div>
-<section id="styler-package" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="styler-package"><span class="header-section-number">1.6.1</span> Styler package</h3>
+<section id="styler-package" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="styler-package"><span class="header-section-number">2.6.1</span> Styler package</h3>
 <p>The styler package is an Addin within RStudio that can format messy code into a custom coding style. <a href="https://www.tidyverse.org/blog/2017/12/styler-1.0.0/" target="_blank">Check it out!</a></p>
 </section>
-<section id="janitor-package" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="janitor-package"><span class="header-section-number">1.6.2</span> Janitor package</h3>
+<section id="janitor-package" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="janitor-package"><span class="header-section-number">2.6.2</span> Janitor package</h3>
 <p>The <a href="https://sfirke.github.io/janitor/" target="_blank">janitor package</a> makes cleaning up messy data names a lot easier. For example, if you are like me, you had some trouble remembering which letters were capitalized in the <code>ChickWeight</code> data (<em>i.e.</em>, the independent variables, <code>Chick</code>, <code>Diet</code>, and <code>Time</code> are capitalized but the dependent variable <code>weight</code> isn’t). I find this super annoying, but with the janitor package</p>
 <p>Install with <code>install.packages("janitor")</code> and check it out!</p>
 <div class="cell">
@@ -1605,8 +1605,8 @@ Caution
 </div>
 </section>
 </section>
-<section id="tidy-data-1" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="tidy-data-1"><span class="header-section-number">1.7</span> Tidy data</h2>
+<section id="tidy-data-1" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="tidy-data-1"><span class="header-section-number">2.7</span> Tidy data</h2>
 <section id="convert-billboard-to-tidy-data" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="convert-billboard-to-tidy-data">Convert billboard to tidy data</h3>
 <div class="cell">
@@ -1958,13 +1958,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="./repro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducibility</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./data_viz.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualization</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data visualization</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

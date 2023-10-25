@@ -191,27 +191,29 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#practical-reproducibility" id="toc-practical-reproducibility" class="nav-link active" data-scroll-target="#practical-reproducibility"><span class="header-section-number">1.1</span> Practical reproducibility</a></li>
-  <li><a href="#ten-simple-rules" id="toc-ten-simple-rules" class="nav-link" data-scroll-target="#ten-simple-rules"><span class="header-section-number">1.2</span> Ten simple rules</a></li>
-  <li><a href="#opening-in-rstudio" id="toc-opening-in-rstudio" class="nav-link" data-scroll-target="#opening-in-rstudio"><span class="header-section-number">1.3</span> Opening in RStudio</a></li>
-  <li><a href="#projects-in-rstudio" id="toc-projects-in-rstudio" class="nav-link" data-scroll-target="#projects-in-rstudio"><span class="header-section-number">1.4</span> Projects in RStudio</a>
+  <li><a href="#overall-goal" id="toc-overall-goal" class="nav-link active" data-scroll-target="#overall-goal"><span class="header-section-number">1.1</span> Overall goal</a></li>
+  <li><a href="#practical-reproducibility" id="toc-practical-reproducibility" class="nav-link" data-scroll-target="#practical-reproducibility"><span class="header-section-number">1.2</span> Practical reproducibility</a></li>
+  <li><a href="#ten-simple-rules" id="toc-ten-simple-rules" class="nav-link" data-scroll-target="#ten-simple-rules"><span class="header-section-number">1.3</span> Ten simple rules</a></li>
+  <li><a href="#opening-in-rstudio" id="toc-opening-in-rstudio" class="nav-link" data-scroll-target="#opening-in-rstudio"><span class="header-section-number">1.4</span> Opening in RStudio</a></li>
+  <li><a href="#projects-in-rstudio" id="toc-projects-in-rstudio" class="nav-link" data-scroll-target="#projects-in-rstudio"><span class="header-section-number">1.5</span> Projects in RStudio</a>
   <ul class="collapse">
   <li><a href="#here-package" id="toc-here-package" class="nav-link" data-scroll-target="#here-package"><code>here</code> package</a></li>
   </ul></li>
-  <li><a href="#directory-structure" id="toc-directory-structure" class="nav-link" data-scroll-target="#directory-structure"><span class="header-section-number">1.5</span> Directory structure</a></li>
-  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">1.6</span> Scripts</a>
+  <li><a href="#directory-structure" id="toc-directory-structure" class="nav-link" data-scroll-target="#directory-structure"><span class="header-section-number">1.6</span> Directory structure</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">1.7</span> Scripts</a>
   <ul class="collapse">
-  <li><a href="#spot-fix-the-errors" id="toc-spot-fix-the-errors" class="nav-link" data-scroll-target="#spot-fix-the-errors"><span class="header-section-number">1.6.1</span> Spot &amp; fix the errors</a></li>
-  <li><a href="#driver-scripts" id="toc-driver-scripts" class="nav-link" data-scroll-target="#driver-scripts"><span class="header-section-number">1.6.2</span> Driver scripts</a></li>
+  <li><a href="#spot-fix-the-errors" id="toc-spot-fix-the-errors" class="nav-link" data-scroll-target="#spot-fix-the-errors"><span class="header-section-number">1.7.1</span> Spot &amp; fix the errors</a></li>
+  <li><a href="#driver-scripts" id="toc-driver-scripts" class="nav-link" data-scroll-target="#driver-scripts"><span class="header-section-number">1.7.2</span> Driver scripts</a></li>
   </ul></li>
-  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">1.7</span> Tools</a>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">1.8</span> Tools</a>
   <ul class="collapse">
-  <li><a href="#snippets" id="toc-snippets" class="nav-link" data-scroll-target="#snippets"><span class="header-section-number">1.7.1</span> Snippets</a></li>
+  <li><a href="#snippets" id="toc-snippets" class="nav-link" data-scroll-target="#snippets"><span class="header-section-number">1.8.1</span> Snippets</a></li>
   </ul></li>
-  <li><a href="#sec-vc" id="toc-sec-vc" class="nav-link" data-scroll-target="#sec-vc"><span class="header-section-number">1.8</span> Version control</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">1.9</span> Practice</a>
+  <li><a href="#sec-vc" id="toc-sec-vc" class="nav-link" data-scroll-target="#sec-vc"><span class="header-section-number">1.9</span> Version control</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">1.10</span> Practice</a>
   <ul class="collapse">
-  <li><a href="#fix-it" id="toc-fix-it" class="nav-link" data-scroll-target="#fix-it"><span class="header-section-number">1.9.1</span> Fix it!</a></li>
+  <li><a href="#breaking-others-down-code" id="toc-breaking-others-down-code" class="nav-link" data-scroll-target="#breaking-others-down-code"><span class="header-section-number">1.10.1</span> Breaking others down code</a></li>
+  <li><a href="#fix-it" id="toc-fix-it" class="nav-link" data-scroll-target="#fix-it"><span class="header-section-number">1.10.2</span> Fix it!</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -239,7 +241,7 @@ div.csl-indent {
 <p>Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define terms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, before moving on to some practical principles of computational reproducibility.</p>
 <ul>
 <li><strong>Results reproducibility</strong> – if you do the same thing, you should get the same results. This is the essence of the scientific method.</li>
-<li><strong>Inferential reproducibility</strong> – reliably draw the same types of conclusions from different sets of experiments. One example of this sort of reproducibility would be independent sets of experiments that show DNA as the hereditary molecule.</li>
+<li><strong>Inferential reproducibility</strong> – reliably draw the same types of conclusions from different sets of experiments<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
 <li><strong>Methods reproducibility</strong> – description of the methods are sufficiently detailed, complete, and accurate enough so that the experiment may be replicated in full.</li>
 </ul>
 <p>This workshop is focused on a narrow set of methods reproducibility, <strong>computational reproducibility</strong>, for which, I am adopting the formal definition: <em>“obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis”</em> <span class="citation" data-cites="National_Academies_of_Sciences_Engineering2019-vr">(<a href="references.html#ref-National_Academies_of_Sciences_Engineering2019-vr" role="doc-biblioref">National Academies of Sciences, Engineering et al. 2019</a>)</span>. That definition can seem self-evident, so for a practical, working definition, consider asking yourself the following questions.</p>
@@ -262,14 +264,14 @@ Questions to ask yourself
 </ol>
 </div>
 </div>
-<p>If the answer to any of those questions above is not <em>yes</em>, then you have some room for improvement in your computational reproducibility. That is totally fine – this is why you are taking this workshop<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>! <strong>Reproducibility is a process</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> – but there are small and meaningful ways that you can make your projects a little better. So let’s dive in!</p>
+<p>If the answer to any of those questions above is not <em>yes</em>, then you have some room for improvement in your computational reproducibility. That is totally fine – this is why you are taking this workshop<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>! Reproducibility is a process<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> – but there are small and meaningful ways that you can make your projects a little better. So let’s dive in!</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A quick note on why you should care about computational reproducibility <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.
+A quick note on why you should care about computational reproducibility <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -279,20 +281,62 @@ A quick note on why you should care about computational reproducibility <a href=
 </div>
 </div>
 </div>
-<section id="practical-reproducibility" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="practical-reproducibility"><span class="header-section-number">1.1</span> Practical reproducibility</h2>
-<p>Much of the advice on computational reproducibility is somewhat abstract<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. That is, in part, the nature of the beast. Each project represents its own unique challenges. But it is also because the advice is often made for a broad range of projects in all sorts of different programming languages on everything from model simulations to genome assembly, all the way to creating programmatic tools for others. In contrast, this workshop will focus on a narrower set of tasks related to <strong>statistical programming in R</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. In other words, the type of programming where you have some raw data generated elsewhere (<em>e.g.</em>, enzyme activity or species abundance data) that you are going to preform some sort of analysis on it (<em>e.g.</em>, normalization and a significance test), and then make figures.</p>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<section id="overall-goal" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="overall-goal"><span class="header-section-number">1.1</span> Overall goal</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-TL;DR - Practical tips for computational reproducibility <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>
+Take raw data and turn it into results
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Simple workflow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Workflow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Exapanded example</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Directory structure and files</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><img src="repro_workflow_images/raw_data_workflow.jpeg" class="img-fluid" style="width:50.0%"></p>
+<p>You may think of your results as the product that you share with the world. But in this workshop I want to encourage you to also include the raw data and code as part of that final product. And not only that, but possibly reframe your thinking so that you see the raw data and code as the <em>ulimate source of truth</em>. In other words, your results only exist because of the raw data and how you analyzed them, so they are more an emergent property than a source of truth.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><img src="repro_workflow_images/workflow.jpeg" class="img-fluid" style="width:75.0%"> The final product of your work is often a manuscript. Computational reproducibility is focused ensuring that the results you are interpreting in the manuscript can be easily recreated from your raw data.</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><img src="repro_workflow_images/example_workflow.jpeg" class="img-fluid"></p>
+<p>It can get complicated relatively quickly, but there is often the same general workflow present. Keeping this in mind can help us set up a directory structure, that can work well across different types of projects.</p>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><img src="repro_workflow_images/example_workflow_with_directories.jpeg" class="img-fluid"></p>
+<p>Here we have examples of a nested directory structure where we have three major directories within the project.</p>
+<ol type="1">
+<li><code>data/</code> – contains both <code>raw/</code> and <code>processed/</code> data</li>
+<li><code>src/</code> – contains all the source code used to analyze the phenotype &amp; sequencing data, and create all the figures. Notice how these are nested in subdirectories and numbered as well.</li>
+<li><code>output/</code> – contains all the output results including <code>figs/</code> and each models or tables related to each specific analyses in their own subdirectory.</li>
+</ol>
+<p>The goal of computational reproducibility is to take the files in your <code>data/raw/</code> and <code>src/</code> folders and be able to generate all of the <code>data/processed/</code> and <code>output/</code> files.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="practical-reproducibility" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="practical-reproducibility"><span class="header-section-number">1.2</span> Practical reproducibility</h2>
+<p>Much of the advice on computational reproducibility is somewhat abstract<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. That is, in part, the nature of the beast. Each project represents its own unique challenges. But it is also because the advice is often made for a broad range of projects in all sorts of different programming languages on everything from model simulations to genome assembly, all the way to creating programmatic tools for others. In contrast, this workshop will focus on a narrower set of tasks related to <strong>statistical programming in R</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. In other words, the type of programming where you have some raw data generated elsewhere (<em>e.g.</em>, enzyme activity or species abundance data) that you are going to preform some sort of analysis on it (<em>e.g.</em>, normalization and a significance test), and then make figures.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TL;DR - Practical tips for computational reproducibility <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <section id="r-rstudio-specific-tips" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="r-rstudio-specific-tips">R &amp; RStudio specific tips</h3>
@@ -307,7 +351,7 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn7" class="f
 <h3 class="unnumbered anchored" data-anchor-id="repository-tips">Repository tips</h3>
 <ol type="1">
 <li>Use a consistent directory structure. You can save this structure as a template!</li>
-<li>Use sub-directories. Favor an ordered highly nested directory structure, over a directory with dozens of files with long and repetitive names.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+<li>Use sub-directories. Favor an ordered highly nested directory structure, over a directory with dozens of files with long and repetitive names.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
 <li>Add number prefixes to your scripts (and possibly directories), so it is clear which order they must be run <code>01_normalize_data.R</code>.</li>
 <li>Try a subdirectory structure that is symmetrical – this makes it easier to know where the relevant info is saved. For example, the data from <code>data/raw/pheno/2023-07-04_data.csv</code> could be analyzed in a script in <code>src/pheno/01_anova.R</code>, and the output could be saved in <code>output/pheno/anova_results.rds</code> and the corresponding figure saved in <code>output/figs/pheno/boxplot.pdf</code>. In each case, there is a <code>pheno/</code> subdirectory.</li>
 </ol>
@@ -323,6 +367,7 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn7" class="f
 <li>You should be able to run every script with a completely clean global environment.</li>
 <li>Develop a consistent coding style (<em>e.g.</em>, snake_case, indents, comments). See the tidyverse style guide for a good set of rules.</li>
 <li>You should be able to clone the parent directory of the project and run the scripts without alteration on any machine.</li>
+<li>A small tip: You may find that in your scripts you are using bits of code written by other people (<em>e.g.</em>, collaborators or random helpful people on the internet) in your analysis, rather than take each idiosyncratic choice they made as gospel, get in there and mess with it, see what is necessary and what isn’t. Figure out how each of line moves you towards your goal.</li>
 </ol>
 </section>
 <section id="data-handling" class="level3 unnumbered">
@@ -339,7 +384,7 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn7" class="f
 <li>Don’t copy and paste output into R scripts. If you need to save an output table, then write it to a csv or save it as an rds file. If you need quick access to some intermedite info then use RMarkdown or Quarto to create html reports.</li>
 <li>Don’t include anything that isn’t necessary to your final product in your code.</li>
 <li>Opt for long and explicit variable/function names over short and implicit names.</li>
-<li>Do not save <code>install.packages("some_package")</code> in your script – even if it is commented out.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
+<li>Do not save <code>install.packages("some_package")</code> in your script – even if it is commented out.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
 </ol>
 </section>
 <section id="version-control" class="level3 unnumbered">
@@ -355,9 +400,9 @@ TL;DR - Practical tips for computational reproducibility <a href="#fn7" class="f
 </div>
 </div>
 </section>
-<section id="ten-simple-rules" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="ten-simple-rules"><span class="header-section-number">1.2</span> Ten simple rules</h2>
-<p>The tips outlined above are a useful and specific starting point<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. But rather than rely solely on my proclivities, let’s instead adopt these simple rules from <span class="citation" data-cites="Sandve2013-cq">Sandve et al. (<a href="references.html#ref-Sandve2013-cq" role="doc-biblioref">2013</a>)</span>. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adopting these rules is that they are easy enough to apply to other types of projects. It is worth <a href="https://doi.org/10.1371/journal.pcbi.1003285" target="_blank">reading in full</a>.</p>
+<section id="ten-simple-rules" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="ten-simple-rules"><span class="header-section-number">1.3</span> Ten simple rules</h2>
+<p>The tips outlined above are a useful and specific starting point. But rather than rely solely on my proclivities, let’s instead adopt these simple rules from <span class="citation" data-cites="Sandve2013-cq">Sandve et al. (<a href="references.html#ref-Sandve2013-cq" role="doc-biblioref">2013</a>)</span>. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adopting these rules is that they are easy enough to apply to other types of projects. It is worth <a href="https://doi.org/10.1371/journal.pcbi.1003285" target="_blank">reading in full</a>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -383,10 +428,10 @@ Ten simple rules for reproducible computational research
 </div>
 </div>
 </section>
-<section id="opening-in-rstudio" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="opening-in-rstudio"><span class="header-section-number">1.3</span> Opening in RStudio</h2>
-<p>Okay, let’s begin by opening up RStudio<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?</p>
-<p>I know people that do great work in R and live their lives like this – but it kinda makes me sweat. <em>How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?</em> It stresses me out, in part because you are violating <strong>Rule 1</strong> – you don’t necessarily have a good track record of how that object was produced. It could be something that you executed long ago and you have since changed your script. You want your <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth" target="_blank">source of truth</a><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> to be the script. In other words, the list of specfic commands that take you from raw data to your results. <strong>Zombie objects in the Global Environment are not your friend.</strong></p>
+<section id="opening-in-rstudio" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="opening-in-rstudio"><span class="header-section-number">1.4</span> Opening in RStudio</h2>
+<p>Okay, let’s begin by opening up RStudio. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?</p>
+<p>I know people that do great work in R and live their lives like this – but it kinda makes me sweat. <em>How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?</em> It stresses me out, in part because you are violating <strong>Rule 1</strong> – you don’t necessarily have a good track record of how that object was produced. It could be something that you executed long ago and you have since changed your script. You want your <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth" target="_blank">source of truth</a><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> to be the script. In other words, the list of specfic commands that take you from raw data to your results. <strong>Zombie objects in the Global Environment are not your friend.</strong></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -397,7 +442,7 @@ Tip: Set up a blank slate in RStudio by default
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There is an easy way to set up a <strong>blank slate</strong> as RStudio’s default behavior. Just execute <code>usethis::use_blank_slate()</code> in the console and it will ensure that the Global Options of RStudio are configured in such a way that you have a blank slate each time you open R<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>. Alternatively, you can manually adjust the Global Options as explained <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth:~:text=Figure%C2%A07.2%3A%20Copy%20these%20options%20in%20your%20RStudio%20options%20to%20always%20start%20your%20RStudio%20session%20with%20a%20clean%20slate." target="_blank">here</a>.</p>
+<p>There is an easy way to set up a <strong>blank slate</strong> as RStudio’s default behavior. Just execute <code>usethis::use_blank_slate()</code> in the console and it will ensure that the Global Options of RStudio are configured in such a way that you have a blank slate each time you open R<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>. Alternatively, you can manually adjust the Global Options as explained <a href="https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth:~:text=Figure%C2%A07.2%3A%20Copy%20these%20options%20in%20your%20RStudio%20options%20to%20always%20start%20your%20RStudio%20session%20with%20a%20clean%20slate." target="_blank">here</a>.</p>
 </div>
 </div>
 <p>It is best practice to start with a blank slate every time you open RStudio. This will force you to rely solely on the code in front of you. Rather than something that may or may not be what you remember it to be. This approach also has the added benefit of mimicking the environment of someone else sitting down at their own machine, trying to replicate your results.</p>
@@ -415,12 +460,12 @@ There are ultimately only two sources of truth
 <li><strong>Raw data</strong></li>
 <li><strong>Source code</strong></li>
 </ol>
-<p>You should build every project with that in mind. You need to ensure that anyone can get from your raw data to your results<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> using only your scripts!</p>
+<p>You should build every project with that in mind. You need to ensure that anyone can get from your raw data to your results<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> using only your scripts!</p>
 </div>
 </div>
 </section>
-<section id="projects-in-rstudio" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="projects-in-rstudio"><span class="header-section-number">1.4</span> Projects in RStudio</h2>
+<section id="projects-in-rstudio" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="projects-in-rstudio"><span class="header-section-number">1.5</span> Projects in RStudio</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -464,14 +509,14 @@ There are ultimately only two sources of truth
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Projects</strong> in RStudio allow for easy integration with Version Control! Check out the short <a href="#sec-vc"><span>Section&nbsp;1.8</span></a> on Version Control.</p>
+<p><strong>Projects</strong> in RStudio allow for easy integration with Version Control! Check out the short <a href="#sec-vc"><span>Section&nbsp;1.9</span></a> on Version Control.</p>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="directory-structure" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="directory-structure"><span class="header-section-number">1.5</span> Directory structure</h2>
+<section id="directory-structure" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="directory-structure"><span class="header-section-number">1.6</span> Directory structure</h2>
 <p>There are probably thousands of ways you could structure your files in a project – but there are really only two ways of going about it. The first is <em>ad hoc</em>. You group up files into subdirectores as you go along, tailoring the structure into something that makes sense to you, or at least something that is workable. And the other way, is to establish a template directory structure and build off that.</p>
 <p>For most of the time I have worked in R, I have used the <em>ad hoc</em> approach. And the best I can say for it is that it can get the job done. In my eyes, each of those projects are their own unique snowflake. But if you ask someone else to look at it, they may think a dungeon maze is more apt a metaphor. <em>Which of these scripts should I run first? Wait, where is all your raw data? Where are your final figures?</em> It is best if the directory structure answers these questions on its own. So I have come to embrace a consistent directory structure.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -484,7 +529,7 @@ Example directory structures
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Take a look at my <a href="https://github.com/tsoleary/template_Rproject" target="_blank">template directory structure.</a>. I did a bunch of poking around on the internet and thinking about it and this is where I landed. It has already evolved somewhat since I started<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. But here are a few useful links that I found in my stumblings that you should check out:</p>
+<p>Take a look at my <a href="https://github.com/tsoleary/template_Rproject" target="_blank">template directory structure.</a>. I did a bunch of poking around on the internet and thinking about it and this is where I landed. It has already evolved somewhat since I started<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. But here are a few useful links that I found in my stumblings that you should check out:</p>
 <ol type="1">
 <li>PLOS Comp Bio: <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424" target="_blank">A quick guide to organizing computational biology projects</a> <span class="citation" data-cites="Noble2009-dr">(<a href="references.html#ref-Noble2009-dr" role="doc-biblioref">Noble 2009</a>)</span></li>
 <li><a href="https://www.r-bloggers.com/2018/08/structuring-r-projects/" target="_blank">Blog post with a few thoughts on strucuring R projects</a></li>
@@ -497,9 +542,9 @@ Example directory structures
 </div>
 <p>Below is an example of a directory structure template:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Template</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Example</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Template</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Example</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <pre><code>├── src/
 │   ├── 01_analysis/
 │   ├── 02_analysis/
@@ -523,7 +568,7 @@ Example directory structures
 <li><code>scratch</code> – messy code I have rec</li>
 </ul>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>This is a simplified example of the project I am working on right now.</p>
 <pre><code>├── src/
 │   ├── 00_pheno/
@@ -603,8 +648,8 @@ Version control tip
 </div>
 </div>
 </section>
-<section id="scripts" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="scripts"><span class="header-section-number">1.6</span> Scripts</h2>
+<section id="scripts" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="scripts"><span class="header-section-number">1.7</span> Scripts</h2>
 <p>If you read Jenny Bryan’s blog post on a project-oriented workflow referenced earlier, you likely ran across this advice:</p>
 <blockquote class="blockquote">
 <p>What about objects that take a long time to create? Isolate that bit in its own script and write the precious object to file with <code>saveRDS(my_precious, here("results", "my_precious.rds"))</code>. Now you can develop scripts to do downstream work that reload the precious object via <code>my_precious &lt;- readRDS(here("results", "my_precious.rds"))</code>. It is a good idea to break data analysis into logical, isolated pieces anyway.</p>
@@ -625,12 +670,12 @@ Split up code into meaningful bite sized chunks
 <p>Favor short scripts that do <em>one</em> thing, rather then a huge unruly script that does everything. This helps adhere to <strong>Rule 5</strong>: Record all intermediate results, when possible in standardized formats &amp; <strong>Rule 8</strong>: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you, in the future, or a reviewer can easily jump into the analysis mid-way and explore the data and repeat some analyses.</p>
 </div>
 </div>
-<section id="spot-fix-the-errors" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="spot-fix-the-errors"><span class="header-section-number">1.6.1</span> Spot &amp; fix the errors</h3>
+<section id="spot-fix-the-errors" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="spot-fix-the-errors"><span class="header-section-number">1.7.1</span> Spot &amp; fix the errors</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Messy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Cleaned</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Messy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Cleaned</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -701,7 +746,7 @@ Split up code into meaningful bite sized chunks
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -798,9 +843,9 @@ Avoid magic numbers
 </div>
 </div>
 </section>
-<section id="driver-scripts" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="driver-scripts"><span class="header-section-number">1.6.2</span> Driver scripts</h3>
-<p>If you now have a bunch of small scripts that do small tasks, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results.</p>
+<section id="driver-scripts" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="driver-scripts"><span class="header-section-number">1.7.2</span> Driver scripts</h3>
+<p>If you now have a bunch of small scripts that do a single task, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -842,14 +887,36 @@ Avoid magic numbers
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>#| echo: true</span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>#| file: "../src/00_pheno/01_norm_data.R"</span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/cache.html">knitr cache time consuming chunks</a></p>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The above is actually <a href="https://quarto.org/">quarto</a> code, a similar but updated version of RMarkdown.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>It can be useful to <a href="https://bookdown.org/yihui/rmarkdown-cookbook/cache.html">cache time consuming chunks</a> using knitr.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
-<section id="tools" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="tools"><span class="header-section-number">1.7</span> Tools</h2>
-<section id="snippets" class="level3" data-number="1.7.1">
-<h3 data-number="1.7.1" class="anchored" data-anchor-id="snippets"><span class="header-section-number">1.7.1</span> Snippets</h3>
+<section id="tools" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="tools"><span class="header-section-number">1.8</span> Tools</h2>
+<section id="snippets" class="level3" data-number="1.8.1">
+<h3 data-number="1.8.1" class="anchored" data-anchor-id="snippets"><span class="header-section-number">1.8.1</span> Snippets</h3>
 <p>You should use the available tools as much as you can to aid your workflow.</p>
 <p>I use snippets to create my script templates.</p>
 <div class="cell">
@@ -910,13 +977,16 @@ Scratch code: A tip for removing all unecessary or redundant code
 </div>
 </section>
 </section>
-<section id="sec-vc" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="sec-vc"><span class="header-section-number">1.8</span> Version control</h2>
+<section id="sec-vc" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="sec-vc"><span class="header-section-number">1.9</span> Version control</h2>
 <p>The details of the software are beyond the scope of this workshop, but one important way people ensure the reproducibility of their projects is to utilize <a href="https://en.wikipedia.org/wiki/Version_control" target="_blank">Version Control</a>. In short, Version Control is a useful way to make sure that as you edit and add to large projects over time you don’t lose or change any of the bits that make it work. For example, if you were to accidentally break a script, you could restore to a previous working version of that file, and then begin again. There are several software designed to do this, but the most popular in the data science world is <a href="https://en.wikipedia.org/wiki/GitHub" target="_blank">Git and GitHub</a>.</p>
 <p>These tools can seem intimidating at first – especially because they typically are interfaced with in the command line. But if it makes you more comfortable, you can use the point-and-click approach to git within RStudio itself or a desktop clients (<em>e.g.</em>, <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a>). <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/" target="_blank">Here</a> is a very useful tutorial on how to use Git and GitHub within RStudio.</p>
 </section>
-<section id="practice" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="practice"><span class="header-section-number">1.9</span> Practice</h2>
+<section id="practice" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="practice"><span class="header-section-number">1.10</span> Practice</h2>
+<section id="breaking-others-down-code" class="level3" data-number="1.10.1">
+<h3 data-number="1.10.1" class="anchored" data-anchor-id="breaking-others-down-code"><span class="header-section-number">1.10.1</span> Breaking others down code</h3>
+<p>One super useful skill, is learning how to break down someone else’s code.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -927,8 +997,8 @@ Let’s practice these principles with a toy example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There are several things that could be better in this script. Note each area You don’t need to know exactly what each step does. But take this</p>
-<p>Try addressing these problems by splitting</p>
+<p>There are several things that could be better in this script. Note each mistake. You don’t need to know exactly what each step does.</p>
+<p>Try addressing these problems by splitting it into scripts that do a single ta</p>
 </div>
 </div>
 <div class="cell">
@@ -1056,7 +1126,7 @@ Let’s practice these principles with a toy example
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1065,7 +1135,7 @@ Notice the mistakes in the above script
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>The description of the script doesn’t explain what the script does.</li>
@@ -1076,8 +1146,9 @@ Notice the mistakes in the above script
 </div>
 </div>
 </div>
-<section id="fix-it" class="level3" data-number="1.9.1">
-<h3 data-number="1.9.1" class="anchored" data-anchor-id="fix-it"><span class="header-section-number">1.9.1</span> Fix it!</h3>
+</section>
+<section id="fix-it" class="level3" data-number="1.10.2">
+<h3 data-number="1.10.2" class="anchored" data-anchor-id="fix-it"><span class="header-section-number">1.10.2</span> Fix it!</h3>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1180,20 +1251,19 @@ Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <sp
 <hr>
 <ol>
 <li id="fn1"><p>Please see <span class="citation" data-cites="Goodman2016-ex">Goodman, Fanelli, and Ioannidis (<a href="references.html#ref-Goodman2016-ex" role="doc-biblioref">2016</a>)</span> for a more rigorous discussion of terms.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>I hope the workshop helps <span class="emoji" data-emoji="grin">😁</span>!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>I definitely don’t have a perfect workflow, although it has gotten better slowly over the years.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>In particular, taking control of the small details that make your code easier to share and easier for others to understand<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Google data provenance and look at the flow charts.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Statistical programming is right in R’s wheelhouse. And it is also the most common type of programming for early career students in my discipline. You design and conduct an experiment. You generate data. You analyze data. You present data.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>As with all advice in these workshop, these are just my opinions – no more. And as with all rules, there are always good exceptions to breaking any of these rules.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>If you find yourself making a bunch of files with the same prefix, that probably means that they should all be in their own directory.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>If in the future, you happen to have a new machine that doesn’t have <code>some_package</code> installed, you will remember how to install it. This is something that can just be run directly in the console, when necessary, and does not need to be saved in the script.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>If you want more context to some of these tips, please read on!<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>Either in reality or just as a mental exercise.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>Read this link to R for Data Science, for more information.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>Remember: You may need to install the <strong>usethis</strong> package <code>install.packages("usethis")</code>.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p>Reproducibility in a nutshell.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>Reproducubility is a process<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>One example of this sort of reproducibility would be independent sets of experiments that show DNA as the hereditary molecule.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>I hope the workshop helps <span class="emoji" data-emoji="grin">😁</span>!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>I definitely don’t have a perfect workflow, although it has gotten better slowly over the years.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>In particular, taking control of the small details that make your code easier to share and easier for others to understand<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Google data provenance and look at the flow charts.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Statistical programming is right in R’s wheelhouse. And it is also the most common type of programming for early career students in my discipline. You design and conduct an experiment. You generate data. You analyze data. You present data.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>As with all advice in these workshop, these are just my opinions – no more. And as with all rules, there are always good exceptions to breaking any of these rules.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>If you find yourself making a bunch of files with the same prefix, that probably means that they should all be in their own directory.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>If in the future, you happen to have a new machine that doesn’t have <code>some_package</code> installed, you will remember how to install it. This is something that can just be run directly in the console, when necessary, and does not need to be saved in the script.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Read this link to R for Data Science, for more information.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Remember: You may need to install the <strong>usethis</strong> package <code>install.packages("usethis")</code>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Reproducibility in a nutshell.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Reproducibility is a process<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

@@ -145,20 +145,20 @@ The package dplyr has a few core functions (or verbs) that are built to work on 
 
 ### [Core verbs](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html){target="_blank"}
 
-#### Rows
+#### Rows {.unnumbered}
 
 - `filter()` chooses rows based on column values.
 - `slice()` chooses rows based on location.
 - `arrange()` changes the order of the rows.
 
-#### Columns
+#### Columns {.unnumbered}
 
 - `select()` changes whether or not a column is included.
 - `rename()` changes the name of columns.
 - `mutate()` changes the values of columns and creates new columns.
 - `relocate()` changes the order of the columns.
 
-#### Groups of rows
+#### Groups of rows {.unnumbered}
 
 - `summarise()` collapses a group into a single row.
 

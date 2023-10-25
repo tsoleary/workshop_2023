@@ -8,7 +8,7 @@ editor_options:
 Reproducibility is an integral part of science. Its core idea is simple enough, even if it covers a broad set of ideas. To ensure we are on the same page, I will loosely define terms^[Please see @Goodman2016-ex for a more rigorous discussion of terms.], before moving on to some practical principles of computational reproducibility.
 
 - **Results reproducibility** -- if you do the same thing, you should get the same results. This is the essence of the scientific method.
-- **Inferential reproducibility** -- reliably draw the same types of conclusions from different sets of experiments. One example of this sort of reproducibility would be independent sets of experiments that show DNA as the hereditary molecule.
+- **Inferential reproducibility** -- reliably draw the same types of conclusions from different sets of experiments^[One example of this sort of reproducibility would be independent sets of experiments that show DNA as the hereditary molecule.].
 - **Methods reproducibility** -- description of the methods are sufficiently detailed, complete, and accurate enough so that the experiment may be replicated in full. 
 
 This workshop is focused on a narrow set of methods reproducibility, **computational reproducibility**, for which, I am adopting the formal definition: _"obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis"_ [@National_Academies_of_Sciences_Engineering2019-vr]. That definition can seem self-evident, so for a practical, working definition, consider asking yourself the following questions.
@@ -23,13 +23,52 @@ This workshop is focused on a narrow set of methods reproducibility, **computati
 1. Will any interested party (_e.g._, collaborators, reviewers, or the public at large) be able to clone the project directory and run the code on their local machines without issue and without asking for any clarifications?
 :::
 
-If the answer to any of those questions above is not _yes_, then you have some room for improvement in your computational reproducibility. That is totally fine -- this is why you are taking this workshop^[I hope the workshop helps :grin:!]! **Reproducibility is a process**^[I definitely don't have a perfect workflow, although it has gotten better slowly over the years.] -- but there are small and meaningful ways that you can make your projects a little better. So let's dive in!
+If the answer to any of those questions above is not _yes_, then you have some room for improvement in your computational reproducibility. That is totally fine -- this is why you are taking this workshop^[I hope the workshop helps :grin:!]! Reproducibility is a process^[I definitely don't have a perfect workflow, although it has gotten better slowly over the years.] -- but there are small and meaningful ways that you can make your projects a little better. So let's dive in!
 
 :::{.callout-tip icon="false" collapse="true" appearance="minimal"}
 
 ### A quick note on why you should care about computational reproducibility ^[In particular, taking control of the small details that make your code easier to share and easier for others to understand].
 
 Coding can feel like a personal exercise. It is an intimate bond between you and your computer. Every once in a while, you share the fruits of your labor --- a result or a figure, but no one really looks under the hood. This fosters a whatever-gets-the-job-done approach. It doesn't have to be pretty. It just needs to work. And I think that is appropriate, sometimes. But the reality is: if you plan on publishing, then, like it or not, you plan on sharing your code and others will be relying on the accuracy of your results. If you keep that fact in mind from the beginning, you will likely save you, your collaborators, and if you are lucky, the scientific world, a lot of time. 
+:::
+
+## Overall goal
+
+:::{.callout-note}
+## Take raw data and turn it into results
+:::
+
+:::{.panel-tabset}
+
+### Simple workflow
+
+![](repro_workflow_images/raw_data_workflow.jpeg){width=50%} 
+
+You may think of your results as the product that you share with the world. But in this workshop I want to encourage you to also include the raw data and code as part of that final product. And not only that, but possibly reframe your thinking so that you see the raw data and code as the _ulimate source of truth_. In other words, your results only exist because of the raw data and how you analyzed them, so they are more an emergent property than a source of truth.
+
+### Workflow
+
+![](repro_workflow_images/workflow.jpeg){width=75%}
+The final product of your work is often a manuscript. Computational reproducibility is focused ensuring that the results you are interpreting in the manuscript can be easily recreated from your raw data.
+
+### Exapanded example
+
+![](repro_workflow_images/example_workflow.jpeg)
+
+It can get complicated relatively quickly, but there is often the same general workflow present. Keeping this in mind can help us set up a directory structure, that can work well across different types of projects.
+
+### Directory structure and files
+
+![](repro_workflow_images/example_workflow_with_directories.jpeg)
+
+Here we have examples of a nested directory structure where we have three major directories within the project. 
+
+1. `data/` -- contains both `raw/` and `processed/` data
+1. `src/` -- contains all the source code used to analyze the phenotype & sequencing data, and create all the figures. Notice how these are nested in subdirectories and numbered as well. 
+1. `output/` -- contains all the output results including `figs/` and each models or tables related to each specific analyses in their own subdirectory.
+
+The goal of computational reproducibility is to take the files in your `data/raw/` and `src/` folders and be able to generate all of the `data/processed/` and `output/` files.
+
 :::
 
 
@@ -65,6 +104,7 @@ Much of the advice on computational reproducibility is somewhat abstract^[Google
 1. You should be able to run every script with a completely clean global environment.
 1. Develop a consistent coding style (_e.g._, snake_case, indents, comments). See the tidyverse style guide for a good set of rules.
 1. You should be able to clone the parent directory of the project and run the scripts without alteration on any machine.
+1. A small tip: You may find that in your scripts you are using bits of code written by other people (_e.g._, collaborators or random helpful people on the internet) in your analysis, rather than take each idiosyncratic choice they made as gospel, get in there and mess with it, see what is necessary and what isn't. Figure out how each of line moves you towards your goal.
 
 ### Data handling {.unnumbered}
 
@@ -90,7 +130,7 @@ Much of the advice on computational reproducibility is somewhat abstract^[Google
 
 ## Ten simple rules
 
-The tips outlined above are a useful and specific starting point^[If you want more context to some of these tips, please read on!]. But rather than rely solely on my proclivities, let's instead adopt these simple rules from @Sandve2013-cq. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adopting these rules is that they are easy enough to apply to other types of projects. It is worth [reading in full](https://doi.org/10.1371/journal.pcbi.1003285){target="_blank"}.
+The tips outlined above are a useful and specific starting point. But rather than rely solely on my proclivities, let's instead adopt these simple rules from @Sandve2013-cq. Over the course of this workshop, we will look at some specific coding practices and think about how they may violate, or adhere to, one (or more) of these rules. The additional benefit of adopting these rules is that they are easy enough to apply to other types of projects. It is worth [reading in full](https://doi.org/10.1371/journal.pcbi.1003285){target="_blank"}.
 
 :::{.callout-tip icon="false"}
 
@@ -110,7 +150,7 @@ The tips outlined above are a useful and specific starting point^[If you want mo
 
 ## Opening in RStudio
 
-Okay, let's begin by opening up RStudio^[Either in reality or just as a mental exercise.]. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?
+Okay, let's begin by opening up RStudio. Do you have objects already in your Global Environment? Is the console full of code you ran last time? Or do you always keep RStudio running, because you are worried about loosing the results you finally managed to get, and you need to do more stuff later?
 
 I know people that do great work in R and live their lives like this -- but it kinda makes me sweat. _How do you know what is real? What if those objects were created under some other conditions and you have since edited your script? How many packages do you have loaded? What are they?_ It stresses me out, in part because you are violating **Rule 1** --  you don't necessarily have a good track record of how that object was produced. It could be something that you executed long ago and you have since changed your script. You want your [source of truth](https://r4ds.hadley.nz/workflow-scripts.html#what-is-the-source-of-truth){target="_blank"}^[Read this link to R for Data Science, for more information.] to be the script. In other words, the list of specfic commands that take you from raw data to your results. **Zombie objects in the Global Environment are not your friend.**
 
@@ -179,7 +219,7 @@ For most of the time I have worked in R, I have used the _ad hoc_ approach. And 
 
 ## Example directory structures
 
-Take a look at my [template directory structure.](https://github.com/tsoleary/template_Rproject){target="_blank"}. I did a bunch of poking around on the internet and thinking about it and this is where I landed. It has already evolved somewhat since I started^[Reproducubility is a process]. But here are a few useful links that I found in my stumblings that you should check out:
+Take a look at my [template directory structure.](https://github.com/tsoleary/template_Rproject){target="_blank"}. I did a bunch of poking around on the internet and thinking about it and this is where I landed. It has already evolved somewhat since I started^[Reproducibility is a process]. But here are a few useful links that I found in my stumblings that you should check out:
 
 1. PLOS Comp Bio: [A quick guide to organizing computational biology projects](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424){target="_blank"} [@Noble2009-dr]
 1. [Blog post with a few thoughts on strucuring R projects](https://www.r-bloggers.com/2018/08/structuring-r-projects/){target="_blank"}
@@ -486,7 +526,7 @@ It is a good idea to give numbers in your code a variable name and assign them a
 
 ### Driver scripts
 
-If you now have a bunch of small scripts that do small tasks, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results. 
+If you now have a bunch of small scripts that do a single task, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results. 
 
 
 ```{r filename="src/driver.R"}
@@ -534,10 +574,14 @@ format:
 ```
 ````
 
+:::{.callout-warning appearance="minimal"}
+## The above is actually [quarto](https://quarto.org/) code, a similar but updated version of RMarkdown.
+:::
 
-[knitr cache time consuming chunks](https://bookdown.org/yihui/rmarkdown-cookbook/cache.html)
 
-
+:::{.callout-tip appearance="simple"}
+It can be useful to [cache time consuming chunks](https://bookdown.org/yihui/rmarkdown-cookbook/cache.html) using knitr.
+::: 
 
 ## Tools
 
@@ -602,18 +646,19 @@ These tools can seem intimidating at first -- especially because they typically 
 
 ## Practice
 
+
+### Breaking others down code
+
+One super useful skill, is learning how to break down someone else's code. 
+
 :::{.callout-note}
 
 ## Let's practice these principles with a toy example
 
-There are several things that could be better in this script. Note each area You don't need to know exactly what each step does. But take this 
+There are several things that could be better in this script. Note each mistake. You don't need to know exactly what each step does. 
 
-Try addressing these problems by splitting 
-
+Try addressing these problems by splitting it into scripts that do a single ta
 :::
-
-
-
 
 ```{r, filename="big_unruly_script_height_weight_norm_plot_tso_01122022.R"}
 #| eval: false
