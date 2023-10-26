@@ -677,7 +677,7 @@ These tools can seem intimidating at first -- especially because they typically 
 
 There are several things that could be better in this script. Note each mistake. You don't need to know exactly what each step does. 
 
-Try addressing these problems by splitting it into scripts that do a single ta
+Try addressing these problems  and splitting it into multiple scripts that do a single task.
 :::
 
 
