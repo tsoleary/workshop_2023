@@ -49,9 +49,10 @@ You may think of your results as the product that you share with the world. But 
 ### Workflow
 
 ![](repro_workflow_images/workflow.jpeg){width=75%}
+
 The final product of your work is often a manuscript. Computational reproducibility is focused ensuring that the results you are interpreting in the manuscript can be easily recreated from your raw data.
 
-### Exapanded example
+### More detailed example
 
 ![](repro_workflow_images/example_workflow.jpeg)
 
@@ -349,9 +350,11 @@ If you read Jenny Bryan's blog post on a project-oriented workflow referenced ea
 
 This is a great way to code! 
 
-Imagine you have an RNA-sequencing project. You could create a massive script that does everything from data cleaning, to normalization, model selection, and figure creation. But because you don't have things broken up into meaningful intermediate pieces
+### Splitting up your code
 
-The journal will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file, as well as a `.rds` file that contains the full DESeq2 object. This allows them to easily explore the data for themselves, rather than start from step zero. Then they could easily begin again at the model analysis step, without having to repeat the mapping steps.
+Imagine you have an RNA-sequencing project. You could create a massive script that does everything from data cleaning, to normalization, model selection, and figure creation. But because you don't have things broken up into meaningful intermediate pieces, someone would need to re-run all your code just to plot their own gene-of-interest in your data or to try out a different model. Having access to those intermediate files, makes it easier for them, **and for you** if you are trying to check out alternative or additional analysis.
+
+For example, all journals will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file (_i.e._ counts matrix of reads mapped to genes), as well as a `.rds` file that contains the full DESeq2 object and the model results. This allows them to easily explore the data for themselves, rather than start from step zero. Then, they could easily begin again at the model analysis step, without having to repeat the mapping steps.
 
 
 :::{.callout-tip}
@@ -361,6 +364,27 @@ The journal will require you to provide the raw sequence files. But you should a
 Favor short scripts that do _one_ thing, rather then a huge unruly script that does everything. This helps adhere to **Rule 5**: Record all intermediate results, when possible in standardized formats & **Rule 8**: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you, in the future, or a reviewer can easily jump into the analysis mid-way and explore the data and repeat some analyses.
 
 :::
+
+### Readability of code
+
+:::{.callout-tip}
+
+## Programs must be written for people to read, and only incidentally for machines to execute.<br>— Hal Abelson
+
+:::
+
+When trying to enhance the reproducibility of your code, **don't underestimate the importance of creating human-readable code**. Although, it is possible to create robust and reproducibile code that isn't particularly easy for a human to read, at the end of the day if there are any errors (or if someone is just trying to check out one chunk of code), making it human readable vastly increases the likelihood that they will be able to find the error or understand what you were doing. 
+
+It is also best to be consistent about your style throughout your script and throughout a project. Rather than develop your own style and set of rules for yourself. Consider adopting a style that is popular for your 
+
+I personally use the [tidyverse style guide](https://style.tidyverse.org/index.html){target="_blank"}. Check it out for specific examples!
+
+Among the things that this style guide emphasizes are:
+
+1. Creating useful and descriptive variable names (_e.g._, use `day_one` over `d_1`)
+1. Separating code with internal section headings (_e.g._, `# Load data -------`)
+1. Descriptive file naming (_e.g._, `01_initialize_data.R`)
+1. Using indents and line breaks to clearly show the flow of the code 
 
 ### Spot & fix the errors
 
@@ -619,7 +643,7 @@ snippet mhead_snip
 
 This template ensures that I do several things:
 
-1. Add a top level description to each file. I usually try to keep it to one sentance that says what the script is doing. If you have split up your scripts into bite sized chunks, this should be easy. 
+1. Add a top level description to each file. I usually try to keep it to one sentence that says what the script is doing. If you have split up your scripts into bite sized chunks, this should be easy. 
 2. Gives a place to load libraries and data at the top of the script.
 3. Reminds me to save the output at the end of the script.
 
@@ -637,6 +661,7 @@ This template ensures that I do several things:
 I often find that I write code that is not used in the final analysis. You may find yourself doing the same. It is sometimes a random exploratory figure that doesn't end up telling you much, or maybe you normalized some data in the wrong way, or used an inappropriate type of statistical model. But in each case, you have spent some valuable amount of time writing that code, and so you are reluctant to remove it from you script. So you just comment it out -- or worse, just leave it _hanging there_ in the script. After all, it might be useful down the line, somehow, somewhere. I sympathize with that, but I think it is worth removing all unnecessary code. It will help you in the future when you don't remember what you did, and don't know if that bit of code is important. It can be hard to strip your code down to only the necessary bits, but it is worth it for the sake of clarity and reproducibility. I sometimes create a `scratch.R` file or a `scratch/` directory where I copy and paste bits of code that I am reluctant to throw away. It helps clean up the final code and makes me feel a little less like I wasted my time. 
 :::
 
+
 ## Version control {#sec-vc}
 
 The details of the software are beyond the scope of this workshop, but one important way people ensure the reproducibility of their projects is to utilize [Version Control](https://en.wikipedia.org/wiki/Version_control){target="_blank"}. In short, Version Control is a useful way to make sure that as you edit and add to large projects over time you don't lose or change any of the bits that make it work. For example, if you were to accidentally break a script, you could restore to a previous working version of that file, and then begin again. There are several software designed to do this, but the most popular in the data science world is [Git and GitHub](https://en.wikipedia.org/wiki/GitHub){target="_blank"}. 
@@ -646,11 +671,6 @@ These tools can seem intimidating at first -- especially because they typically 
 
 ## Practice
 
-
-### Breaking others down code
-
-One super useful skill, is learning how to break down someone else's code. 
-
 :::{.callout-note}
 
 ## Let's practice these principles with a toy example
@@ -659,6 +679,11 @@ There are several things that could be better in this script. Note each mistake.
 
 Try addressing these problems by splitting it into scripts that do a single ta
 :::
+
+
+:::{.panel-tabset}
+
+### Raw code
 
 ```{r, filename="big_unruly_script_height_weight_norm_plot_tso_01122022.R"}
 #| eval: false
@@ -795,7 +820,6 @@ bind_rows(tall, short) |>
 
 ### Fix it!
 
-
 ```{r, filename="src/height/00_norm_data.R"}
 #| eval: false
 #| code-fold: true
@@ -855,7 +879,7 @@ dat |>
              fill = log2_norm_height < 0)) +
   geom_segment(aes(xend = 0, yend = name,
                    color = log2_norm_height < 0),
-               size = 1) +
+               linewidth = 1) +
   geom_point(color = "grey80",
              size = 5,
              shape = 21) +
@@ -869,8 +893,10 @@ dat |>
         axis.line.y = element_blank())
 
 # Save the plot
-ggsave(here::here("output/figs/norm_height_lolipop.pdf"),
+ggsave(here::here("output/figs/norm_height_lollipop.pdf"),
        height = 15,
        width = 10,
        units = "cm")
 ```
+
+:::

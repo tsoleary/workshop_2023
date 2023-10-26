@@ -202,19 +202,17 @@ div.csl-indent {
   <li><a href="#directory-structure" id="toc-directory-structure" class="nav-link" data-scroll-target="#directory-structure"><span class="header-section-number">1.6</span> Directory structure</a></li>
   <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">1.7</span> Scripts</a>
   <ul class="collapse">
-  <li><a href="#spot-fix-the-errors" id="toc-spot-fix-the-errors" class="nav-link" data-scroll-target="#spot-fix-the-errors"><span class="header-section-number">1.7.1</span> Spot &amp; fix the errors</a></li>
-  <li><a href="#driver-scripts" id="toc-driver-scripts" class="nav-link" data-scroll-target="#driver-scripts"><span class="header-section-number">1.7.2</span> Driver scripts</a></li>
+  <li><a href="#splitting-up-your-code" id="toc-splitting-up-your-code" class="nav-link" data-scroll-target="#splitting-up-your-code"><span class="header-section-number">1.7.1</span> Splitting up your code</a></li>
+  <li><a href="#readability-of-code" id="toc-readability-of-code" class="nav-link" data-scroll-target="#readability-of-code"><span class="header-section-number">1.7.2</span> Readability of code</a></li>
+  <li><a href="#spot-fix-the-errors" id="toc-spot-fix-the-errors" class="nav-link" data-scroll-target="#spot-fix-the-errors"><span class="header-section-number">1.7.3</span> Spot &amp; fix the errors</a></li>
+  <li><a href="#driver-scripts" id="toc-driver-scripts" class="nav-link" data-scroll-target="#driver-scripts"><span class="header-section-number">1.7.4</span> Driver scripts</a></li>
   </ul></li>
   <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">1.8</span> Tools</a>
   <ul class="collapse">
   <li><a href="#snippets" id="toc-snippets" class="nav-link" data-scroll-target="#snippets"><span class="header-section-number">1.8.1</span> Snippets</a></li>
   </ul></li>
   <li><a href="#sec-vc" id="toc-sec-vc" class="nav-link" data-scroll-target="#sec-vc"><span class="header-section-number">1.9</span> Version control</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">1.10</span> Practice</a>
-  <ul class="collapse">
-  <li><a href="#breaking-others-down-code" id="toc-breaking-others-down-code" class="nav-link" data-scroll-target="#breaking-others-down-code"><span class="header-section-number">1.10.1</span> Breaking others down code</a></li>
-  <li><a href="#fix-it" id="toc-fix-it" class="nav-link" data-scroll-target="#fix-it"><span class="header-section-number">1.10.2</span> Fix it!</a></li>
-  </ul></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">1.10</span> Practice</a></li>
   </ul>
 </nav>
     </div>
@@ -297,14 +295,15 @@ Take raw data and turn it into results
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Simple workflow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Workflow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Exapanded example</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Directory structure and files</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Simple workflow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Workflow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">More detailed example</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Directory structure and files</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><img src="repro_workflow_images/raw_data_workflow.jpeg" class="img-fluid" style="width:50.0%"></p>
 <p>You may think of your results as the product that you share with the world. But in this workshop I want to encourage you to also include the raw data and code as part of that final product. And not only that, but possibly reframe your thinking so that you see the raw data and code as the <em>ulimate source of truth</em>. In other words, your results only exist because of the raw data and how you analyzed them, so they are more an emergent property than a source of truth.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p><img src="repro_workflow_images/workflow.jpeg" class="img-fluid" style="width:75.0%"> The final product of your work is often a manuscript. Computational reproducibility is focused ensuring that the results you are interpreting in the manuscript can be easily recreated from your raw data.</p>
+<p><img src="repro_workflow_images/workflow.jpeg" class="img-fluid" style="width:75.0%"></p>
+<p>The final product of your work is often a manuscript. Computational reproducibility is focused ensuring that the results you are interpreting in the manuscript can be easily recreated from your raw data.</p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p><img src="repro_workflow_images/example_workflow.jpeg" class="img-fluid"></p>
@@ -655,8 +654,10 @@ Version control tip
 <p>What about objects that take a long time to create? Isolate that bit in its own script and write the precious object to file with <code>saveRDS(my_precious, here("results", "my_precious.rds"))</code>. Now you can develop scripts to do downstream work that reload the precious object via <code>my_precious &lt;- readRDS(here("results", "my_precious.rds"))</code>. It is a good idea to break data analysis into logical, isolated pieces anyway.</p>
 </blockquote>
 <p>This is a great way to code!</p>
-<p>Imagine you have an RNA-sequencing project. You could create a massive script that does everything from data cleaning, to normalization, model selection, and figure creation. But because you don’t have things broken up into meaningful intermediate pieces</p>
-<p>The journal will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file, as well as a <code>.rds</code> file that contains the full DESeq2 object. This allows them to easily explore the data for themselves, rather than start from step zero. Then they could easily begin again at the model analysis step, without having to repeat the mapping steps.</p>
+<section id="splitting-up-your-code" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="splitting-up-your-code"><span class="header-section-number">1.7.1</span> Splitting up your code</h3>
+<p>Imagine you have an RNA-sequencing project. You could create a massive script that does everything from data cleaning, to normalization, model selection, and figure creation. But because you don’t have things broken up into meaningful intermediate pieces, someone would need to re-run all your code just to plot their own gene-of-interest in your data or to try out a different model. Having access to those intermediate files, makes it easier for them, <strong>and for you</strong> if you are trying to check out alternative or additional analysis.</p>
+<p>For example, all journals will require you to provide the raw sequence files. But you should also provide your audience with the raw counts file (<em>i.e.</em> counts matrix of reads mapped to genes), as well as a <code>.rds</code> file that contains the full DESeq2 object and the model results. This allows them to easily explore the data for themselves, rather than start from step zero. Then, they could easily begin again at the model analysis step, without having to repeat the mapping steps.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -670,8 +671,35 @@ Split up code into meaningful bite sized chunks
 <p>Favor short scripts that do <em>one</em> thing, rather then a huge unruly script that does everything. This helps adhere to <strong>Rule 5</strong>: Record all intermediate results, when possible in standardized formats &amp; <strong>Rule 8</strong>: Generate hierarchical analysis output, allowing layers of increasing detail to be inspected. Creating small scripts with intermediate results mean that you, in the future, or a reviewer can easily jump into the analysis mid-way and explore the data and repeat some analyses.</p>
 </div>
 </div>
-<section id="spot-fix-the-errors" class="level3" data-number="1.7.1">
-<h3 data-number="1.7.1" class="anchored" data-anchor-id="spot-fix-the-errors"><span class="header-section-number">1.7.1</span> Spot &amp; fix the errors</h3>
+</section>
+<section id="readability-of-code" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="readability-of-code"><span class="header-section-number">1.7.2</span> Readability of code</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Programs must be written for people to read, and only incidentally for machines to execute.<br>— Hal Abelson
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>When trying to enhance the reproducibility of your code, <strong>don’t underestimate the importance of creating human-readable code</strong>. Although, it is possible to create robust and reproducibile code that isn’t particularly easy for a human to read, at the end of the day if there are any errors (or if someone is just trying to check out one chunk of code), making it human readable vastly increases the likelihood that they will be able to find the error or understand what you were doing.</p>
+<p>It is also best to be consistent about your style throughout your script and throughout a project. Rather than develop your own style and set of rules for yourself. Consider adopting a style that is popular for your</p>
+<p>I personally use the <a href="https://style.tidyverse.org/index.html" target="_blank">tidyverse style guide</a>. Check it out for specific examples!</p>
+<p>Among the things that this style guide emphasizes are:</p>
+<ol type="1">
+<li>Creating useful and descriptive variable names (<em>e.g.</em>, use <code>day_one</code> over <code>d_1</code>)</li>
+<li>Separating code with internal section headings (<em>e.g.</em>, <code># Load data -------</code>)</li>
+<li>Descriptive file naming (<em>e.g.</em>, <code>01_initialize_data.R</code>)</li>
+<li>Using indents and line breaks to clearly show the flow of the code</li>
+</ol>
+</section>
+<section id="spot-fix-the-errors" class="level3" data-number="1.7.3">
+<h3 data-number="1.7.3" class="anchored" data-anchor-id="spot-fix-the-errors"><span class="header-section-number">1.7.3</span> Spot &amp; fix the errors</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Messy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Cleaned</a></li></ul>
 <div class="tab-content">
@@ -843,8 +871,8 @@ Avoid magic numbers
 </div>
 </div>
 </section>
-<section id="driver-scripts" class="level3" data-number="1.7.2">
-<h3 data-number="1.7.2" class="anchored" data-anchor-id="driver-scripts"><span class="header-section-number">1.7.2</span> Driver scripts</h3>
+<section id="driver-scripts" class="level3" data-number="1.7.4">
+<h3 data-number="1.7.4" class="anchored" data-anchor-id="driver-scripts"><span class="header-section-number">1.7.4</span> Driver scripts</h3>
 <p>If you now have a bunch of small scripts that do a single task, it can be useful to create a top-level script that executes all the code in the project, generating all plots and results. This both ensures that your results are reproducible and that if you need to change one small thing, like your input data, you can easily regenerate all your results.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -942,7 +970,7 @@ The above is actually <a href="https://quarto.org/">quarto</a> code, a similar b
 </div>
 <p>This template ensures that I do several things:</p>
 <ol type="1">
-<li>Add a top level description to each file. I usually try to keep it to one sentance that says what the script is doing. If you have split up your scripts into bite sized chunks, this should be easy.</li>
+<li>Add a top level description to each file. I usually try to keep it to one sentence that says what the script is doing. If you have split up your scripts into bite sized chunks, this should be easy.</li>
 <li>Gives a place to load libraries and data at the top of the script.</li>
 <li>Reminds me to save the output at the end of the script.</li>
 </ol>
@@ -984,9 +1012,6 @@ Scratch code: A tip for removing all unecessary or redundant code
 </section>
 <section id="practice" class="level2" data-number="1.10">
 <h2 data-number="1.10" class="anchored" data-anchor-id="practice"><span class="header-section-number">1.10</span> Practice</h2>
-<section id="breaking-others-down-code" class="level3" data-number="1.10.1">
-<h3 data-number="1.10.1" class="anchored" data-anchor-id="breaking-others-down-code"><span class="header-section-number">1.10.1</span> Breaking others down code</h3>
-<p>One super useful skill, is learning how to break down someone else’s code.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1001,6 +1026,10 @@ Let’s practice these principles with a toy example
 <p>Try addressing these problems by splitting it into scripts that do a single ta</p>
 </div>
 </div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Raw code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Fix it!</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1126,7 +1155,7 @@ Let’s practice these principles with a toy example
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1135,7 +1164,7 @@ Notice the mistakes in the above script
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>The description of the script doesn’t explain what the script does.</li>
@@ -1146,9 +1175,8 @@ Notice the mistakes in the above script
 </div>
 </div>
 </div>
-</section>
-<section id="fix-it" class="level3" data-number="1.10.2">
-<h3 data-number="1.10.2" class="anchored" data-anchor-id="fix-it"><span class="header-section-number">1.10.2</span> Fix it!</h3>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1209,7 +1237,7 @@ Notice the mistakes in the above script
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> log2_norm_height <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name,</span>
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> log2_norm_height <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>               <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>               <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"grey80"</span>,</span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>,</span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
@@ -1223,10 +1251,13 @@ Notice the mistakes in the above script
 <span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>())</span>
 <span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the plot</span></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"output/figs/norm_height_lolipop.pdf"</span>),</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"output/figs/norm_height_lollipop.pdf"</span>),</span>
 <span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">15</span>,</span>
 <span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>,</span>
 <span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">"cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -1245,7 +1276,6 @@ Noble, William Stafford. 2009. <span>“A Quick Guide to Organizing Computationa
 Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLoS Comput. Biol.</em> 9 (10): e1003285.
 </div>
 </div>
-</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
